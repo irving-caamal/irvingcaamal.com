@@ -1,12 +1,13 @@
 {
-  "name": "irvv17-next2",
+  "name": "irvv17-next",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "next": "12.2.4",
@@ -15,10 +16,20 @@
   },
   "devDependencies": {
     "@types/node": "18.6.4",
-    "@types/react": "18.0.16",
+    "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "8.21.0",
     "eslint-config-next": "12.2.4",
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
     "typescript": "4.7.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
