@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import SvgIcon from "./SvgIcon";
 import GithubIcon from "../../../public/icons/github.svg";
 import LinkedinIcon from "/public/icons/linkedin.svg";
@@ -62,8 +61,8 @@ export function Navbar() {
                 >
                   <SvgIcon
                     icon={social.icon}
-                    width={24}
-                    height={24}
+                    width={28}
+                    height={28}
                     classes={iconColors}
                   />
                 </a>
