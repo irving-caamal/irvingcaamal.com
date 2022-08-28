@@ -10,7 +10,8 @@ const nextConfig = {
     });
 
     return config;
-  }
+  },
+  pageExtensions: ["page.tsx"]
 };
 
 module.exports = nextConfig;
