@@ -10,7 +10,8 @@
     "lint:fix": "npx prettier --write  './**/*.{ts,tsx}'",
     "postinstall": "husky install",
     "test:e2e": "playwright test",
-    "test:unit": "jest --watch"
+    "test:dev": "jest --watch",
+    "test": "jest"
   },
   "dependencies": {
     "next": "12.2.4",
