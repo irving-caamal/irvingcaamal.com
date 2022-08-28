@@ -1,5 +1,10 @@
-name: e2e Test
+name: 🔚 e2e Test
 on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
@@ -10,7 +15,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         node-version: [16]
-    name: Test setup
+    name: 🛠️ Test setup
     runs-on: ${{ matrix.os }}
     outputs:
       preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
@@ -27,7 +32,7 @@ jobs:
         os: [ubuntu-latest]
         node-version: [16]
     needs: test_setup
-    name: Playwright tests
+    name: 🎭 Playwright tests
     timeout-minutes: 5
     runs-on: ${{ matrix.os }}
     steps:

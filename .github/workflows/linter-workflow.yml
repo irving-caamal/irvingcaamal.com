@@ -1,4 +1,4 @@
-name: Lint
+name: 🧹 Lint Workflow
 
 on:
   # Trigger the workflow on push or pull request,
@@ -12,7 +12,7 @@ on:
 
 jobs:
   run-linters:
-    name: Run linters
+    name: 🧹 Run linters
     runs-on: ubuntu-latest
 
     steps:
