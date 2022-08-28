@@ -8,8 +8,8 @@ jobs:
   test:
     strategy:
       matrix:
-        os: [ ubuntu-latest ]
-        node-version: [ 16 ]
+        os: [ubuntu-latest]
+        node-version: [16]
     timeout-minutes: 60
     runs-on: ${{ matrix.os }}
     steps:
