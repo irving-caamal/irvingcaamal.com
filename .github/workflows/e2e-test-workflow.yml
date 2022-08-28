@@ -1,0 +1,40 @@
+name: e2e Test
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test_setup:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node-version: [16]
+    name: Test setup
+    runs-on: ${{ matrix.os }}
+    outputs:
+      preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
+    steps:
+      - name: ⏲️ Wait for Vercel preview deployment to be ready
+        uses: patrickedqvist/wait-for-vercel-preview@master
+        id: waitForVercelPreviewDeployment
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 300
+  test_e2e:
+    needs: test_setup
+    name: Playwright tests
+    timeout-minutes: 5
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Prepare testing env
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn
+      - run: npx playwright install --with-deps
+      - name: 🧪 Run e2e tests
+        run: yarn test:e2e
+        env:
+          PLAYWRIGHT_TEST_BASE_URL: ${{ needs.test_setup.outputs.preview_url }}
