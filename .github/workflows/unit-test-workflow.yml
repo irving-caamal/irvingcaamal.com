@@ -1,0 +1,23 @@
+name: Run All Tests
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        node-version: [ 16 ]
+    timeout-minutes: 60
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies 🏗️
+        run: yarn
+      - name: Run Unit Tests 🧪
+        run: yarn test:unit
