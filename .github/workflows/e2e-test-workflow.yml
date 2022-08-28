@@ -22,6 +22,10 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           max_timeout: 300
   test_e2e:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node-version: [16]
     needs: test_setup
     name: Playwright tests
     timeout-minutes: 5
