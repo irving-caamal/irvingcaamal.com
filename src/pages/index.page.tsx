@@ -43,8 +43,14 @@ const Home: NextPage = () => {
             - Technologies I&apos;m currently working with
           </a>
         </Link>
-        <Link href="/experience" passHref onClick={() => false}>
-          <a className="text-3xl mb-5 text-gray-600">
+        <Link href="/experience" passHref>
+          <a
+            className="text-3xl mb-5 text-gray-600"
+            onClick={(e) => {
+              e.preventDefault();
+              return false;
+            }}
+          >
             - Experience (Coming Soon)
           </a>
         </Link>
