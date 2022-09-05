@@ -17,8 +17,8 @@ const customJestConfig = {
   testPathIgnorePatterns: ["./src/tests/e2e/"],
   transform: {},
   moduleNameMapper: {
-    '^.+\\.(svg)$': '<rootDir>/src/__mocks__/svg.tsx',
-  },
+    "^.+\\.(svg)$": "<rootDir>/src/__mocks__/svg.tsx"
+  }
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
