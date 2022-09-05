@@ -7,15 +7,11 @@ export function Navbar() {
   const [navbarColor, setNavbarColor] = useState<string>(
     "bg-white text-black dark:bg-black dark:text-white"
   );
-  const [iconColors, setIconColors] = useState<string>("fill-current");
-
   function handleScroll() {
     if (window.scrollY > 60) {
-      setNavbarColor("bg-black text-white dark:bg-white text-black");
-      setIconColors("fill-white");
+      setNavbarColor("bg-black text-white dark:bg-white dark:text-black");
     } else {
       setNavbarColor("fill-current");
-      setIconColors("fill-current");
     }
   }
   const handleClick = () => {};
@@ -50,7 +46,7 @@ export function Navbar() {
                       <SvgIcon
                         icon={social.icon}
                         size={40}
-                        className={`${iconColors} hover:bg-transparent hover:text-gray-700`}
+                        className={`fill-current hover:bg-transparent hover:text-gray-700`}
                       />
                     )}
                   </a>
