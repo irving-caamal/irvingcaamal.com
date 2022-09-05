@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Moon } from "react-feather";
-import {SvgIcon} from ".";
+import { SvgIcon } from ".";
 describe("SvgIcon", () => {
   const setup = () => {
     return render(<SvgIcon icon={Moon} />);

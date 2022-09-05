@@ -1,5 +1,7 @@
-import { Navbar } from ".";
+import React from "react";
 import { screen, render } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import { Navbar } from ".";
 
 describe("Navbar", () => {
   const setup = () => {
