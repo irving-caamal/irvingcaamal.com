@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Moon, Sun, Monitor } from "react-feather";
-import SvgIcon from "../SvgIcon";
+import { SvgIcon } from "../SvgIcon/index";
 import { socialList } from "../../../utils/dummyData";
 export function Navbar() {
   const [navbarColor, setNavbarColor] = useState<string>(
@@ -46,11 +46,13 @@ export function Navbar() {
                     className="cursor-pointer"
                     rel="noreferrer"
                   >
-                    <SvgIcon
-                      icon={social.icon}
-                      size={40}
-                      classes={`${iconColors} hover:bg-transparent hover:text-gray-700`}
-                    />
+                    {social.icon && (
+                      <SvgIcon
+                        icon={social.icon}
+                        size={40}
+                        className={`${iconColors} hover:bg-transparent hover:text-gray-700`}
+                      />
+                    )}
                   </a>
                 </li>
               ))}
