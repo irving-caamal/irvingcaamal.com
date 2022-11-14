@@ -1,6 +1,4 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 const Home: NextPage = () => {
   return (
@@ -10,7 +8,7 @@ const Home: NextPage = () => {
           Hi, I&apos;m <span>Irving Caamal</span>
         </h1>
         <h2 className="text-3xl mb-5">
-          Systems Engineer / Full Stack Web Developer - Focused on FrontEnd
+          I&apos;m Systems Engineer / Full Stack Web Developer - Focused on FrontEnd
           Development
         </h2>
       </div>
