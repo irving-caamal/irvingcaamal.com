@@ -1,8 +1,8 @@
-import React, {ReactNode} from "react";
+import React, { ReactNode } from "react";
 import { useTheme } from "next-themes";
 import { Moon, Sun, Monitor } from "react-feather";
 
-const themeItems: { [key: string]: { icon: string | ReactNode} } = {
+const themeItems: { [key: string]: { icon: string | ReactNode } } = {
   system: {
     icon: <Monitor />
   },
