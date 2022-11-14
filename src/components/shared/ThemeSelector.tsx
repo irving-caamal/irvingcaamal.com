@@ -1,8 +1,8 @@
-import React from "react";
+import React, {ReactNode} from "react";
 import { useTheme } from "next-themes";
 import { Moon, Sun, Monitor } from "react-feather";
 
-const themeItems = {
+const themeItems: { [key: string]: { icon: string | ReactNode} } = {
   system: {
     icon: <Monitor />
   },
@@ -15,7 +15,7 @@ const themeItems = {
 };
 
 function ThemeSelector() {
-  const { theme, setTheme, themes } = useTheme();
+  const { theme = {}, setTheme, themes } = useTheme();
   const handleClick = (newTheme: string) => {
     setTheme(newTheme);
   };
@@ -34,7 +34,7 @@ function ThemeSelector() {
               onClick={() => handleClick(theme)}
             >
               <>
-                {theme} {themeItems[theme].icon}
+                {theme} {themeItems[theme] ? themeItems[theme].icon : null}
               </>
             </button>
           </li>
