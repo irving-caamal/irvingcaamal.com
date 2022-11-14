@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Moon, Sun, Monitor } from "react-feather";
-import {Dropdown} from "../Dropdown";
+import { Dropdown } from "../Dropdown";
 import { SvgIcon } from "../SvgIcon/index";
 import { ThemeSelector } from "../ThemeSelector";
 import { socialList } from "../../../utils/dummyData";
@@ -32,15 +32,12 @@ export function Navbar() {
           </span>
         </Link>
         <div className="flex">
-          <Dropdown
-            trigger={(
-                <Moon size={42} />
-              )}>
+          <Dropdown trigger={<Moon size={42} />}>
             <ThemeSelector />
-            </Dropdown>
+          </Dropdown>
           <ul className="flex space-evenly">
             {socialList.length > 0 &&
-               socialList.map((social, index) => (
+              socialList.map((social, index) => (
                 <li key={index} className="mx-2">
                   <a
                     href={social.url}

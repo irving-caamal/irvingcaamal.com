@@ -8,8 +8,8 @@ const Home: NextPage = () => {
           Hi, I&apos;m <span>Irving Caamal</span>
         </h1>
         <h2 className="text-3xl mb-5">
-          I&apos;m Systems Engineer / Full Stack Web Developer - Focused on FrontEnd
-          Development
+          I&apos;m Systems Engineer / Full Stack Web Developer - Focused on
+          FrontEnd Development
         </h2>
       </div>
       <div className="w-3/3 md:w-2/3 flex flex-col flex-start break-words text-justify text-lg">
