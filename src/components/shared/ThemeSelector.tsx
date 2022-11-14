@@ -7,12 +7,13 @@ const themeItems = {
         icon: <Monitor/>
     },
     'dark': {
-        icon: <Moon />
+        icon: <Moon/>
     },
     'light': {
         icon: <Sun/>
     }
 }
+
 function ThemeSelector() {
     const {theme, setTheme, themes} = useTheme();
     const handleClick = (newTheme: string) => {
