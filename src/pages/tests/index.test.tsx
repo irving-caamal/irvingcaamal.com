@@ -1,6 +1,6 @@
 import Home from "../index.page";
-import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 describe("Home", () => {
   it("should render the home page title", () => {

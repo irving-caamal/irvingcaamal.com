@@ -1,6 +1,4 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 const Home: NextPage = () => {
   return (
@@ -10,8 +8,8 @@ const Home: NextPage = () => {
           Hi, I&apos;m <span>Irving Caamal</span>
         </h1>
         <h2 className="text-3xl mb-5">
-          Systems Engineer / Full Stack Web Developer - Focused on FrontEnd
-          Development
+          I&apos;m Systems Engineer / Full Stack Web Developer - Focused on
+          FrontEnd Development
         </h2>
       </div>
       <div className="w-3/3 md:w-2/3 flex flex-col flex-start break-words text-justify text-lg">
@@ -43,8 +41,14 @@ const Home: NextPage = () => {
             - Technologies I&apos;m currently working with
           </a>
         </Link>
-        <Link href="/experience" passHref onClick={() => false}>
-          <a className="text-3xl mb-5 text-gray-600">
+        <Link href="/experience" passHref>
+          <a
+            className="text-3xl mb-5 text-gray-600"
+            onClick={(e) => {
+              e.preventDefault();
+              return false;
+            }}
+          >
             - Experience (Coming Soon)
           </a>
         </Link>

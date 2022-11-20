@@ -6,7 +6,7 @@ function stack() {
       <h1 className="text-6xl mb-5">Currently Stack I&apos;m working with</h1>
       <div className="flex flex-col">
         {Stack.map((item, index) => (
-          <>
+          <div key={item.id}>
             <h2 className="text-6xl mb-5">{item.title}</h2>
             <ul className="flex space-x-2">
               {item.items &&
@@ -14,7 +14,7 @@ function stack() {
                   <li key={item.id}>{item.name}</li>
                 ))}
             </ul>
-          </>
+          </div>
         ))}
       </div>
     </div>
