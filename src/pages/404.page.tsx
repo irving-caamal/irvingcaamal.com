@@ -10,11 +10,9 @@ export default function FourOhFour() {
       </h1>
       <ul>
         <li>
-          <Link href="/" passHref>
-            <a className="flex items-center">
-              <Home size={24} />
-              &nbsp;Go back home
-            </a>
+          <Link href="/" passHref className="flex items-center">
+            <Home size={24} />
+            &nbsp;Go back home
           </Link>
         </li>
       </ul>

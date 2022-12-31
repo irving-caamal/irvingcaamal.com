@@ -36,21 +36,18 @@ const Home: NextPage = () => {
         <p>Always looking for personal and professional growth.</p>
       </div>
       <div className="flex flex-col my-5">
-        <Link href="/stack" passHref>
-          <a className="text-3xl mb-5">
-            - Technologies I&apos;m currently working with
-          </a>
+        <Link href="/stack" passHref className="text-3xl mb-5">
+          - Technologies I&apos;m currently working with
         </Link>
-        <Link href="/experience" passHref>
-          <a
-            className="text-3xl mb-5 text-gray-600"
-            onClick={(e) => {
-              e.preventDefault();
-              return false;
-            }}
-          >
-            - Experience (Coming Soon)
-          </a>
+        <Link
+          href="/experience"
+          className="text-3xl mb-5 text-gray-600"
+          onClick={(e) => {
+            e.preventDefault();
+            return false;
+          }}
+        >
+          - Experience (Coming Soon)
         </Link>
       </div>
     </div>
