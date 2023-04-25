@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack } from "../utils/Stack";
+import { Stack as stackData } from "../utils/Stack";
 import { BaseLayout } from "../layouts/base";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { HeadingLarge, HeadingSmall } from "baseui/typography";
@@ -7,7 +7,7 @@ import { ListHeading, ListItem } from "baseui/list";
 import { useStyletron } from "baseui";
 import { Button, SIZE, SHAPE } from "baseui/button";
 
-function stack() {
+function Stack() {
   const [css] = useStyletron();
   return (
     <BaseLayout hasHeader={false}>
@@ -24,7 +24,7 @@ function stack() {
         </FlexGridItem>
         <FlexGridItem flexDirection={"column"}>
           <FlexGrid justifyContent={"center"}>
-            {Stack.map((item, index) => (
+            {stackData.map((item, index) => (
               <div key={item.id}>
                 <ListHeading
                   heading={item.title}
@@ -56,4 +56,4 @@ function stack() {
   );
 }
 
-export default stack;
+export default Stack;
