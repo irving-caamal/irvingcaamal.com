@@ -3,6 +3,10 @@ import { screen, render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { NavBar } from ".";
 
+jest.mock("next/router", () => ({
+  useRouter: jest.fn()
+}));
+
 describe("Navbar", () => {
   const setup = () => {
     return render(<NavBar />);

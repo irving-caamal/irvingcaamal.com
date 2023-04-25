@@ -2,6 +2,10 @@ import Home from "../index.page";
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
+jest.mock("next/router", () => ({
+  useRouter: jest.fn()
+}));
+
 describe("Home", () => {
   it("should render the home page title", () => {
     render(<Home />);
