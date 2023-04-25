@@ -1,63 +1,91 @@
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import { Moon, Sun, Monitor } from "react-feather";
-import { Dropdown } from "../Dropdown";
-import { SvgIcon } from "../SvgIcon/index";
-import { ThemeSelector } from "../ThemeSelector";
-import { socialList } from "../../../utils/dummyData";
+import * as React from "react";
+import { useRouter } from "next/router";
+import { AppNavBar, setItemActive, NavItemT } from "baseui/app-nav-bar";
+import { ChevronDown, Delete, Overflow, Upload } from "baseui/icon";
+import { GitHub, Linkedin, Monitor, User } from "react-feather";
 
-export function Navbar() {
-  const [navbarColor, setNavbarColor] = useState<string>(
-    "bg-white text-black dark:bg-black dark:text-white"
-  );
-  function handleScroll() {
-    if (window.scrollY > 60) {
-      setNavbarColor("bg-black text-white dark:bg-white dark:text-black");
-    } else {
-      setNavbarColor("fill-current");
+const socialLinks = [
+  {
+    icon: Linkedin,
+    label: "Linkedin",
+    href: "https://www.linkedin.com/in/irving-caamal/"
+  },
+  { icon: GitHub, label: "Github", href: "github.com/" },
+  { icon: Overflow, label: "SO", href: "" }
+];
+const NavBar: React.FC = function () {
+  const router = useRouter();
+  const [mainItems, setMainItems] = React.useState<NavItemT[]>([
+    { icon: Upload, label: "Home", active: true, info: "/" },
+    {
+      active: false,
+      icon: ChevronDown,
+      label: "About Me",
+      navExitIcon: Delete,
+      children: [
+        {
+          icon: Monitor,
+          label: "Tech Stack",
+          info: {
+            pathname: "/stack",
+            query: { name: "Stack" },
+            disabled: false
+          }
+        },
+        {
+          icon: User,
+          label: "Experience",
+          info: {
+            pathname: "/experience",
+            query: { name: "Stack" },
+            disabled: false
+          }
+        },
+        {
+          icon: User,
+          label: "Projects",
+          active: false,
+          info: {
+            pathname: "/projects",
+            query: { name: "Stack" },
+            disabled: true
+          }
+        }
+      ]
     }
+  ]);
+
+  function handleMainItemSelect(item: NavItemT) {
+    if (item.info && item.info.disabled) return false;
+    setMainItems((prev) => setItemActive(prev, item));
+    if (item.info) {
+      router.push(item.info);
+    }
+    return true;
   }
-  const handleClick = () => {};
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-  }, []);
+  function handleUserItemSelect(item: NavItemT) {
+    // get selected social link
+    const selected = socialLinks.find(
+      (socialLink) => socialLink.label === item.label
+    );
+    // if selected, open in new tab
+    selected && window.open(selected.href, "_blank");
+  }
   return (
-    <nav
-      className={`sticky top-0 w-full h-20 ${navbarColor} transition ease-in-out delay-50`}
-    >
-      <div className="flex justify-between items-center px-5 py-4">
-        <Link href="/">
-          <span className="text-2xl font-bold cursor-pointer">
-            Irving Caamal
-          </span>
-        </Link>
-        <div className="flex">
-          <Dropdown trigger={<Moon size={42} />}>
-            <ThemeSelector />
-          </Dropdown>
-          <ul className="flex space-evenly">
-            {socialList.length > 0 &&
-              socialList.map((social, index) => (
-                <li key={index} className="mx-2">
-                  <a
-                    href={social.url}
-                    target="_blank"
-                    className="cursor-pointer"
-                    rel="noreferrer"
-                  >
-                    {social.icon && (
-                      <SvgIcon
-                        icon={social.icon}
-                        size={40}
-                        className={`fill-current hover:bg-transparent hover:text-gray-700`}
-                      />
-                    )}
-                  </a>
-                </li>
-              ))}
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <AppNavBar
+      title="Irving Caamal"
+      mainItems={mainItems}
+      onMainItemSelect={handleMainItemSelect}
+      username="Irving Caamal"
+      usernameSubtitle="Connect with me"
+      userItems={[
+        { icon: Linkedin, label: "Linkedin" },
+        { icon: GitHub, label: "Github" },
+        { icon: Overflow, label: "SO" }
+      ]}
+      onUserItemSelect={handleUserItemSelect}
+    />
   );
-}
+};
+
+export { NavBar };

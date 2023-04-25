@@ -1,18 +1,51 @@
-import React from "react";
-import { Footer } from "../components/shared/Footer";
-import { Navbar } from "../components/shared/Navbar";
+import React, { ReactNode, useState } from "react";
 
-export function BaseLayout({ children }: { children: React.ReactNode }) {
+import { NavBar } from "../components/shared/Navbar";
+import Footer from "../components/shared/Footer";
+import { HeadingLevel } from "baseui/heading";
+import { themedStyled } from "../pages/_app.page";
+
+const StyledLayout = themedStyled("div", ({ $theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  minHeight: "100vh"
+}));
+const StyledMain = themedStyled("main", ({ $theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  flexGrow: 1,
+  width: "100%",
+  maxWidth: "100%",
+  margin: "0 auto",
+  padding: "0 1rem",
+  height: "100%",
+  overflow: "auto",
+  boxSizing: "border-box",
+  [`${$theme.mediaQuery.medium}`]: {
+    padding: "0 2rem"
+  }
+}));
+const BaseLayout: React.FC<{
+  children: ReactNode;
+  hasHeader: boolean;
+}> = function ({
+  children,
+  ...props
+}: {
+  children: ReactNode;
+  hasHeader: boolean;
+}) {
+  const [hasHeader, SetHasHeader] = useState(props.hasHeader);
   return (
-    <div className="h-screen flex flex-col w-full">
-      <Navbar />
-      <main
-        className={`
-      flex flex-auto flex-wrap justify-center items-center gap-x-4 p-4 md:p-8 bg-white text-black dark:bg-black dark:text-white`}
-      >
-        {children}
-      </main>
-      <Footer />
-    </div>
+    <StyledLayout>
+      <HeadingLevel>
+        <NavBar />
+        <StyledMain>{children}</StyledMain>
+        <Footer />
+      </HeadingLevel>
+    </StyledLayout>
   );
-}
+};
+
+export { BaseLayout };
