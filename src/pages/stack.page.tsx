@@ -6,7 +6,7 @@ import { HeadingLarge, HeadingSmall } from "baseui/typography";
 import { ListHeading, ListItem } from "baseui/list";
 import { useStyletron } from "baseui";
 import { Button, SIZE, SHAPE } from "baseui/button";
-import {Heading} from "baseui/heading";
+import { Heading } from "baseui/heading";
 
 function Stack() {
   const [css] = useStyletron();
@@ -19,9 +19,7 @@ function Stack() {
         className="flex flex-col justify-center items-start gap-x-4 w-full px:4 md:px-12"
       >
         <FlexGridItem>
-          <Heading className="text-6xl mb-5" >
-            My tech stack
-          </Heading>
+          <Heading className="text-6xl mb-5">My tech stack</Heading>
         </FlexGridItem>
         <FlexGridItem flexDirection={"column"}>
           <FlexGrid justifyContent={"center"}>
