@@ -1,23 +1,52 @@
 import React from "react";
+import { Block } from "baseui/block";
+import { themedStyled } from "../../pages/_app.page";
 
-export function Footer() {
+const StyledFooter = themedStyled(
+  "footer",
+  ({ $theme: { typography, sizing, colors } }) => ({
+    ...typography.font300,
+    bottom: 0,
+    color: colors.contentPrimary,
+    backgroundColor: colors.backgroundPrimary,
+    width: "100%",
+    textAlign: "center"
+  })
+);
+
+const StyledLink = themedStyled("a", ({ $theme }) => ({
+  textDecoration: "none",
+  color: $theme.colors.contentPrimary,
+  display: "inline-block",
+  cursor: "pointer",
+  marginLeft: "32px",
+  ":first-child": {
+    marginLeft: "0"
+  },
+  ":focus": {
+    outline: `3px solid ${$theme.colors.accent}`,
+    outlineOffset: "3px"
+  },
+  ":hover": {
+    color: $theme.colors.primary,
+    textDecoration: "none"
+  }
+}));
+
+function Footer() {
   return (
-    <footer
-      className="w-full bg-gray-100 border-t-2 border-white
-    text-black text-2xl bottom-0 h-auto p-8 flex justify-between dark:text-white dark:bg-black"
-    >
-      <p>Thanks for visiting my website</p>
-      <p>
-        You can check the source code{" "}
-        <a
-          href="https://github.com/irvv17/irvingcaamal.com"
+    <StyledFooter>
+      <Block>Thanks for visiting!</Block>
+      <Block paddingBottom="scale1000">
+        <StyledLink
+          href="https://github.com/irvv17/Nextjs-Baseweb-Boilerplate"
           target="_blank"
-          rel="noreferrer"
-          className="text-blue-700"
         >
-          here
-        </a>
-      </p>
-    </footer>
+          You can check source Code on GitHub
+        </StyledLink>
+      </Block>
+    </StyledFooter>
   );
 }
+
+export default Footer;
