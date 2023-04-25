@@ -1,23 +1,58 @@
 import React from "react";
 import { Stack } from "../utils/Stack";
+import { BaseLayout } from "../layouts/base";
+import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
+import { HeadingLarge, HeadingSmall } from "baseui/typography";
+import { ListHeading, ListItem } from "baseui/list";
+import { useStyletron } from "baseui";
+import { Button, SIZE, SHAPE } from "baseui/button";
+
 function stack() {
+  const [css] = useStyletron();
   return (
-    <div className="flex flex-col justify-center items-start gap-x-4 w-full px:4 md:px-12">
-      <h1 className="text-6xl mb-5">Currently Stack I&apos;m working with</h1>
-      <div className="flex flex-col">
-        {Stack.map((item, index) => (
-          <div key={item.id}>
-            <h2 className="text-6xl mb-5">{item.title}</h2>
-            <ul className="flex space-x-2">
-              {item.items &&
-                item.items.map((item, index) => (
-                  <li key={item.id}>{item.name}</li>
-                ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </div>
+    <BaseLayout hasHeader={false}>
+      <FlexGrid
+        flexDirection={"column"}
+        justifyContent="center"
+        alignItems={"flex-start"}
+        className="flex flex-col justify-center items-start gap-x-4 w-full px:4 md:px-12"
+      >
+        <FlexGridItem>
+          <HeadingLarge className="text-6xl mb-5">
+            Currently Stack I&apos;m working with
+          </HeadingLarge>
+        </FlexGridItem>
+        <FlexGridItem flexDirection={"column"}>
+          <FlexGrid justifyContent={"center"}>
+            {Stack.map((item, index) => (
+              <div key={item.id}>
+                <ListHeading
+                  heading={item.title}
+                  endEnhancer={() => (
+                    <Button size={SIZE.compact} shape={SHAPE.pill}>
+                      Action
+                    </Button>
+                  )}
+                  maxLines={1}
+                />
+                <ul
+                  className={css({
+                    width: "100%",
+                    paddingLeft: 0,
+                    paddingRight: 0
+                  })}
+                >
+                  {item.items &&
+                    item.items.map((item, index) => (
+                      <ListItem key={item.id}>{item.name}</ListItem>
+                    ))}
+                </ul>
+              </div>
+            ))}
+          </FlexGrid>
+        </FlexGridItem>
+      </FlexGrid>
+    </BaseLayout>
   );
 }
 

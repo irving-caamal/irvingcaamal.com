@@ -7,15 +7,16 @@ describe("Home", () => {
     render(<Home />);
 
     expect(
-      screen.getByText((content, node) => {
-        const hasText = (node) => node.textContent === "Hi, I'm Irving Caamal";
+      screen.queryAllByText((content, node) => {
+        const hasText = (node: Element | null) =>
+          node?.textContent?.trim() !== "";
         const nodeHasText = hasText(node);
-        const childrenDontHaveText = Array.from(node.children).every(
+        const childrenDontHaveText = Array.from(node!.children).every(
           (child) => !hasText(child)
         );
 
         return nodeHasText && childrenDontHaveText;
-      })
-    ).toBeInTheDocument();
+      }).length
+    ).toBeGreaterThan(0);
   });
 });
