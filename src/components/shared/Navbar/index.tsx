@@ -66,25 +66,25 @@ const NavBar: React.FC = function () {
   function handleUserItemSelect(item: NavItemT) {
     // get selected social link
     const selected = socialLinks.find(
-        (socialLink) => socialLink.label === item.label
+      (socialLink) => socialLink.label === item.label
     );
     // if selected, open in new tab
     selected && window.open(selected.href, "_blank");
   }
   return (
-      <AppNavBar
-          title="Irving Caamal"
-          mainItems={mainItems}
-          onMainItemSelect={handleMainItemSelect}
-          username="Irving Caamal"
-          usernameSubtitle="Connect with me"
-          userItems={[
-            { icon: Linkedin, label: "Linkedin" },
-            { icon: GitHub, label: "Github" },
-            { icon: Overflow, label: "SO" }
-          ]}
-          onUserItemSelect={handleUserItemSelect}
-      />
+    <AppNavBar
+      title="Irving Caamal"
+      mainItems={mainItems}
+      onMainItemSelect={handleMainItemSelect}
+      username="Irving Caamal"
+      usernameSubtitle="Connect with me"
+      userItems={[
+        { icon: Linkedin, label: "Linkedin" },
+        { icon: GitHub, label: "Github" },
+        { icon: Overflow, label: "SO" }
+      ]}
+      onUserItemSelect={handleUserItemSelect}
+    />
   );
 };
 

@@ -30,21 +30,21 @@ const BaseLayout: React.FC<{
   children: ReactNode;
   hasHeader: boolean;
 }> = function ({
-                 children,
-                 ...props
-               }: {
+  children,
+  ...props
+}: {
   children: ReactNode;
   hasHeader: boolean;
 }) {
   const [hasHeader, SetHasHeader] = useState(props.hasHeader);
   return (
-      <StyledLayout>
-        <HeadingLevel>
-          <NavBar />
-          <StyledMain>{children}</StyledMain>
-          <Footer />
-        </HeadingLevel>
-      </StyledLayout>
+    <StyledLayout>
+      <HeadingLevel>
+        <NavBar />
+        <StyledMain>{children}</StyledMain>
+        <Footer />
+      </HeadingLevel>
+    </StyledLayout>
   );
 };
 
