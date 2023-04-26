@@ -1,9 +1,8 @@
 import type { NextPage } from "next";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { Heading, HeadingLevel } from "baseui/heading";
-import Link from "next/link";
 import { BaseLayout } from "../layouts/base";
-import { ParagraphMedium } from "baseui/typography";
+
 const Home: NextPage = () => {
   return (
     <>

@@ -16,9 +16,9 @@ class MyDocument extends Document<{ stylesheets: Sheet[] }> {
     const renderPage = () =>
       context.renderPage({
         // eslint-disable-next-line react/display-name
-        enhanceApp: (App) => (props: any) =>
+        enhanceApp: (App) => (props) =>
           (
-            <StyletronProvider value={styletron} debugAfterHydration>
+            <StyletronProvider value={styletron}>
               <App {...props} />
             </StyletronProvider>
           )

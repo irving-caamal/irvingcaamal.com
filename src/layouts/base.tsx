@@ -3,7 +3,7 @@ import React, { ReactNode, useState } from "react";
 import { NavBar } from "../components/shared/Navbar";
 import Footer from "../components/shared/Footer";
 import { HeadingLevel } from "baseui/heading";
-import { themedStyled } from "../pages/_app.page";
+import { themedStyled } from "../pages/_app";
 
 const StyledLayout = themedStyled("div", ({ $theme }) => ({
   display: "flex",
