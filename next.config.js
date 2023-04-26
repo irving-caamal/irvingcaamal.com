@@ -4,6 +4,7 @@ const nextConfig = {
   swcMinify: true,
   webpack(config) {
     config.module.rules.push({
+
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
       use: ["@svgr/webpack"]
@@ -11,7 +12,6 @@ const nextConfig = {
 
     return config;
   },
-  pageExtensions: ["page.tsx"]
 };
 
 module.exports = nextConfig;

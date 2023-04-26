@@ -1,6 +1,6 @@
 import React from "react";
 import { Block } from "baseui/block";
-import { themedStyled } from "../../pages/_app.page";
+import { themedStyled } from "../../pages/_app";
 
 const StyledFooter = themedStyled(
   "footer",
