@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Home } from "react-feather";
 
 export default function FourOhFour() {
   return (
@@ -11,7 +10,7 @@ export default function FourOhFour() {
       <ul>
         <li>
           <Link href="/" passHref className="flex items-center">
-            <Home size={24} />
+            ICON
             &nbsp;Go back home
           </Link>
         </li>

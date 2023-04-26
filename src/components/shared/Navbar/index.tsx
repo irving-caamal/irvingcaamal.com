@@ -2,15 +2,14 @@ import * as React from "react";
 import { useRouter } from "next/router";
 import { AppNavBar, setItemActive, NavItemT } from "baseui/app-nav-bar";
 import { ChevronDown, Delete, Overflow, Upload } from "baseui/icon";
-import { GitHub, Linkedin, Monitor, User } from "react-feather";
 
 const socialLinks = [
   {
-    icon: Linkedin,
+    icon: ChevronDown,
     label: "Linkedin",
     href: "https://www.linkedin.com/in/irving-caamal/"
   },
-  { icon: GitHub, label: "Github", href: "github.com/" },
+  { icon: ChevronDown, label: "Github", href: "github.com/" },
   { icon: Overflow, label: "SO", href: "" }
 ];
 const NavBar: React.FC = function () {
@@ -24,7 +23,7 @@ const NavBar: React.FC = function () {
       navExitIcon: Delete,
       children: [
         {
-          icon: Monitor,
+          icon: ChevronDown,
           label: "Tech Stack",
           info: {
             pathname: "/stack",
@@ -33,7 +32,7 @@ const NavBar: React.FC = function () {
           }
         },
         {
-          icon: User,
+          icon: ChevronDown,
           label: "Experience",
           info: {
             pathname: "/experience",
@@ -42,7 +41,7 @@ const NavBar: React.FC = function () {
           }
         },
         {
-          icon: User,
+          icon: ChevronDown,
           label: "Projects",
           active: false,
           info: {
@@ -79,8 +78,8 @@ const NavBar: React.FC = function () {
       username="Irving Caamal"
       usernameSubtitle="Connect with me"
       userItems={[
-        { icon: Linkedin, label: "Linkedin" },
-        { icon: GitHub, label: "Github" },
+        { icon: ChevronDown, label: "Linkedin" },
+        { icon: ChevronDown, label: "Github" },
         { icon: Overflow, label: "SO" }
       ]}
       onUserItemSelect={handleUserItemSelect}

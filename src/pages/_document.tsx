@@ -1,35 +1,20 @@
 import * as React from "react";
-import Document, {
-  DocumentContext,
-  Head,
-  Html,
-  Main,
-  NextScript
-} from "next/document";
+import Document, { Head, Html, Main, NextScript } from "next/document";
 import { Provider as StyletronProvider } from "styletron-react";
 // @ts-ignore
 import { Server, Sheet } from "styletron-engine-atomic";
 import { styletron } from "../helpers/styletron";
 
 class MyDocument extends Document<{ stylesheets: Sheet[] }> {
-  static async getInitialProps(context: DocumentContext) {
-    const renderPage = () =>
-      context.renderPage({
-        // eslint-disable-next-line react/display-name
-        enhanceApp: (App) => (props: any) =>
-          (
-            <StyletronProvider value={styletron} debugAfterHydration>
-              <App {...props} />
-            </StyletronProvider>
-          )
-      });
-
-    const initialProps = await Document.getInitialProps({
-      ...context,
-      renderPage
-    });
+  static getInitialProps(props: any) {
+    // eslint-disable-next-line react/display-name
+    const page = props.renderPage((App: any) => (props: any) => (
+      <StyletronProvider value={styletron}>
+        <App {...props} />
+      </StyletronProvider>
+    ));
     const stylesheets = (styletron as Server).getStylesheets() || [];
-    return { ...initialProps, stylesheets };
+    return { ...page, stylesheets };
   }
 
   render() {

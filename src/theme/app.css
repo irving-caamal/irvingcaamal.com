@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
+::selection {
+    background: #276EF1;
+    color: white;
+}
+html {
+    --top-spacing: 100px;
+}
+
+body {
+    margin: 0;
+    padding:0;
+}
+.white-image {
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+}
+
