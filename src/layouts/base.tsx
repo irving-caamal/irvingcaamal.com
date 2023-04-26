@@ -1,45 +1,50 @@
-import React, { useState } from "react";
-import { Block } from "baseui/block";
+import React, { ReactNode, useState } from "react";
 
 import { NavBar } from "../components/shared/Navbar";
 import Footer from "../components/shared/Footer";
 import { HeadingLevel } from "baseui/heading";
+import { themedStyled } from "../pages/_app";
 
+const StyledLayout = themedStyled("div", ({ $theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  minHeight: "100vh"
+}));
+const StyledMain = themedStyled("main", ({ $theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  flexGrow: 1,
+  width: "100%",
+  maxWidth: "100%",
+  margin: "0 auto",
+  padding: "0 1rem",
+  height: "100%",
+  overflow: "auto",
+  boxSizing: "border-box",
+  [`${$theme.mediaQuery.medium}`]: {
+    padding: "0 2rem"
+  }
+}));
 const BaseLayout: React.FC<{
-  children: any;
+  children: ReactNode;
   hasHeader: boolean;
-  toggleTheme?: () => void;
-}> = function (props) {
+}> = function ({
+                 children,
+                 ...props
+               }: {
+  children: ReactNode;
+  hasHeader: boolean;
+}) {
   const [hasHeader, SetHasHeader] = useState(props.hasHeader);
   return (
-    <>
-      <HeadingLevel>
-        <NavBar />
-        {hasHeader && (
-          <Block as={"main"} paddingRight={"5vw"} paddingLeft={"5vw"}>
-            {props.children}
-          </Block>
-        )}
-        {!hasHeader && (
-          <Block as={"main"} paddingRight={"5vw"} paddingLeft={"5vw"}>
-            {props.children}
-          </Block>
-        )}
-        {hasHeader && (
-          <Block
-            backgroundColor="backgroundPrimary"
-            color="contentPrimary"
-            marginTop="scale300"
-            display="flex"
-            paddingTop="scale400"
-            justifyContent="center"
-          >
-            {props.children}
-          </Block>
-        )}
-        <Footer />
-      </HeadingLevel>
-    </>
+      <StyledLayout>
+        <HeadingLevel>
+          <NavBar />
+          <StyledMain>{children}</StyledMain>
+          <Footer />
+        </HeadingLevel>
+      </StyledLayout>
   );
 };
 
