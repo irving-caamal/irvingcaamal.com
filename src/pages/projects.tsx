@@ -18,7 +18,7 @@ const projects = [
   }
 ];
 
-const Home: NextPage = () => {
+const Projects: NextPage = () => {
   return (
     <>
       <BaseLayout hasHeader={false}>
@@ -85,4 +85,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Projects;

@@ -15,7 +15,7 @@ const ITEMS = Array.from({ length: 10 }, () => ({
   icon: Search
 }));
 
-const Home: NextPage = () => {
+const Experience: NextPage = () => {
   return (
     <>
       <BaseLayout hasHeader={false}>
@@ -82,4 +82,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Experience;
