@@ -11,13 +11,16 @@ import {
 } from 'baseui/list';
 
 import { BaseLayout } from "../layouts/base";
+import {Monitor} from "react-feather";
 
-const ITEMS = Array.from({length: 10}, () => ({
-  title: 'Software Engineer',
-  subtitle: 'Senior Software Engineering',
-  company: 'FullStack Labs',
-  icon: Search,
-}));
+const projects = [
+  {
+    icon: Monitor,
+    title: "Rebrand Project",
+    description: "Rebranding of the company's website",
+    href: "https://www.linkedin.com/in/irving-caamal/"
+  }
+];
 
 const Home: NextPage = () => {
   return (
@@ -36,7 +39,7 @@ const Home: NextPage = () => {
             alignItems={"center"}
           >
             <FlexGridItem flexGridColumnCount={[1]}>
-              <Heading styleLevel={1}>Experience</Heading>
+              <Heading styleLevel={1}>Projects</Heading>
             </FlexGridItem>
             <FlexGridItem
                 display={"flex"}
@@ -46,7 +49,7 @@ const Home: NextPage = () => {
                 flexWrap
             >
               <StatefulMenu
-                  items={ITEMS}
+                  items={projects}
                   onItemSelect={() => console.log('select')}
                   overrides={{
                     List: {
