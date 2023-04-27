@@ -58,19 +58,26 @@ const Projects: NextPage = () => {
                     props: {
                       overrides: {
                         ListItem: {
-                          component: forwardRef((props: any, ref) => (
-                            <MenuAdapter
-                              {...props}
-                              ref={ref}
-                              artwork={props.item.icon}
-                              artworkSize={ARTWORK_SIZES.LARGE}
-                              endEnhancer={() => <ChevronRight />}
-                            >
-                              <ListItemLabel description={props.item.subtitle}>
-                                {props.item.title}
-                              </ListItemLabel>
-                            </MenuAdapter>
-                          ))
+                          component: forwardRef(function ListItem(
+                            props: any,
+                            ref
+                          ) {
+                            return (
+                              <MenuAdapter
+                                {...props}
+                                ref={ref}
+                                artwork={props.item.icon}
+                                artworkSize={ARTWORK_SIZES.LARGE}
+                                endEnhancer={() => <ChevronRight />}
+                              >
+                                <ListItemLabel
+                                  description={props.item.subtitle}
+                                >
+                                  {props.item.title}
+                                </ListItemLabel>
+                              </MenuAdapter>
+                            );
+                          })
                         }
                       }
                     }
@@ -84,5 +91,4 @@ const Projects: NextPage = () => {
     </>
   );
 };
-Projects.displayName = "Projects";
 export default Projects;

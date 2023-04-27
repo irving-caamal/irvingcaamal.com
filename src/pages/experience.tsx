@@ -1,4 +1,4 @@
-import React from "react";
+import { forwardRef } from "react";
 import type { NextPage } from "next";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { Heading, HeadingLevel } from "baseui/heading";
@@ -55,19 +55,26 @@ const Experience: NextPage = () => {
                     props: {
                       overrides: {
                         ListItem: {
-                          component: React.forwardRef((props: any, ref) => (
-                            <MenuAdapter
-                              {...props}
-                              ref={ref}
-                              artwork={props.item.icon}
-                              artworkSize={ARTWORK_SIZES.LARGE}
-                              endEnhancer={() => <ChevronRight />}
-                            >
-                              <ListItemLabel description={props.item.subtitle}>
-                                {props.item.title}
-                              </ListItemLabel>
-                            </MenuAdapter>
-                          ))
+                          component: forwardRef(function CustomListItem(
+                            props: any,
+                            ref
+                          ) {
+                            return (
+                              <MenuAdapter
+                                {...props}
+                                ref={ref}
+                                artwork={props.item.icon}
+                                artworkSize={ARTWORK_SIZES.LARGE}
+                                endEnhancer={() => <ChevronRight />}
+                              >
+                                <ListItemLabel
+                                  description={props.item.subtitle}
+                                >
+                                  {props.item.title}
+                                </ListItemLabel>
+                              </MenuAdapter>
+                            );
+                          })
                         }
                       }
                     }
