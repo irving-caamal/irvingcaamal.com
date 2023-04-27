@@ -7,15 +7,18 @@ import { StatefulMenu } from "baseui/menu";
 import { ListItemLabel, MenuAdapter, ARTWORK_SIZES } from "baseui/list";
 
 import { BaseLayout } from "../layouts/base";
+import { Monitor } from "react-feather";
 
-const ITEMS = Array.from({ length: 10 }, () => ({
-  title: "Software Engineer",
-  subtitle: "Senior Software Engineering",
-  company: "FullStack Labs",
-  icon: Search
-}));
+const projects = [
+  {
+    icon: Monitor,
+    title: "Rebrand Project",
+    description: "Rebranding of the company's website",
+    href: "https://www.linkedin.com/in/irving-caamal/"
+  }
+];
 
-const Experience: NextPage = () => {
+const Projects: NextPage = () => {
   return (
     <>
       <BaseLayout hasHeader={false}>
@@ -32,7 +35,7 @@ const Experience: NextPage = () => {
             alignItems={"center"}
           >
             <FlexGridItem flexGridColumnCount={[1]}>
-              <Heading styleLevel={1}>Experience</Heading>
+              <Heading styleLevel={1}>Projects</Heading>
             </FlexGridItem>
             <FlexGridItem
               display={"flex"}
@@ -42,7 +45,7 @@ const Experience: NextPage = () => {
               flexWrap
             >
               <StatefulMenu
-                items={ITEMS}
+                items={projects}
                 onItemSelect={() => console.log("select")}
                 overrides={{
                   List: {
@@ -55,7 +58,7 @@ const Experience: NextPage = () => {
                     props: {
                       overrides: {
                         ListItem: {
-                          component: forwardRef(function CustomListItem(
+                          component: forwardRef(function ListItem(
                             props: any,
                             ref
                           ) {
@@ -88,5 +91,4 @@ const Experience: NextPage = () => {
     </>
   );
 };
-Experience.displayName = "Experience";
-export default Experience;
+export default Projects;

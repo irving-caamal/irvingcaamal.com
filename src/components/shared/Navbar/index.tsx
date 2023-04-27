@@ -1,8 +1,15 @@
 import * as React from "react";
 import { useRouter } from "next/router";
 import { AppNavBar, setItemActive, NavItemT } from "baseui/app-nav-bar";
-import { ChevronDown, Delete, Overflow, Upload } from "baseui/icon";
-import { GitHub, Linkedin, Monitor, User } from "react-feather";
+import { ChevronDown, Delete, Overflow } from "baseui/icon";
+import {
+  GitHub,
+  Linkedin,
+  Monitor,
+  Home,
+  BarChart,
+  Layers
+} from "react-feather";
 
 const socialLinks = [
   {
@@ -16,7 +23,7 @@ const socialLinks = [
 const NavBar: React.FC = function () {
   const router = useRouter();
   const [mainItems, setMainItems] = React.useState<NavItemT[]>([
-    { icon: Upload, label: "Home", active: true, info: "/" },
+    { icon: Home, label: "Home", active: true, info: "/", children: [] },
     {
       active: false,
       icon: ChevronDown,
@@ -33,22 +40,19 @@ const NavBar: React.FC = function () {
           }
         },
         {
-          icon: User,
+          icon: BarChart,
           label: "Experience",
           info: {
             pathname: "/experience",
-            query: { name: "Stack" },
             disabled: false
           }
         },
         {
-          icon: User,
+          icon: Layers,
           label: "Projects",
-          active: false,
           info: {
             pathname: "/projects",
-            query: { name: "Stack" },
-            disabled: true
+            disabled: false
           }
         }
       ]
