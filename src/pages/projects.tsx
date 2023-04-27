@@ -2,16 +2,12 @@ import React from "react";
 import type { NextPage } from "next";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { Heading, HeadingLevel } from "baseui/heading";
-import {ChevronRight, Search} from 'baseui/icon';
-import {StatefulMenu} from 'baseui/menu';
-import {
-  ListItemLabel,
-  MenuAdapter,
-  ARTWORK_SIZES,
-} from 'baseui/list';
+import { ChevronRight, Search } from "baseui/icon";
+import { StatefulMenu } from "baseui/menu";
+import { ListItemLabel, MenuAdapter, ARTWORK_SIZES } from "baseui/list";
 
 import { BaseLayout } from "../layouts/base";
-import {Monitor} from "react-feather";
+import { Monitor } from "react-feather";
 
 const projects = [
   {
@@ -42,46 +38,44 @@ const Home: NextPage = () => {
               <Heading styleLevel={1}>Projects</Heading>
             </FlexGridItem>
             <FlexGridItem
-                display={"flex"}
-                justifyContent="center"
-                alignContent={"center"}
-                alignItems={"center"}
-                flexWrap
+              display={"flex"}
+              justifyContent="center"
+              alignContent={"center"}
+              alignItems={"center"}
+              flexWrap
             >
               <StatefulMenu
-                  items={projects}
-                  onItemSelect={() => console.log('select')}
-                  overrides={{
-                    List: {
-                      style: {
-                        height: '300px',
-                        width: '450px',
-                      },
-                    },
-                    Option: {
-                      props: {
-                        overrides: {
-                          ListItem: {
-                            component: React.forwardRef((props: any, ref) => (
-                                <MenuAdapter
-                                    {...props}
-                                    ref={ref}
-                                    artwork={props.item.icon}
-                                    artworkSize={ARTWORK_SIZES.LARGE}
-                                    endEnhancer={() => <ChevronRight />}
-                                >
-                                  <ListItemLabel
-                                      description={props.item.subtitle}
-                                  >
-                                    {props.item.title}
-                                  </ListItemLabel>
-                                </MenuAdapter>
-                            )),
-                          },
-                        },
-                      },
-                    },
-                  }}
+                items={projects}
+                onItemSelect={() => console.log("select")}
+                overrides={{
+                  List: {
+                    style: {
+                      height: "300px",
+                      width: "450px"
+                    }
+                  },
+                  Option: {
+                    props: {
+                      overrides: {
+                        ListItem: {
+                          component: React.forwardRef((props: any, ref) => (
+                            <MenuAdapter
+                              {...props}
+                              ref={ref}
+                              artwork={props.item.icon}
+                              artworkSize={ARTWORK_SIZES.LARGE}
+                              endEnhancer={() => <ChevronRight />}
+                            >
+                              <ListItemLabel description={props.item.subtitle}>
+                                {props.item.title}
+                              </ListItemLabel>
+                            </MenuAdapter>
+                          ))
+                        }
+                      }
+                    }
+                  }
+                }}
               />
             </FlexGridItem>
           </FlexGrid>

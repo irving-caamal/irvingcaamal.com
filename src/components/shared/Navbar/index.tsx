@@ -2,7 +2,14 @@ import * as React from "react";
 import { useRouter } from "next/router";
 import { AppNavBar, setItemActive, NavItemT } from "baseui/app-nav-bar";
 import { ChevronDown, Delete, Overflow } from "baseui/icon";
-import {GitHub, Linkedin, Monitor, Home, BarChart, Layers} from "react-feather";
+import {
+  GitHub,
+  Linkedin,
+  Monitor,
+  Home,
+  BarChart,
+  Layers
+} from "react-feather";
 
 const socialLinks = [
   {
