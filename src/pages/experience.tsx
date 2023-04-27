@@ -81,5 +81,5 @@ const Experience: NextPage = () => {
     </>
   );
 };
-
+Experience.displayName = "Experience";
 export default Experience;

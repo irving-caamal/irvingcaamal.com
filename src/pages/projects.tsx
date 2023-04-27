@@ -1,4 +1,4 @@
-import React from "react";
+import {forwardRef} from "react";
 import type { NextPage } from "next";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 import { Heading, HeadingLevel } from "baseui/heading";
@@ -58,7 +58,7 @@ const Projects: NextPage = () => {
                     props: {
                       overrides: {
                         ListItem: {
-                          component: React.forwardRef((props: any, ref) => (
+                          component: forwardRef((props: any, ref) => (
                             <MenuAdapter
                               {...props}
                               ref={ref}
@@ -84,5 +84,5 @@ const Projects: NextPage = () => {
     </>
   );
 };
-
+Projects.displayName = "Projects";
 export default Projects;
