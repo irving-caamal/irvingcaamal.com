@@ -4,15 +4,14 @@ import type { AppProps } from "next/app";
 import type { NextPage, NextPageContext } from "next";
 import { Provider as StyletronProvider } from "styletron-react";
 import { BaseProvider, createThemedStyled } from "baseui";
-// @ts-ignore
-import type { ThemeT } from "baseui/styles/types";
+import type { Theme } from "baseui/styles/types";
 import { Block } from "baseui/block";
 
-import { theme } from "../theme/index";
+import { theme } from "../theme";
 import { styletron } from "../helpers/styletron";
-import "../styles/globals.css"
+import "../styles/globals.css";
 
-export const themedStyled = createThemedStyled<ThemeT>();
+export const themedStyled = createThemedStyled<Theme>();
 
 const blockProps = {
   color: "contentPrimary",

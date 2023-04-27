@@ -6,8 +6,7 @@ import Document, {
   NextScript
 } from "next/document";
 import { Provider as StyletronProvider } from "styletron-react";
-// @ts-ignore
-import { Server, Sheet } from "styletron-engine-atomic";
+import { Server, Sheet } from "styletron-engine-atomic/index";
 import { styletron } from "../helpers/styletron";
 
 function MyDocument({ stylesheets }: { stylesheets: Sheet[] }) {
