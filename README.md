@@ -1,10 +1,10 @@
 # Irving Caamal Portfolio
 
-A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS featuring glassmorphism design and beautiful animations.
+A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS.
 
 ## 🚀 Features
 
-- **Modern Design**: Glassmorphism effects, gradients, and smooth animations
+- **Modern Design**: Clean, elegant design with subtle animations
 - **Fully Responsive**: Works perfectly on all devices
 - **Dark/Light Mode**: Theme switching with smooth transitions
 - **Environment Variables**: Easy configuration without code changes
