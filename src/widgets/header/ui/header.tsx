@@ -1,10 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/shared/ui/button"
+import { Button } from "../../../shared/ui/button"
 import { Menu } from "lucide-react"
-import { ThemeToggle } from "@/features/theme-toggle/ui/theme-toggle"
-import { siteConfig } from "@/shared/lib/config"
+import { ThemeToggle } from "../../../features/theme-toggle/ui/theme-toggle"
+import { siteConfig } from "../../../shared/lib/config"
 
 const navigation = [
   { name: "Home", href: "#home" },

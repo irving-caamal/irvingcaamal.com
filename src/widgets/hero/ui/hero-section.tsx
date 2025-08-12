@@ -1,6 +1,6 @@
-import { Button } from "@/shared/ui/button"
+import { Button } from "../../../shared/ui/button"
 import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react"
-import { siteConfig } from "@/shared/lib/config"
+import { siteConfig } from "../../../shared/lib/config"
 
 export function HeroSection() {
   const getInitials = (name: string) => {
