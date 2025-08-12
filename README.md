@@ -1,61 +1,136 @@
-# Irving Caamal Portfolio - Astro
+# Irving Caamal Portfolio - Feature-Sliced Design + Effector
 
-A modern, high-performance portfolio website built with Astro, React, TypeScript, and Tailwind CSS using Feature-Sliced Design architecture.
+A modern, high-performance portfolio website built with **Astro**, **React**, **TypeScript**, **Tailwind CSS**, **Effector**, and **Feature-Sliced Design** architecture.
 
-## 🚀 Quick Start
+## 🏗️ Architecture
 
-1. **Install dependencies**
-   \`\`\`bash
-   npm install
-   \`\`\`
-
-2. **Set up environment variables**
-   \`\`\`bash
-   cp .env.example .env
-   # Edit .env with your information
-   \`\`\`
-
-3. **Run the development server**
-   \`\`\`bash
-   npm run dev
-   \`\`\`
-
-4. **Open your browser**
-   Navigate to [http://localhost:4321](http://localhost:4321)
-
-## 🛠️ Tech Stack
-
-- **Framework**: Astro 4.0 with React integration
-- **Styling**: Tailwind CSS with custom animations
-- **UI Components**: Custom components with Radix UI primitives
-- **Icons**: Lucide React
-- **Architecture**: Feature-Sliced Design (FSD)
-- **TypeScript**: Full type safety
-
-## 📁 Project Structure
+This project follows **Feature-Sliced Design (FSD)** methodology for scalable frontend architecture:
 
 \`\`\`
 src/
-├── shared/           # Shared utilities, UI components, and configurations
-│   ├── lib/         # Utilities and configurations
-│   └── ui/          # Reusable UI components
-├── features/        # Feature-specific logic (theme toggle, etc.)
-├── widgets/         # Page sections (header, hero, about, etc.)
-├── pages/           # Astro pages
-├── layouts/         # Layout components
-└── styles/          # Global styles
+├── app/           # Application layer (styles, providers)
+├── pages/         # Pages layer (Astro pages)
+├── widgets/       # Widgets layer (complex UI blocks)
+├── features/      # Features layer (user interactions)
+├── entities/      # Entities layer (business entities)
+└── shared/        # Shared layer (reusable code, UI kit, utils)
 \`\`\`
 
-## 🏗️ Build and Deploy
+## 🚀 Tech Stack
 
-### Build for production
+- **Framework**: Astro 4.0 with React integration
+- **State Management**: Effector for reactive state management
+- **Styling**: Tailwind CSS with custom design system
+- **UI Components**: Custom components with Radix UI primitives
+- **Icons**: Lucide React
+- **Architecture**: Feature-Sliced Design (FSD)
+- **TypeScript**: Full type safety with strict configuration
+
+## 🎯 Key Features
+
+- **🏗️ FSD Architecture**: Scalable and maintainable code organization
+- **⚡ Effector State Management**: Reactive and predictable state management
+- **🎨 Design System**: Consistent and elegant UI components
+- **🌙 Theme Support**: Light/dark mode with system preference detection
+- **📱 Responsive Design**: Mobile-first approach with elegant animations
+- **♿ Accessibility**: WCAG compliant components and interactions
+- **🚀 Performance**: Optimized for Core Web Vitals
+
+## 🛠️ Development
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+
+### Setup
 \`\`\`bash
+# Install dependencies
+npm install
+
+# Copy environment variables
+cp .env.example .env
+
+# Start development server
+npm run dev
+\`\`\`
+
+### Build
+\`\`\`bash
+# Build for production
 npm run build
-\`\`\`
 
-### Preview production build
-\`\`\`bash
+# Preview production build
 npm run preview
 \`\`\`
 
-This project is optimized for static generation and can be deployed to any static hosting service like Vercel, Netlify, or GitHub Pages.
+## 📁 Project Structure Details
+
+### `/app` - Application Layer
+- Global styles and application-wide configurations
+- Theme providers and global state initialization
+
+### `/pages` - Pages Layer  
+- Astro page components
+- Route-level logic and data fetching
+
+### `/widgets` - Widgets Layer
+- Complex UI blocks (Header, Hero, About, etc.)
+- Composed of features and entities
+- Page-level components
+
+### `/features` - Features Layer
+- User interactions and business logic
+- Theme switching, navigation, form handling
+- Effector stores, events, and effects
+
+### `/entities` - Entities Layer
+- Business entities and domain models
+- Profile data, projects, skills
+- Entity-specific UI components
+
+### `/shared` - Shared Layer
+- Reusable UI components
+- Utilities and helper functions
+- Configuration and constants
+- TypeScript types and interfaces
+
+## 🔄 State Management with Effector
+
+The project uses Effector for predictable state management:
+
+\`\`\`typescript
+// Example: Theme feature
+export const themeToggled = createEvent()
+export const $theme = createStore<Theme>("light")
+  .on(themeToggled, (current) => current === "light" ? "dark" : "light")
+\`\`\`
+
+## 🎨 Design System
+
+Custom design system with:
+- Consistent color palette
+- Typography scale
+- Component variants
+- Animation utilities
+- Responsive breakpoints
+
+## 📦 Deployment
+
+This project generates static files and can be deployed to:
+- Vercel
+- Netlify  
+- GitHub Pages
+- Any static hosting service
+
+## 🤝 Contributing
+
+1. Follow FSD methodology
+2. Use Effector for state management
+3. Maintain TypeScript strict mode
+4. Follow existing code patterns
+5. Test responsive design
+6. Ensure accessibility compliance
+
+## 📄 License
+
+MIT License - feel free to use this project as a template for your own portfolio!

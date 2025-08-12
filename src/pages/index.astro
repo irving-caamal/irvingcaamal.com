@@ -1,12 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import { Header } from '../components/header'
-import { HeroSection } from '../components/hero-section'
+import BaseLayout from '~/layouts/base-layout.astro'
+import { Header } from '~/widgets/header/ui/header'
+import { HeroSection } from '~/widgets/hero/ui/hero-section'
 ---
 
-<Layout>
+<BaseLayout>
   <Header client:load />
   <main class="min-h-screen">
     <HeroSection client:load />
   </main>
-</Layout>
+</BaseLayout>
