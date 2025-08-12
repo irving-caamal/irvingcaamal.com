@@ -129,11 +129,6 @@
   background: hsl(var(--foreground));
 }
 
-/* Hide default cursor for custom cursor */
-* {
-  cursor: none !important;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
