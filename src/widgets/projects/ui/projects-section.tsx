@@ -1,7 +1,9 @@
-import { Badge } from "@/shared/ui/badge"
-import { Button } from "@/shared/ui/button"
-import { Card } from "@/shared/ui/card"
-import { ExternalLink, Github, Star, Zap, Building2, Users, BarChart3 } from "lucide-react"
+"use client"
+
+import { Badge } from "~/shared/ui/badge"
+import { Button } from "~/shared/ui/button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "~/shared/ui/card"
+import { ExternalLink, Github, Star, Zap, Building2, Users, ShoppingCart, BarChart3 } from "lucide-react"
 
 const projects = [
   {
@@ -55,11 +57,72 @@ const projects = [
       "Applied advanced prompt engineering techniques",
     ],
   },
+  {
+    title: "E-commerce Platform Migration",
+    company: "Cancun Airport Transportation",
+    description:
+      "Migrated multiple e-commerce sites to Next.js and Nuxt.js for modern performance. Built CI/CD pipelines and containerized development environments.",
+    image: "/placeholder.svg?height=300&width=500",
+    technologies: ["Next.js", "Nuxt.js", "Vue.js", "CI/CD", "Docker", "E-commerce"],
+    github: "#",
+    demo: "#",
+    featured: false,
+    icon: ShoppingCart,
+    achievements: [
+      "Reduced integration times by 40%",
+      "Refactored legacy apps for better performance",
+      "Implemented modern deployment strategies",
+    ],
+  },
+  {
+    title: "Transportation Management System",
+    company: "Servicios de Autotransporte Mochcun",
+    description:
+      "Designed and developed a full web application from scratch using Vue.js and Node.js. Created REST APIs and CI/CD pipelines for automated deployment.",
+    image: "/placeholder.svg?height=300&width=500",
+    technologies: ["Vue.js", "Node.js", "REST APIs", "CI/CD", "PostgreSQL", "Express"],
+    github: "#",
+    demo: "#",
+    featured: false,
+    icon: Building2,
+    achievements: [
+      "Cut deployment time by 50% through automation",
+      "Enhanced UX/UI with user-centric improvements",
+      "Streamlined internal business processes",
+    ],
+  },
+  {
+    title: "CRM System Modules",
+    company: "Grupo Humanitta",
+    description:
+      "Developed CRM modules from scratch to enhance accountability and tracking. Integrated third-party APIs and optimized complex SQL queries.",
+    image: "/placeholder.svg?height=300&width=500",
+    technologies: ["JavaScript", "SQL", "Third-party APIs", "CRM", "Database Optimization"],
+    github: "#",
+    demo: "#",
+    featured: false,
+    icon: Users,
+    achievements: [
+      "Improved operational efficiency via automation",
+      "Set technical standards for new modules",
+      "Proposed modular architecture patterns",
+    ],
+  },
 ]
 
+/**
+ * Projects section widget
+ * Displays featured and additional projects
+ */
 export function ProjectsSection() {
+  const featuredProjects = projects.filter((project) => project.featured)
+  const otherProjects = projects.filter((project) => !project.featured)
+
   return (
     <section id="projects" className="py-24 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background/50 via-transparent to-background/50"></div>
+
       <div className="container px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center space-y-4 text-center mb-16">
           <Badge variant="secondary" className="elegant-card border-white/20">
@@ -74,8 +137,9 @@ export function ProjectsSection() {
           </p>
         </div>
 
+        {/* Featured Projects */}
         <div className="grid gap-8 lg:grid-cols-1 mb-16">
-          {projects.map((project, index) => (
+          {featuredProjects.map((project, index) => (
             <Card key={index} className="elegant-card border-white/10 overflow-hidden group">
               <div className="grid lg:grid-cols-2 gap-0">
                 <div className="aspect-video lg:aspect-auto relative overflow-hidden">
@@ -157,6 +221,83 @@ export function ProjectsSection() {
               </div>
             </Card>
           ))}
+        </div>
+
+        {/* Other Projects */}
+        <div>
+          <h3 className="text-2xl font-bold text-center mb-8 text-gradient">Additional Projects</h3>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {otherProjects.map((project, index) => (
+              <Card key={index} className="elegant-card border-white/10 overflow-hidden group">
+                <div className="aspect-video relative overflow-hidden">
+                  <img
+                    src={project.image || "/placeholder.svg"}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-black/40"></div>
+                  <div className="absolute bottom-4 right-4">
+                    <div className="w-10 h-10 rounded-full elegant-card flex items-center justify-center">
+                      <project.icon className="w-5 h-5" />
+                    </div>
+                  </div>
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-gradient text-lg">{project.title}</CardTitle>
+                  <CardDescription className="text-xs font-medium">{project.company}</CardDescription>
+                  <CardDescription className="text-sm">{project.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="text-xs font-semibold mb-2 text-muted-foreground uppercase tracking-wide">
+                        Achievements
+                      </h4>
+                      <ul className="space-y-1">
+                        {project.achievements.slice(0, 2).map((achievement, achIndex) => (
+                          <li key={achIndex} className="flex items-start gap-2 text-xs">
+                            <span className="text-gradient mt-0.5">•</span>
+                            {achievement}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="flex flex-wrap gap-1">
+                      {project.technologies.slice(0, 4).map((tech, techIndex) => (
+                        <Badge key={techIndex} variant="outline" className="elegant-card border-white/20 text-xs">
+                          {tech}
+                        </Badge>
+                      ))}
+                      {project.technologies.length > 4 && (
+                        <Badge variant="outline" className="text-xs opacity-60">
+                          +{project.technologies.length - 4}
+                        </Badge>
+                      )}
+                    </div>
+                  </div>
+                </CardContent>
+                <CardFooter className="flex gap-2">
+                  <Button size="sm" className="text-white text-xs" asChild>
+                    <a href={project.demo} target="_blank" rel="noreferrer">
+                      <ExternalLink className="mr-1 h-3 w-3" />
+                      View
+                    </a>
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="elegant-card border-white/20 hover:bg-white/10 text-xs bg-transparent"
+                    asChild
+                  >
+                    <a href={project.github} target="_blank" rel="noreferrer">
+                      <Github className="mr-1 h-3 w-3" />
+                      Info
+                    </a>
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>
