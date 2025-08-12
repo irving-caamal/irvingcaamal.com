@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Refined color palette */
+:root {
+  --elegant-primary: 240 6% 10%;
+  --elegant-secondary: 240 5% 84%;
+  --elegant-accent: 240 4% 16%;
+  --elegant-muted: 240 5% 64%;
+  --elegant-surface: 240 6% 97%;
+  --elegant-border: 240 6% 90%;
+}
+
+.dark {
+  --elegant-primary: 240 5% 96%;
+  --elegant-secondary: 240 4% 16%;
+  --elegant-accent: 240 5% 84%;
+  --elegant-muted: 240 4% 46%;
+  --elegant-surface: 240 10% 4%;
+  --elegant-border: 240 6% 12%;
+}
+
 /* Clean card design */
 .elegant-card {
   background: rgba(255, 255, 255, 0.02);

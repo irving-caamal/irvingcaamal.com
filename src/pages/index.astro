@@ -1,0 +1,14 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { Header } from '@/widgets/header/ui/header'
+import { HeroSection } from '@/widgets/hero/ui/hero-section'
+import { AboutSection } from '@/widgets/about/ui/about-section'
+---
+
+<Layout>
+  <Header client:load />
+  <main class="min-h-screen">
+    <HeroSection client:load />
+    <AboutSection client:load />
+  </main>
+</Layout>
