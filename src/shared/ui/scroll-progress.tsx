@@ -2,6 +2,10 @@
 
 import { useEffect, useState } from "react"
 
+/**
+ * Scroll progress indicator component
+ * Shows reading progress at the top of the page
+ */
 export function ScrollProgress() {
   const [scrollProgress, setScrollProgress] = useState(0)
 

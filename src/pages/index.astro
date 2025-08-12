@@ -2,11 +2,17 @@
 import BaseLayout from '~/layouts/base-layout.astro'
 import { Header } from '~/widgets/header/ui/header'
 import { HeroSection } from '~/widgets/hero/ui/hero-section'
+import { AboutSection } from '~/widgets/about/ui/about-section'
+import { Footer } from '~/widgets/footer/ui/footer'
+import { ScrollProgress } from '~/shared/ui/scroll-progress'
 ---
 
 <BaseLayout>
+  <ScrollProgress client:load />
   <Header client:load />
   <main class="min-h-screen">
     <HeroSection client:load />
+    <AboutSection client:load />
   </main>
+  <Footer client:load />
 </BaseLayout>

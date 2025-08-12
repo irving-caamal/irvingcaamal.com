@@ -1,7 +1,10 @@
-import { Card, CardContent } from "@/shared/ui/card"
-import { Badge } from "@/shared/ui/badge"
+"use client"
+
+import { useUnit } from "effector-react"
+import { Card, CardContent } from "~/shared/ui/card"
+import { Badge } from "~/shared/ui/badge"
 import { Code, Lightbulb, Users, Zap, Star } from "lucide-react"
-import { siteConfig } from "@/shared/lib/config"
+import { $profile } from "~/entities/profile/model/profile"
 
 const highlights = [
   {
@@ -30,12 +33,18 @@ const highlights = [
   },
 ]
 
+/**
+ * About section widget
+ * Displays personal information, stats, and highlights
+ */
 export function AboutSection() {
+  const profile = useUnit($profile)
+
   const stats = [
-    { number: siteConfig.experience.projectsCompleted, label: "Projects Completed" },
-    { number: siteConfig.experience.years, label: "Years Experience" },
-    { number: siteConfig.experience.happyClients, label: "Happy Clients" },
-    { number: siteConfig.experience.successRate, label: "Success Rate" },
+    { number: profile.experience.projectsCompleted, label: "Projects Completed" },
+    { number: profile.experience.years, label: "Years Experience" },
+    { number: profile.experience.happyClients, label: "Happy Clients" },
+    { number: profile.experience.successRate, label: "Success Rate" },
   ]
 
   return (
@@ -50,7 +59,7 @@ export function AboutSection() {
             Passionate <span className="text-gradient">Developer</span>
           </h2>
           <p className="mx-auto max-w-[700px] text-muted-foreground text-lg leading-relaxed">
-            With over {siteConfig.experience.years.replace("+", "")} years of experience in full-stack development, I
+            With over {profile.experience.years.replace("+", "")} years of experience in full-stack development, I
             specialize in creating robust web applications using modern technologies and frameworks.
           </p>
         </div>
@@ -90,8 +99,8 @@ export function AboutSection() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="space-y-6">
                 <h3 className="text-2xl font-bold text-gradient">My Journey</h3>
-                <p className="text-lg leading-relaxed">{siteConfig.about.journey}</p>
-                <p className="text-lg leading-relaxed">{siteConfig.about.philosophy}</p>
+                <p className="text-lg leading-relaxed">{profile.about.journey}</p>
+                <p className="text-lg leading-relaxed">{profile.about.philosophy}</p>
               </div>
               <div className="relative">
                 <div className="aspect-square rounded-3xl bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 p-1">

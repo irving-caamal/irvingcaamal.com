@@ -1,6 +1,7 @@
 ---
 import { siteConfig } from '~/shared/config/site'
 import '~/app/styles/globals.css'
+import { EffectorProvider } from '~/shared/providers/EffectorProvider'
 
 export interface Props {
   title?: string
@@ -40,7 +41,9 @@ const pageDescription = description || siteConfig.description
     <title>{pageTitle}</title>
   </head>
   <body>
-    <slot />
+    <EffectorProvider>
+      <slot />
+    </EffectorProvider>
     
     <script>
       // Theme initialization
