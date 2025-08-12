@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Elegant monochromatic color palette */
+/* Refined color palette */
 :root {
   --elegant-primary: 240 6% 10%;
   --elegant-secondary: 240 5% 84%;
@@ -21,65 +21,44 @@
   --elegant-border: 240 6% 12%;
 }
 
-/* Refined glassmorphism */
-.glass {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.dark .glass {
-  background: rgba(255, 255, 255, 0.04);
+/* Clean card design */
+.elegant-card {
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
 }
 
-/* Sophisticated gradient system */
-.gradient-mesh {
-  background: linear-gradient(135deg, 
-    hsl(var(--elegant-primary)) 0%, 
-    hsl(var(--elegant-accent)) 50%,
-    hsl(var(--elegant-secondary)) 100%
-  );
-  background-size: 300% 300%;
-  animation: gentleShift 12s ease infinite;
+.dark .elegant-card {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.gradient-mesh-alt {
-  background: linear-gradient(135deg, 
-    hsl(var(--elegant-accent)) 0%, 
-    hsl(var(--elegant-muted)) 50%,
-    hsl(var(--elegant-primary)) 100%
-  );
-  background-size: 300% 300%;
-  animation: gentleShift 15s ease infinite;
+.elegant-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
-/* Refined animations */
-@keyframes gentleShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+.dark .elegant-card:hover {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes elegantFloat {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-12px) rotate(2deg); }
+/* Subtle gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, hsl(var(--foreground)) 0%, hsl(var(--muted-foreground)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.floating {
-  animation: elegantFloat 8s ease-in-out infinite;
-}
-
-.floating-delayed {
-  animation: elegantFloat 8s ease-in-out infinite;
-  animation-delay: -4s;
-}
-
-/* Sophisticated fade-in system */
-@keyframes elegantFadeIn {
+/* Clean animations */
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -88,174 +67,71 @@
 }
 
 .animate-fade-in {
-  animation: elegantFadeIn 0.8s ease-out 0.2s forwards;
+  animation: fadeInUp 0.6s ease-out 0.1s forwards;
   opacity: 0;
 }
 
 .animate-fade-in-delayed {
-  animation: elegantFadeIn 0.8s ease-out 0.4s forwards;
+  animation: fadeInUp 0.6s ease-out 0.2s forwards;
   opacity: 0;
 }
 
 .animate-fade-in-delayed-2 {
-  animation: elegantFadeIn 0.8s ease-out 0.6s forwards;
+  animation: fadeInUp 0.6s ease-out 0.3s forwards;
   opacity: 0;
 }
 
 .animate-fade-in-delayed-3 {
-  animation: elegantFadeIn 0.8s ease-out 0.8s forwards;
+  animation: fadeInUp 0.6s ease-out 0.4s forwards;
   opacity: 0;
 }
 
 .animate-fade-in-delayed-4 {
-  animation: elegantFadeIn 0.8s ease-out 1.0s forwards;
+  animation: fadeInUp 0.6s ease-out 0.5s forwards;
   opacity: 0;
 }
 
 .animate-fade-in-delayed-5 {
-  animation: elegantFadeIn 0.8s ease-out 1.2s forwards;
+  animation: fadeInUp 0.6s ease-out 0.6s forwards;
   opacity: 0;
 }
 
-/* Refined glow effects */
-.glow {
-  box-shadow: 0 0 24px rgba(0, 0, 0, 0.1);
+/* Refined button styles */
+.btn-elegant {
+  background: hsl(var(--foreground));
+  color: hsl(var(--background));
+  border: 1px solid hsl(var(--foreground));
+  transition: all 0.3s ease;
 }
 
-.dark .glow {
-  box-shadow: 0 0 24px rgba(255, 255, 255, 0.05);
+.btn-elegant:hover {
+  background: transparent;
+  color: hsl(var(--foreground));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.glow-hover:hover {
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
-  transform: translateY(-2px);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.dark .glow-hover:hover {
-  box-shadow: 0 8px 40px rgba(255, 255, 255, 0.08);
-}
-
-/* Elegant text gradients */
-.text-gradient {
-  background: linear-gradient(135deg, 
-    hsl(var(--elegant-primary)) 0%, 
-    hsl(var(--elegant-muted)) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-gradient-subtle {
-  background: linear-gradient(135deg, 
-    hsl(var(--elegant-primary)) 0%, 
-    hsl(var(--elegant-accent)) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Refined morphism cards */
-.morphism-card {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.dark .morphism-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-/* Sophisticated particle background */
-.particle-bg {
-  position: relative;
-  overflow: hidden;
-}
-
-.particle-bg::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.02) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(0, 0, 0, 0.02) 0%, transparent 50%),
-    radial-gradient(circle at 40% 60%, rgba(0, 0, 0, 0.01) 0%, transparent 50%);
-  animation: subtleParticleMove 30s linear infinite;
-}
-
-.dark .particle-bg::before {
-  background-image: 
-    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
-    radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.01) 0%, transparent 50%);
-}
-
-@keyframes subtleParticleMove {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  33% { transform: translate(15px, -15px) rotate(120deg); }
-  66% { transform: translate(-10px, 10px) rotate(240deg); }
-  100% { transform: translate(0, 0) rotate(360deg); }
-}
-
-/* Elegant scrollbar */
+/* Clean scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--elegant-surface));
+  background: hsl(var(--muted));
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, 
-    hsl(var(--elegant-muted)), 
-    hsl(var(--elegant-accent))
-  );
-  border-radius: 3px;
+  background: hsl(var(--muted-foreground));
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, 
-    hsl(var(--elegant-accent)), 
-    hsl(var(--elegant-primary))
-  );
+  background: hsl(var(--foreground));
 }
 
 /* Hide default cursor for custom cursor */
 * {
   cursor: none !important;
-}
-
-/* Refined button styles */
-.btn-elegant {
-  background: linear-gradient(135deg, 
-    hsl(var(--elegant-primary)) 0%, 
-    hsl(var(--elegant-accent)) 100%
-  );
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.btn-elegant:hover {
-  background: linear-gradient(135deg, 
-    hsl(var(--elegant-accent)) 0%, 
-    hsl(var(--elegant-primary)) 100%
-  );
-  transform: translateY(-1px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 @layer utilities {
@@ -292,7 +168,7 @@
     --chart-5: 27 87% 67%;
     --radius: 0.75rem;
   }
-  
+
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;

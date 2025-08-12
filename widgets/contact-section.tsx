@@ -1,48 +1,44 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Textarea } from '@/components/ui/textarea'
-import { Github, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react'
-import Link from 'next/link'
-import { siteConfig } from '@/lib/config'
+import type React from "react"
+
+import { useState } from "react"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react"
+import Link from "next/link"
+import { siteConfig } from "@/lib/config"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   })
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     // Handle form submission here
-    console.log('Form submitted:', formData)
+    console.log("Form submitted:", formData)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }))
   }
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
-      {/* Animated background */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-96 h-96 gradient-mesh rounded-full opacity-10 blur-3xl floating"></div>
-        <div className="absolute bottom-20 right-20 w-80 h-80 gradient-mesh-alt rounded-full opacity-10 blur-3xl floating-delayed"></div>
-      </div>
-      
       <div className="container px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center space-y-4 text-center mb-16">
-          <Badge variant="secondary" className="morphism-card border-white/20">
+          <Badge variant="secondary" className="elegant-card border-white/20">
             <Mail className="w-3 h-3 mr-1" />
             Contact
           </Badge>
@@ -57,12 +53,10 @@ export function ContactSection() {
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Contact Information */}
           <div className="space-y-6">
-            <Card className="morphism-card border-white/10 glow-hover">
+            <Card className="elegant-card border-white/10">
               <CardHeader>
                 <CardTitle>Get in Touch</CardTitle>
-                <CardDescription>
-                  Feel free to reach out through any of these channels.
-                </CardDescription>
+                <CardDescription>Feel free to reach out through any of these channels.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center gap-3">
@@ -71,7 +65,10 @@ export function ContactSection() {
                   </div>
                   <div>
                     <p className="font-medium">Email</p>
-                    <Link href={`mailto:${siteConfig.email}`} className="text-sm text-muted-foreground hover:text-primary">
+                    <Link
+                      href={`mailto:${siteConfig.email}`}
+                      className="text-sm text-muted-foreground hover:text-primary"
+                    >
                       {siteConfig.email}
                     </Link>
                   </div>
@@ -82,7 +79,10 @@ export function ContactSection() {
                   </div>
                   <div>
                     <p className="font-medium">Phone</p>
-                    <Link href={`tel:${siteConfig.phone.replace(/\s/g, '')}`} className="text-sm text-muted-foreground hover:text-primary">
+                    <Link
+                      href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+                      className="text-sm text-muted-foreground hover:text-primary"
+                    >
                       {siteConfig.phone}
                     </Link>
                   </div>
@@ -102,9 +102,7 @@ export function ContactSection() {
             <Card>
               <CardHeader>
                 <CardTitle>Follow Me</CardTitle>
-                <CardDescription>
-                  Connect with me on social media and professional networks.
-                </CardDescription>
+                <CardDescription>Connect with me on social media and professional networks.</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex gap-4">
@@ -132,39 +130,35 @@ export function ContactSection() {
           </div>
 
           {/* Contact Form */}
-          <Card className="morphism-card border-white/10 glow-hover">
+          <Card className="elegant-card border-white/10">
             <CardHeader>
               <CardTitle className="text-gradient">Send a Message</CardTitle>
-              <CardDescription>
-                Fill out the form below and I'll get back to you as soon as possible.
-              </CardDescription>
+              <CardDescription>Fill out the form below and I'll get back to you as soon as possible.</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Name</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      placeholder="Your name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="your.email@example.com"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
+                <div className="space-y-2">
+                  <Label htmlFor="name">Name</Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    placeholder="Your name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="your.email@example.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="subject">Subject</Label>
@@ -189,7 +183,10 @@ export function ContactSection() {
                     required
                   />
                 </div>
-                <Button type="submit" className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 border-0 glow-hover">
+                <Button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 border-0"
+                >
                   <Send className="mr-2 h-4 w-4" />
                   Send Message
                 </Button>
