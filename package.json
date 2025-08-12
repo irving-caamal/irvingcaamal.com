@@ -13,7 +13,7 @@
   "dependencies": {
     "@astrojs/react": "latest",
     "@astrojs/tailwind": "latest",
-    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-dialog": "latest",
     "@radix-ui/react-label": "latest",
     "@radix-ui/react-progress": "latest",
     "@radix-ui/react-slot": "latest",

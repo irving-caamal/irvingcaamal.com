@@ -1,6 +1,8 @@
-import { Badge } from "@/shared/ui/badge"
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card"
-import { Progress } from "@/shared/ui/progress"
+"use client"
+
+import { Badge } from "~/shared/ui/badge"
+import { Card, CardContent, CardHeader, CardTitle } from "~/shared/ui/card"
+import { Progress } from "~/shared/ui/progress"
 import { Code2, Database, Wrench } from "lucide-react"
 
 const skillCategories = [
@@ -60,6 +62,10 @@ const technologies = [
   { name: "Supabase", color: "from-green-400 to-green-600" },
 ]
 
+/**
+ * Skills section widget
+ * Displays technical skills and technologies
+ */
 export function SkillsSection() {
   return (
     <section id="skills" className="py-24 relative overflow-hidden">
