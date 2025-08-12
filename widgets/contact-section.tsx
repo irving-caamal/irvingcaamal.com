@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react"
 import Link from "next/link"
-import { siteConfig } from "@/lib/config"
+import { siteConfig } from "~/shared/config/site"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({

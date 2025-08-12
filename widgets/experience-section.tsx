@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { CalendarDays, MapPin, Award, GraduationCap } from "lucide-react"
-import { siteConfig } from "@/lib/config"
+import { siteConfig } from "~/shared/config/site"
 
 const experiences = [
   {

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react"
 import Link from "next/link"
-import { siteConfig } from "@/lib/config"
+import { siteConfig } from "~/shared/config/site"
 
 export function AdvancedHeroSection() {
   const getInitials = (name: string) => {

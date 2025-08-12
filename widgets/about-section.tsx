@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Code, Lightbulb, Users, Zap, Star } from "lucide-react"
-import { siteConfig } from "@/lib/config"
+import { siteConfig } from "~/shared/config/site"
 
 const highlights = [
   {

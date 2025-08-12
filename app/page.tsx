@@ -1,10 +1,10 @@
-import { AdvancedHeroSection } from "@/widgets/advanced-hero-section"
-import { AboutSection } from "@/widgets/about-section"
-import { SkillsSection } from "@/widgets/skills-section"
-import { ProjectsSection } from "@/widgets/projects-section"
-import { ExperienceSection } from "@/widgets/experience-section"
-import { ContactSection } from "@/widgets/contact-section"
-import { SkillVisualization } from "@/components/skill-visualization"
+import { AdvancedHeroSection } from "~/widgets/hero/ui/advanced-hero-section"
+import { AboutSection } from "~/widgets/about/ui/about-section"
+import { SkillsSection } from "~/widgets/skills/ui/skills-section"
+import { ProjectsSection } from "~/widgets/projects/ui/projects-section"
+import { ExperienceSection } from "~/widgets/experience/ui/experience-section"
+import { ContactSection } from "~/widgets/contact/ui/contact-section"
+import { SkillVisualization } from "~/shared/components/skill-visualization"
 
 export default function HomePage() {
   return (

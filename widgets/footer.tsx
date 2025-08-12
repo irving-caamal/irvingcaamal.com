@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Github, Linkedin, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { siteConfig } from "@/lib/config"
+import { siteConfig } from "~/shared/config/site"
 
 export function Footer() {
   return (

@@ -2,11 +2,11 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import { Header } from "@/widgets/header"
-import { Footer } from "@/widgets/footer"
-import { ScrollProgress } from "@/components/scroll-progress"
-import { siteConfig } from "@/lib/config"
+import { ThemeProvider } from "~/shared/providers/theme-provider"
+import { Header } from "~/widgets/header/ui/header"
+import { Footer } from "~/widgets/footer/ui/footer"
+import { ScrollProgress } from "~/shared/ui/scroll-progress"
+import { siteConfig } from "~/shared/config/site"
 
 const inter = Inter({ subsets: ["latin"] })
 

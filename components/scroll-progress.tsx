@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react"
 
 export function ScrollProgress() {
   const [scrollProgress, setScrollProgress] = useState(0)
@@ -13,8 +13,8 @@ export function ScrollProgress() {
       setScrollProgress(scrolled)
     }
 
-    window.addEventListener('scroll', updateScrollProgress)
-    return () => window.removeEventListener('scroll', updateScrollProgress)
+    window.addEventListener("scroll", updateScrollProgress)
+    return () => window.removeEventListener("scroll", updateScrollProgress)
   }, [])
 
   return (
