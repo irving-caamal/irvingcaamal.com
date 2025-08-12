@@ -3,12 +3,24 @@ import Layout from '@/layouts/Layout.astro'
 import { Header } from '@/widgets/header/ui/header'
 import { HeroSection } from '@/widgets/hero/ui/hero-section'
 import { AboutSection } from '@/widgets/about/ui/about-section'
+import { SkillsSection } from '@/widgets/skills/ui/skills-section'
+import { ProjectsSection } from '@/widgets/projects/ui/projects-section'
+import { ExperienceSection } from '@/widgets/experience/ui/experience-section'
+import { ContactSection } from '@/widgets/contact/ui/contact-section'
+import { Footer } from '@/widgets/footer/ui/footer'
+import { ScrollProgress } from '@/shared/ui/scroll-progress'
 ---
 
 <Layout>
+  <ScrollProgress client:load />
   <Header client:load />
   <main class="min-h-screen">
     <HeroSection client:load />
     <AboutSection client:load />
+    <SkillsSection client:load />
+    <ProjectsSection client:load />
+    <ExperienceSection client:load />
+    <ContactSection client:load />
   </main>
+  <Footer client:load />
 </Layout>
