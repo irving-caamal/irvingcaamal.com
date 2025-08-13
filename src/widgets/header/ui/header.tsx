@@ -1,4 +1,3 @@
-"use client"
 import { siteConfig } from "~/shared/config/site"
 import { ProfileAvatar } from "~/entities/profile/ui/profile-avatar"
 import { ThemeToggle } from "~/features/theme/ui/theme-toggle"

@@ -1,5 +1,3 @@
-"use client"
-
 import { useUnit } from "effector-react"
 import { Card, CardContent } from "~/shared/ui/card"
 import { Badge } from "~/shared/ui/badge"
