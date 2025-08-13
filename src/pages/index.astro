@@ -4,9 +4,12 @@ import { Header } from '~/widgets/header/ui/header'
 import { HeroSection } from '~/widgets/hero/ui/hero-section'
 import { AboutSection } from '~/widgets/about/ui/about-section'
 import { SkillsSection } from '~/widgets/skills/ui/skills-section'
+import { ProjectsSection } from '~/widgets/projects/ui/projects-section'
+import { ExperienceSection } from '~/widgets/experience/ui/experience-section'
 import { ContactSection } from '~/widgets/contact/ui/contact-section'
 import { Footer } from '~/widgets/footer/ui/footer'
 import { ScrollProgress } from '~/shared/ui/scroll-progress'
+import { SkillVisualization } from '~/shared/components/skill-visualization'
 ---
 
 <BaseLayout>
@@ -15,7 +18,14 @@ import { ScrollProgress } from '~/shared/ui/scroll-progress'
   <main class="min-h-screen">
     <HeroSection client:load />
     <AboutSection client:load />
+    <section class="py-12">
+      <div class="container px-4 md:px-6">
+        <SkillVisualization client:load />
+      </div>
+    </section>
     <SkillsSection client:load />
+    <ProjectsSection client:load />
+    <ExperienceSection client:load />
     <ContactSection client:load />
   </main>
   <Footer client:load />
