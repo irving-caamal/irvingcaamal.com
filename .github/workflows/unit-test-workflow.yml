@@ -17,7 +17,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.14.0
       - name: Install dependencies 🏗️
-        run: pnpm
+        run: pnpm install
       - name: Run Unit Tests 🧪
         run: pnpm test
