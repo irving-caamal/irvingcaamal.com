@@ -1,7 +1,5 @@
 name: 🔚 e2e Test
 on:
-  # Trigger the workflow on push or pull request,
-  # but only for the main branch
   push:
     branches:
       - main
@@ -10,40 +8,33 @@ on:
       - main
 
 jobs:
-  test_setup:
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node-version: [16]
-    name: 🛠️ Test setup
-    runs-on: ${{ matrix.os }}
-    outputs:
-      preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
-    steps:
-      - name: ⏲️ Wait for Vercel preview deployment to be ready
-        uses: patrickedqvist/wait-for-vercel-preview@main
-        id: waitForVercelPreviewDeployment
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 300
-  test_e2e:
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node-version: [16]
-    needs: test_setup
+  e2e_test:
     name: 🎭 Playwright tests
-    timeout-minutes: 5
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - name: Prepare testing env
-        uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
         with:
-          node-version: ${{ matrix.node-version }}
-      - run: yarn
-      - run: npx playwright install --with-deps
-      - name: 🧪 Run e2e tests
-        run: yarn test:e2e
-        env:
-          PLAYWRIGHT_TEST_BASE_URL: ${{ needs.test_setup.outputs.preview_url }}
+          version: 10.14.0
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'pnpm'
+      
+      - name: Install dependencies
+        run: pnpm install
+      
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps
+      
+      - name: Build project
+        run: pnpm build
+      
+      - name: Run e2e tests
+        run: pnpm test:e2e

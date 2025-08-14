@@ -1,34 +1,136 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Irving Caamal Portfolio - Feature-Sliced Design + Effector
 
-## Getting Started
+A modern, high-performance portfolio website built with **Astro**, **React**, **TypeScript**, **Tailwind CSS**, **Effector**, and **Feature-Sliced Design** architecture.
 
-First, run the development server:
+## 🏗️ Architecture
 
-```bash
+This project follows **Feature-Sliced Design (FSD)** methodology for scalable frontend architecture:
+
+\`\`\`
+src/
+├── app/           # Application layer (styles, providers)
+├── pages/         # Pages layer (Astro pages)
+├── widgets/       # Widgets layer (complex UI blocks)
+├── features/      # Features layer (user interactions)
+├── entities/      # Entities layer (business entities)
+└── shared/        # Shared layer (reusable code, UI kit, utils)
+\`\`\`
+
+## 🚀 Tech Stack
+
+- **Framework**: Astro 4.0 with React integration
+- **State Management**: Effector for reactive state management
+- **Styling**: Tailwind CSS with custom design system
+- **UI Components**: Custom components with Radix UI primitives
+- **Icons**: Lucide React
+- **Architecture**: Feature-Sliced Design (FSD)
+- **TypeScript**: Full type safety with strict configuration
+
+## 🎯 Key Features
+
+- **🏗️ FSD Architecture**: Scalable and maintainable code organization
+- **⚡ Effector State Management**: Reactive and predictable state management
+- **🎨 Design System**: Consistent and elegant UI components
+- **🌙 Theme Support**: Light/dark mode with system preference detection
+- **📱 Responsive Design**: Mobile-first approach with elegant animations
+- **♿ Accessibility**: WCAG compliant components and interactions
+- **🚀 Performance**: Optimized for Core Web Vitals
+
+## 🛠️ Development
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+
+### Setup
+\`\`\`bash
+# Install dependencies
+npm install
+
+# Copy environment variables
+cp .env.example .env
+
+# Start development server
 npm run dev
-# or
-yarn dev
-```
+\`\`\`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Build
+\`\`\`bash
+# Build for production
+npm run build
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+# Preview production build
+npm run preview
+\`\`\`
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 📁 Project Structure Details
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### `/app` - Application Layer
+- Global styles and application-wide configurations
+- Theme providers and global state initialization
 
-## Learn More
+### `/pages` - Pages Layer  
+- Astro page components
+- Route-level logic and data fetching
 
-To learn more about Next.js, take a look at the following resources:
+### `/widgets` - Widgets Layer
+- Complex UI blocks (Header, Hero, About, etc.)
+- Composed of features and entities
+- Page-level components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### `/features` - Features Layer
+- User interactions and business logic
+- Theme switching, navigation, form handling
+- Effector stores, events, and effects
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### `/entities` - Entities Layer
+- Business entities and domain models
+- Profile data, projects, skills
+- Entity-specific UI components
 
-## Deploy on Vercel
+### `/shared` - Shared Layer
+- Reusable UI components
+- Utilities and helper functions
+- Configuration and constants
+- TypeScript types and interfaces
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔄 State Management with Effector
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The project uses Effector for predictable state management:
+
+\`\`\`typescript
+// Example: Theme feature
+export const themeToggled = createEvent()
+export const $theme = createStore<Theme>("light")
+  .on(themeToggled, (current) => current === "light" ? "dark" : "light")
+\`\`\`
+
+## 🎨 Design System
+
+Custom design system with:
+- Consistent color palette
+- Typography scale
+- Component variants
+- Animation utilities
+- Responsive breakpoints
+
+## 📦 Deployment
+
+This project generates static files and can be deployed to:
+- Vercel
+- Netlify  
+- GitHub Pages
+- Any static hosting service
+
+## 🤝 Contributing
+
+1. Follow FSD methodology
+2. Use Effector for state management
+3. Maintain TypeScript strict mode
+4. Follow existing code patterns
+5. Test responsive design
+6. Ensure accessibility compliance
+
+## 📄 License
+
+MIT License - feel free to use this project as a template for your own portfolio!

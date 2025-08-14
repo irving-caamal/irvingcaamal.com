@@ -1,12 +1,23 @@
-import type { PlaywrightTestConfig } from "@playwright/test";
-const config: PlaywrightTestConfig = {
+import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
+  testDir: './tests',
   use: {
-    headless: true,
-    viewport: { width: 1280, height: 720 },
-    ignoreHTTPSErrors: true,
-    video: "on-first-retry",
-    baseURL: process.env.PLAYWRIGHT_TEST_BASE_URL || "http://localhost:3000"
+    baseURL: 'http://localhost:4321',
   },
-  testDir: "./src/tests/e2e"
-};
-export default config;
+  projects: [
+    {
+      name: 'chromium',
+      use: { channel: 'chrome' },
+    },
+  ],
+  webServer: process.env.CI ? {
+    command: 'pnpm preview',
+    url: 'http://localhost:4321',
+    timeout: 120000,
+  } : {
+    command: 'pnpm dev',
+    url: 'http://localhost:4321',
+    reuseExistingServer: true,
+  },
+});
