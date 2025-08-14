@@ -3,7 +3,7 @@ import { defineConfig } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
   use: {
-    baseURL: process.env.PLAYWRIGHT_TEST_BASE_URL || 'http://localhost:4321',
+    baseURL: 'http://localhost:4321',
   },
   projects: [
     {
@@ -11,9 +11,13 @@ export default defineConfig({
       use: { channel: 'chrome' },
     },
   ],
-  webServer: {
+  webServer: process.env.CI ? {
+    command: 'pnpm preview',
+    url: 'http://localhost:4321',
+    timeout: 120000,
+  } : {
     command: 'pnpm dev',
     url: 'http://localhost:4321',
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: true,
   },
 });
