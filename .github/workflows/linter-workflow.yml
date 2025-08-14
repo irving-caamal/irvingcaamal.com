@@ -31,8 +31,8 @@ jobs:
       - name: Install Node.js dependencies
         run: pnpm install
 
-      - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          eslint: true
-          prettier: true
+      - name: Run ESLint
+        run: pnpm lint
+
+      - name: Run Prettier check
+        run: npx prettier --check './**/*.{ts,tsx,js,jsx,astro,json,css,md}'

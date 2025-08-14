@@ -47,7 +47,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
       - run: pnpm install
-      - run: npx playwright install --with-deps
+      - run: pnpm exec playwright install --with-deps
       - name: 🧪 Run e2e tests
         run: pnpm test:e2e
         env:
