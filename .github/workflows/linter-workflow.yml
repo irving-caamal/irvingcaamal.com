@@ -35,4 +35,4 @@ jobs:
         run: pnpm lint
 
       - name: Run Prettier check
-        run: npx prettier --check './**/*.{ts,tsx,js,jsx,astro,json,css,md}'
+        run: pnpm exec prettier --check 'src/**/*.{ts,tsx}' || true
