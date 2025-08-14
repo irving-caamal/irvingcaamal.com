@@ -1,8 +1,6 @@
 name: 🧹 Lint Workflow
 
 on:
-  # Trigger the workflow on push or pull request,
-  # but only for the main branch
   push:
     branches:
       - main
@@ -23,10 +21,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
+          cache: 'pnpm'
 
-      # ESLint and Prettier must be in `package.json`
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.14.0
+
       - name: Install Node.js dependencies
-        run: pnpm install && pnpm lint
+        run: pnpm install
 
       - name: Run linters
         uses: wearerequired/lint-action@v2
