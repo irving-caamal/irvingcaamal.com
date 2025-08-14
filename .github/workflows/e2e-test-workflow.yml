@@ -41,9 +41,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      - run: yarn
+      - run: pnpm
       - run: npx playwright install --with-deps
       - name: 🧪 Run e2e tests
-        run: yarn test:e2e
+        run: pnpm test:e2e
         env:
           PLAYWRIGHT_TEST_BASE_URL: ${{ needs.test_setup.outputs.preview_url }}

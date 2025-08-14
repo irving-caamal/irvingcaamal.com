@@ -6,7 +6,12 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "lint:fix": "npx prettier --write  './**/*.{ts,tsx}'",
+    "postinstall": "husky install",
+    "test:e2e": "playwright test",
+    "test:dev": "jest --watch",
+    "test": "jest --passWithNoTests"
   },
   "dependencies": {
     "@astrojs/react": "latest",
@@ -37,6 +42,8 @@
     "autoprefixer": "^10.0.0",
     "eslint": "^8.0.0",
     "eslint-config-next": "14.0.0",
+    "husky": "^9.1.7",
+    "jest": "^30.0.5",
     "postcss": "^8.5",
     "typescript": "^5"
   }
