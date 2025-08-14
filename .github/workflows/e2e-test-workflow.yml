@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [16]
+        node-version: [lts]
     name: 🛠️ Test setup
     runs-on: ${{ matrix.os }}
     outputs:
@@ -30,7 +30,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [16]
+        node-version: [lts]
     needs: test_setup
     name: 🎭 Playwright tests
     timeout-minutes: 5
