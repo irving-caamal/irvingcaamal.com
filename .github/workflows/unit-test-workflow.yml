@@ -14,14 +14,14 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 10.14.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
       - name: Install dependencies 🏗️
         run: pnpm install
       - name: Run Unit Tests 🧪
