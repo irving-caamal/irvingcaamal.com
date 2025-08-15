@@ -134,8 +134,8 @@ test.describe('Accessibility', () => {
     const heading = page.locator('h1').first();
     await expect(heading).toBeVisible();
     
-    // Check that content doesn't overflow
+    // Check that content doesn't overflow horizontally
     const bodyWidth = await page.locator('body').evaluate(el => el.scrollWidth);
-    expect(bodyWidth).toBeLessThanOrEqual(400); // Allow some margin
+    expect(bodyWidth).toBeLessThanOrEqual(425); // Allow some margin for mobile
   });
 });

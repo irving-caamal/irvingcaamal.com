@@ -15,18 +15,29 @@ test.describe('Navigation', () => {
   });
 
   test('external social links open in new tab', async ({ page }) => {
-    const githubLink = page.getByRole('link', { name: /github/i }).first();
+    // Check GitHub link
+    const githubLinks = page.getByRole('link').filter({ hasText: /github/i });
+    const githubCount = await githubLinks.count();
     
-    if (await githubLink.isVisible()) {
-      // Check if link has target="_blank" or similar behavior
+    if (githubCount > 0) {
+      const githubLink = githubLinks.first();
       const target = await githubLink.getAttribute('target');
       const href = await githubLink.getAttribute('href');
       
       expect(href).toContain('github.com');
-      // Most external links should open in new tab
       if (target) {
         expect(target).toBe('_blank');
       }
+    }
+    
+    // Check LinkedIn link
+    const linkedinLinks = page.getByRole('link').filter({ hasText: /linkedin/i });
+    const linkedinCount = await linkedinLinks.count();
+    
+    if (linkedinCount > 0) {
+      const linkedinLink = linkedinLinks.first();
+      const href = await linkedinLink.getAttribute('href');
+      expect(href).toContain('linkedin.com');
     }
   });
 
