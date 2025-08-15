@@ -10,7 +10,7 @@ test.describe('Navigation', () => {
     const aboutLink = page.getByRole('link', { name: /about/i }).first();
     if (await aboutLink.isVisible()) {
       await aboutLink.click();
-      await expect(page).toHaveURL(/#about/);
+      await expect(page).toHaveURL(/#about$/);
     }
   });
 
