@@ -61,7 +61,7 @@ test.describe('Navigation', () => {
   });
 
   test('logo/brand link returns to home', async ({ page }) => {
-    const logoLink = page.locator('a').filter({ hasText: /irving|logo/i }).first();
+    const logoLink = page.locator('[data-testid="logo-link"]');
     
     if (await logoLink.isVisible()) {
       await logoLink.click();
