@@ -47,7 +47,7 @@ test.describe('Navigation', () => {
     
     // Look for mobile menu button (hamburger menu)
     const mobileMenuButton = page.locator('[role="button"]', { hasText: /menu/i })
-      .or(page.locator('button').filter({ hasText: /☰|≡|⋮/ }))
+      .or(page.locator('[data-testid="mobile-menu-button"]'))
       .or(page.locator('[aria-label*="menu"]'))
       .first();
     
