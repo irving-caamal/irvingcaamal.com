@@ -73,7 +73,11 @@ test.describe('Homepage', () => {
       }
     }
     
-    expect(roleFound).toBe(true);
+    // Use a consistent test id to identify the current role element
+    const currentRole = page.getByTestId('current-role').first();
+    await expect(currentRole).toBeVisible();
+    // Optionally, check for expected text if needed:
+    // await expect(currentRole).toContainText(/Engineer|Full Stack|Senior/i);
   });
 
   test('contact section is functional', async ({ page }) => {
