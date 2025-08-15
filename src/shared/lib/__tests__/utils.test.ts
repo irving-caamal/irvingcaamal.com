@@ -55,7 +55,7 @@ describe('shared/lib/utils', () => {
       expect(slugify('Multiple   Spaces  Here')).toBe('multiple-spaces-here');
     });
 
-    it('removes hyphens and replaces with new ones', () => {
+    it('removes existing hyphens', () => {
       expect(slugify('already-clean')).toBe('alreadyclean');
     });
 
