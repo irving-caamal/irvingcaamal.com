@@ -55,7 +55,7 @@ test.describe('Navigation', () => {
       await mobileMenuButton.click();
       
       // Check if mobile menu appears
-      const mobileMenu = page.locator('[role="menu"], nav ul, .mobile-menu').first();
+      const mobileMenu = page.getByTestId('mobile-menu');
       await expect(mobileMenu).toBeVisible();
     }
   });
