@@ -106,16 +106,13 @@ test.describe('Accessibility', () => {
     }
   });
 
-  test('page works without JavaScript', async ({ page, context }) => {
-    // Disable JavaScript
-    await context.setExtraHTTPHeaders({});
-    await page.addInitScript(() => {
-      // This will run before any scripts on the page
-      Object.defineProperty(navigator, 'javaEnabled', {
-        value: () => false,
-      });
-    await page.setJavaScriptEnabled(false);
+  test('page works without JavaScript', async ({ browser }) => {
+    // Create a new context with JavaScript disabled
+    const context = await browser.newContext({
+      javaScriptEnabled: false
+    });
     
+    const page = await context.newPage();
     await page.goto('/');
     
     // Basic content should still be visible
@@ -125,6 +122,8 @@ test.describe('Accessibility', () => {
     // Navigation should work
     const navigation = page.locator('nav').first();
     await expect(navigation).toBeVisible();
+    
+    await context.close();
   });
 
   test('responsive design works on mobile', async ({ page }) => {
