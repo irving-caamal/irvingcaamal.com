@@ -3,7 +3,11 @@
 # dependencies
 /node_modules
 
-# next.js
+# astro
+/dist/
+.astro/
+
+# next.js (legacy)
 /.next/
 /out/
 
@@ -26,5 +30,16 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# IDEs
 .idea/
+.vscode/
 .claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# test results
+/test-results/
+/playwright-report/
+/coverage/
