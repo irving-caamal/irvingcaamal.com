@@ -114,7 +114,6 @@ test.describe('Accessibility', () => {
       Object.defineProperty(navigator, 'javaEnabled', {
         value: () => false,
       });
-    });
     await page.setJavaScriptEnabled(false);
     
     await page.goto('/');
