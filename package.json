@@ -33,7 +33,7 @@
     "tailwind-merge": "^2.5.5",
     "tailwindcss": "^3.4.17",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "^5.0.0"
+    "typescript": "^5.9.2"
   },
   "devDependencies": {
     "@playwright/test": "^1.54.2",
