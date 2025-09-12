@@ -3,14 +3,14 @@
 import { useUnit } from "effector-react"
 import { Button } from "~/shared/ui/button"
 import { Moon, Sun } from "lucide-react"
-import { $theme, themeToggled } from "../model/theme"
+import { themeToggled } from "../model/theme"
 
 /**
  * Theme toggle component
  * Provides UI for switching between light and dark themes
  */
 export function ThemeToggle() {
-  const [theme, toggleTheme] = useUnit([$theme, themeToggled])
+  const toggleTheme = useUnit(themeToggled)
 
   return (
     <Button variant="ghost" size="icon" onClick={toggleTheme}>
