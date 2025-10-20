@@ -58,7 +58,7 @@
     "prettier": "^3.6.2",
     "ts-jest": "^29.4.1",
     "typescript": "^5",
-    "semantic-release": "^24.0.0",
+    "semantic-release": "^25.0.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^10.1.3",
