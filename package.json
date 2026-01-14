@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@astrojs/react": "latest",
+    "@astrojs/sitemap": "^3.6.1",
     "@radix-ui/react-dialog": "latest",
     "@radix-ui/react-label": "latest",
     "@radix-ui/react-progress": "latest",

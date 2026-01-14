@@ -1,53 +1,27 @@
 ---
-import { siteConfig } from '~/shared/config/site'
-import '~/app/styles/globals.css'
+import { siteConfig } from '~/shared/config/site';
+import SEO from '../components/seo/SEO.astro';
+import '~/app/styles/globals.css';
 
 export interface Props {
-  title?: string
-  description?: string
+  title?: string;
+  description?: string;
 }
 
-const { title, description } = Astro.props
+const { title, description } = Astro.props;
 
-const pageTitle = title ? `${title} - ${siteConfig.name}` : `${siteConfig.name} - ${siteConfig.title}`
-const pageDescription = description || siteConfig.description
+const pageTitle = title
+  ? `${title} - ${siteConfig.name}`
+  : `${siteConfig.name} - ${siteConfig.title}`;
+const pageDescription = description || siteConfig.description;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content={pageDescription} />
-    <meta name="keywords" content={siteConfig.seo.keywords} />
-    <meta name="author" content={siteConfig.seo.author} />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={siteConfig.social.website} />
-    <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={pageDescription} />
-    <meta property="og:site_name" content={siteConfig.name} />
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={pageTitle} />
-    <meta name="twitter:description" content={pageDescription} />
-    <meta name="twitter:creator" content="@irvingcaamal" />
-    
-    <title>{pageTitle}</title>
+    <SEO title={title} description={description} />
   </head>
   <body>
     <slot />
-    
-    <script>
-      // Theme initialization
-      const theme = localStorage.getItem('theme') || 
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-      
-      document.documentElement.classList.toggle('dark', theme === 'dark')
-    </script>
   </body>
 </html>

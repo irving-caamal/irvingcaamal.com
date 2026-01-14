@@ -1,0 +1,101 @@
+---
+import { siteConfig } from '~/shared/config/site';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  article?: boolean;
+}
+
+const {
+  title,
+  description = siteConfig.description,
+  image = '/images/og-image.png',
+  article = false,
+} = Astro.props;
+
+const pageTitle = title
+  ? `${title} - ${siteConfig.name}`
+  : `${siteConfig.name} - ${siteConfig.title}`;
+const canonicalURL = new URL(Astro.url.pathname, siteConfig.social.website);
+const socialImageURL = new URL(image, siteConfig.social.website);
+
+// JSON-LD Schema
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': article ? 'Article' : 'WebSite',
+  url: canonicalURL,
+  name: pageTitle,
+  description: description,
+  author: {
+    '@type': 'Person',
+    name: siteConfig.name,
+    url: siteConfig.social.website,
+  },
+  ...(article
+    ? {
+        headline: pageTitle,
+        image: socialImageURL,
+        datePublished: new Date().toISOString(),
+      }
+    : {}),
+};
+---
+
+<!-- Global Metadata -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{pageTitle}</title>
+<meta name="title" content={pageTitle} />
+<meta name="description" content={description} />
+<meta name="author" content={siteConfig.seo.author} />
+<meta name="keywords" content={siteConfig.seo.keywords} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={article ? 'article' : 'website'} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={socialImageURL} />
+<meta property="og:site_name" content={siteConfig.name} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={pageTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={socialImageURL} />
+<meta property="twitter:creator" content="@irvingcaamal" />
+
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+<!-- Theme Initialization -->
+<script is:inline>
+  const theme =
+    localStorage.getItem('theme') ||
+    (window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light');
+
+  document.documentElement.classList.toggle('dark', theme === 'dark');
+
+  if (typeof localStorage !== 'undefined') {
+    const observer = new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+  }
+</script>
