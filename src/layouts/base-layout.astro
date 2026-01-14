@@ -1,5 +1,4 @@
 ---
-import { siteConfig } from '~/shared/config/site';
 import SEO from '../components/seo/SEO.astro';
 import '~/app/styles/globals.css';
 
@@ -9,11 +8,6 @@ export interface Props {
 }
 
 const { title, description } = Astro.props;
-
-const pageTitle = title
-  ? `${title} - ${siteConfig.name}`
-  : `${siteConfig.name} - ${siteConfig.title}`;
-const pageDescription = description || siteConfig.description;
 ---
 
 <!doctype html>
