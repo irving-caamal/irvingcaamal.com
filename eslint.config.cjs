@@ -23,6 +23,7 @@ module.exports = defineConfig([
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:astro/recommended",
+        "plugin:jsx-a11y/recommended",
     ),
     {
         files: ["**/*.astro"],

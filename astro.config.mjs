@@ -3,11 +3,21 @@ import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
+import partytown from '@astrojs/partytown';
+
 export default defineConfig({
   integrations: [
     react(),
     sitemap(),
+    partytown({
+      config: {
+        forward: ['dataLayer.push'],
+      },
+    }),
   ],
+  prefetch: {
+    prefetchAll: true,
+  },
   output: 'static',
   site: 'https://irvingcaamal.com',
   server: {
