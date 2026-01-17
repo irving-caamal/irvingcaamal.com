@@ -7,8 +7,9 @@ describe('shared/lib/utils', () => {
     });
 
     it('handles conditional classes', () => {
-      expect(cn('base-class', false, 'always-class'))
-        .toBe('base-class always-class');
+      expect(cn('base-class', false, 'always-class')).toBe(
+        'base-class always-class'
+      );
     });
 
     it('merges conflicting Tailwind classes', () => {

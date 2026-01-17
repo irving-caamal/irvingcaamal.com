@@ -1,6 +1,6 @@
-import { createStore } from "effector"
-import { siteConfig } from "~/shared/config/site"
-import { getInitials } from "~/shared/lib/utils"
+import { createStore } from 'effector';
+import { siteConfig } from '~/shared/config/site';
+import { getInitials } from '~/shared/lib/utils';
 
 /**
  * Profile entity model
@@ -8,21 +8,21 @@ import { getInitials } from "~/shared/lib/utils"
  */
 
 export interface ProfileData {
-  name: string
-  title: string
-  description: string
-  tagline: string
-  email: string
-  phone: string
-  location: string
-  initials: string
-  social: typeof siteConfig.social
-  experience: typeof siteConfig.experience
-  resumeUrl: string
-  currentCompany: string
-  currentRole: string
-  education: typeof siteConfig.education
-  about: typeof siteConfig.about
+  name: string;
+  title: string;
+  description: string;
+  tagline: string;
+  email: string;
+  phone: string;
+  location: string;
+  initials: string;
+  social: typeof siteConfig.social;
+  experience: typeof siteConfig.experience;
+  resumeUrl: string;
+  currentCompany: string;
+  currentRole: string;
+  education: typeof siteConfig.education;
+  about: typeof siteConfig.about;
 }
 
 // Profile store with computed initials
@@ -42,4 +42,4 @@ export const $profile = createStore<ProfileData>({
   currentRole: siteConfig.currentRole,
   education: siteConfig.education,
   about: siteConfig.about,
-})
+});

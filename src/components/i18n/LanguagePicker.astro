@@ -1,0 +1,21 @@
+---
+import { languages } from '~/shared/i18n/ui';
+import { getLangFromUrl } from '~/shared/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<ul class="flex gap-2">
+  {
+    Object.entries(languages).map(([key, label]) => (
+      <li>
+        <a
+          href={`/${key === 'en' ? '' : key}`}
+          class={`text-sm font-medium transition-colors hover:text-primary ${lang === key ? 'text-primary' : 'text-muted-foreground'}`}
+        >
+          {label}
+        </a>
+      </li>
+    ))
+  }
+</ul>

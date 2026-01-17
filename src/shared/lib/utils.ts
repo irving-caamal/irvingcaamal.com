@@ -1,11 +1,11 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 /**
  * Utility function to merge Tailwind CSS classes
  */
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 /**
@@ -13,10 +13,10 @@ export function cn(...inputs: ClassValue[]) {
  */
 export function getInitials(name: string): string {
   return name
-    .split(" ")
+    .split(' ')
     .map((n) => n[0])
-    .join("")
-    .toUpperCase()
+    .join('')
+    .toUpperCase();
 }
 
 /**
@@ -25,17 +25,20 @@ export function getInitials(name: string): string {
 export function slugify(text: string): string {
   return text
     .toLowerCase()
-    .replace(/[^\w ]+/g, "")
-    .replace(/ +/g, "-")
+    .replace(/[^\w ]+/g, '')
+    .replace(/ +/g, '-');
 }
 
 /**
  * Debounce function for performance optimization
  */
-export function debounce<T extends (...args: unknown[]) => unknown>(func: T, wait: number): (...args: Parameters<T>) => void {
-  let timeout: NodeJS.Timeout
+export function debounce<T extends (...args: unknown[]) => unknown>(
+  func: T,
+  wait: number
+): (...args: Parameters<T>) => void {
+  let timeout: NodeJS.Timeout;
   return (...args: Parameters<T>) => {
-    clearTimeout(timeout)
-    timeout = setTimeout(() => func(...args), wait)
-  }
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func(...args), wait);
+  };
 }

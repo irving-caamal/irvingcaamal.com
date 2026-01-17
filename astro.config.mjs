@@ -18,6 +18,13 @@ export default defineConfig({
   prefetch: {
     defaultStrategy: 'hover',
   },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   output: 'static',
   site: 'https://irvingcaamal.com',
   server: {

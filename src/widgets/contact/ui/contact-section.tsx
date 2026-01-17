@@ -1,41 +1,57 @@
-"use client"
+'use client';
 
-import type React from "react"
-import { useState } from "react"
-import { useUnit } from "effector-react"
-import { Badge } from "~/shared/ui/badge"
-import { Button } from "~/shared/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/shared/ui/card"
-import { Input } from "~/shared/ui/input"
-import { Label } from "~/shared/ui/label"
-import { Textarea } from "~/shared/ui/textarea"
-import { Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react"
-import { $profile } from "~/entities/profile/model/profile"
+import type React from 'react';
+import { useState } from 'react';
+import { useUnit } from 'effector-react';
+import { Badge } from '~/shared/ui/badge';
+import { Button } from '~/shared/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '~/shared/ui/card';
+import { Input } from '~/shared/ui/input';
+import { Label } from '~/shared/ui/label';
+import { Textarea } from '~/shared/ui/textarea';
+import {
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+  Send,
+  BookOpen,
+} from 'lucide-react';
+import { $profile } from '~/entities/profile/model/profile';
 
 /**
  * Contact section widget
  * Contains contact form and contact information
  */
 export function ContactSection() {
-  const profile = useUnit($profile)
+  const profile = useUnit($profile);
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  })
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-  }
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
-    }))
-  }
+    }));
+  };
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
@@ -49,7 +65,8 @@ export function ContactSection() {
             Let's Work <span className="text-gradient">Together</span>
           </h2>
           <p className="mx-auto max-w-[700px] text-muted-foreground text-lg leading-relaxed">
-            Have a project in mind or want to discuss opportunities? I'd love to hear from you.
+            Have a project in mind or want to discuss opportunities? I'd love to
+            hear from you.
           </p>
         </div>
 
@@ -58,7 +75,9 @@ export function ContactSection() {
             <Card className="elegant-card border-white/10">
               <CardHeader>
                 <CardTitle>Get in Touch</CardTitle>
-                <CardDescription>Feel free to reach out through any of these channels.</CardDescription>
+                <CardDescription>
+                  Feel free to reach out through any of these channels.
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center gap-3">
@@ -67,7 +86,10 @@ export function ContactSection() {
                   </div>
                   <div>
                     <p className="font-medium">Email</p>
-                    <a href={`mailto:${profile.email}`} className="text-sm text-muted-foreground hover:text-primary">
+                    <a
+                      href={`mailto:${profile.email}`}
+                      className="text-sm text-muted-foreground hover:text-primary"
+                    >
                       {profile.email}
                     </a>
                   </div>
@@ -79,7 +101,7 @@ export function ContactSection() {
                   <div>
                     <p className="font-medium">Phone</p>
                     <a
-                      href={`tel:${profile.phone.replace(/\s/g, "")}`}
+                      href={`tel:${profile.phone.replace(/\s/g, '')}`}
                       className="text-sm text-muted-foreground hover:text-primary"
                     >
                       {profile.phone}
@@ -92,7 +114,9 @@ export function ContactSection() {
                   </div>
                   <div>
                     <p className="font-medium">Location</p>
-                    <p className="text-sm text-muted-foreground">{profile.location}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {profile.location}
+                    </p>
                   </div>
                 </div>
               </CardContent>
@@ -101,20 +125,40 @@ export function ContactSection() {
             <Card className="elegant-card border-white/10">
               <CardHeader>
                 <CardTitle>Follow Me</CardTitle>
-                <CardDescription>Connect with me on social media and professional networks.</CardDescription>
+                <CardDescription>
+                  Connect with me on social media and professional networks.
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex gap-4">
                   <Button variant="outline" size="icon" asChild>
-                    <a href={profile.social.github} target="_blank" rel="noreferrer">
+                    <a
+                      href={profile.social.github}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       <Github className="h-4 w-4" />
                       <span className="sr-only">GitHub</span>
                     </a>
                   </Button>
                   <Button variant="outline" size="icon" asChild>
-                    <a href={profile.social.linkedin} target="_blank" rel="noreferrer">
+                    <a
+                      href={profile.social.linkedin}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       <Linkedin className="h-4 w-4" />
                       <span className="sr-only">LinkedIn</span>
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="icon" asChild>
+                    <a
+                      href={profile.social.medium}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <BookOpen className="h-4 w-4" />
+                      <span className="sr-only">Medium</span>
                     </a>
                   </Button>
                   <Button variant="outline" size="icon" asChild>
@@ -131,7 +175,10 @@ export function ContactSection() {
           <Card className="elegant-card border-white/10">
             <CardHeader>
               <CardTitle className="text-gradient">Send a Message</CardTitle>
-              <CardDescription>Fill out the form below and I'll get back to you as soon as possible.</CardDescription>
+              <CardDescription>
+                Fill out the form below and I'll get back to you as soon as
+                possible.
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -194,5 +241,5 @@ export function ContactSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -7,21 +7,21 @@ describe('shared/ui/Button', () => {
   describe('Button component', () => {
     it('renders with default props', () => {
       render(<Button>Click me</Button>);
-      
+
       const button = screen.getByRole('button', { name: 'Click me' });
       expect(button).toBeInTheDocument();
     });
 
     it('applies correct variant classes', () => {
       render(<Button variant="destructive">Delete</Button>);
-      
+
       const button = screen.getByRole('button');
       expect(button).toHaveClass('bg-destructive');
     });
 
     it('applies correct size classes', () => {
       render(<Button size="lg">Large Button</Button>);
-      
+
       const button = screen.getByRole('button');
       expect(button).toHaveClass('h-11');
     });
@@ -29,33 +29,33 @@ describe('shared/ui/Button', () => {
     it('handles click events', async () => {
       const user = userEvent.setup();
       const handleClick = jest.fn();
-      
+
       render(<Button onClick={handleClick}>Click me</Button>);
-      
+
       const button = screen.getByRole('button');
       await user.click(button);
-      
+
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
     it('forwards ref correctly', () => {
       const ref = React.createRef<HTMLButtonElement>();
-      
+
       render(<Button ref={ref}>Button</Button>);
-      
+
       expect(ref.current).toBeInstanceOf(HTMLButtonElement);
     });
 
     it('applies custom className', () => {
       render(<Button className="custom-class">Button</Button>);
-      
+
       const button = screen.getByRole('button');
       expect(button).toHaveClass('custom-class');
     });
 
     it('is disabled when disabled prop is true', () => {
       render(<Button disabled>Disabled Button</Button>);
-      
+
       const button = screen.getByRole('button');
       expect(button).toBeDisabled();
     });
@@ -66,7 +66,7 @@ describe('shared/ui/Button', () => {
           <a href="/test">Link Button</a>
         </Button>
       );
-      
+
       const link = screen.getByRole('link');
       expect(link).toBeInTheDocument();
       expect(link).toHaveAttribute('href', '/test');

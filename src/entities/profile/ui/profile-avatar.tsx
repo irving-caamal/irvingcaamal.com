@@ -1,24 +1,27 @@
-"use client"
+'use client';
 
-import { useUnit } from "effector-react"
-import { $profile } from "../model/profile"
+import { useUnit } from 'effector-react';
+import { $profile } from '../model/profile';
 
 interface ProfileAvatarProps {
-  size?: "sm" | "md" | "lg"
-  className?: string
+  size?: 'sm' | 'md' | 'lg';
+  className?: string;
 }
 
 /**
  * Profile avatar component displaying user initials
  */
-export function ProfileAvatar({ size = "md", className = "" }: ProfileAvatarProps) {
-  const profile = useUnit($profile)
+export function ProfileAvatar({
+  size = 'md',
+  className = '',
+}: ProfileAvatarProps) {
+  const profile = useUnit($profile);
 
   const sizeClasses = {
-    sm: "w-8 h-8 text-sm",
-    md: "w-12 h-12 text-base",
-    lg: "w-32 h-32 text-4xl",
-  }
+    sm: 'w-8 h-8 text-sm',
+    md: 'w-12 h-12 text-base',
+    lg: 'w-32 h-32 text-4xl',
+  };
 
   return (
     <div
@@ -26,5 +29,5 @@ export function ProfileAvatar({ size = "md", className = "" }: ProfileAvatarProp
     >
       <span className="font-bold text-background">{profile.initials}</span>
     </div>
-  )
+  );
 }

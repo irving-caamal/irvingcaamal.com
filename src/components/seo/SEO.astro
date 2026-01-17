@@ -8,18 +8,31 @@ export interface Props {
   article?: boolean;
 }
 
+import { useTranslations } from '~/shared/i18n/utils';
+
 const {
   title,
-  description = siteConfig.description,
+  description,
   image = '/images/og-image.png',
   article = false,
 } = Astro.props;
 
-const pageTitle = title
-  ? `${title} - ${siteConfig.name}`
-  : `${siteConfig.name} - ${siteConfig.title}`;
+const lang = Astro.currentLocale || 'en';
+const t = useTranslations(lang);
+const siteTitle = t('site.title');
+const siteDescription = t('site.description');
+
+const pageTitle = title ? `${title} - ${siteTitle}` : `${siteTitle}`;
+const finalDescription = description || siteDescription;
 const canonicalURL = new URL(Astro.url.pathname, siteConfig.social.website);
 const socialImageURL = new URL(image, siteConfig.social.website);
+const alternateLang = lang === 'en' ? 'es' : 'en';
+const alternateURL = new URL(
+  lang === 'en'
+    ? `/es${Astro.url.pathname}`
+    : Astro.url.pathname.replace(/^\/es/, ''),
+  siteConfig.social.website
+);
 
 // JSON-LD Schema
 const schema = {
@@ -27,7 +40,7 @@ const schema = {
   '@type': article ? 'Article' : 'WebSite',
   url: canonicalURL,
   name: pageTitle,
-  description: description,
+  description: finalDescription,
   author: {
     '@type': 'Person',
     name: siteConfig.name,
@@ -51,11 +64,13 @@ const schema = {
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
+<link rel="alternate" href={canonicalURL} hreflang={lang} />
+<link rel="alternate" href={alternateURL} hreflang={alternateLang} />
 
 <!-- Primary Meta Tags -->
 <title>{pageTitle}</title>
 <meta name="title" content={pageTitle} />
-<meta name="description" content={description} />
+<meta name="description" content={finalDescription} />
 <meta name="author" content={siteConfig.seo.author} />
 <meta name="keywords" content={siteConfig.seo.keywords} />
 
@@ -63,15 +78,20 @@ const schema = {
 <meta property="og:type" content={article ? 'article' : 'website'} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={pageTitle} />
-<meta property="og:description" content={description} />
+<meta property="og:description" content={finalDescription} />
 <meta property="og:image" content={socialImageURL} />
 <meta property="og:site_name" content={siteConfig.name} />
+<meta property="og:locale" content={lang === 'en' ? 'en_US' : 'es_ES'} />
+<meta
+  property="og:locale:alternate"
+  content={alternateLang === 'en' ? 'en_US' : 'es_ES'}
+/>
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={pageTitle} />
-<meta property="twitter:description" content={description} />
+<meta property="twitter:description" content={finalDescription} />
 <meta property="twitter:image" content={socialImageURL} />
 <meta property="twitter:creator" content="@irvingcaamal" />
 

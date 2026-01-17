@@ -1,20 +1,30 @@
-import { Button } from "@/components/ui/button"
-import { ArrowDown, Download, Github, Linkedin, Mail, Sparkles } from "lucide-react"
-import Link from "next/link"
-import { siteConfig } from "~/shared/config/site"
+import { Button } from '@/components/ui/button';
+import {
+  ArrowDown,
+  Download,
+  Github,
+  Linkedin,
+  Mail,
+  Sparkles,
+} from 'lucide-react';
+import Link from 'next/link';
+import { siteConfig } from '~/shared/config/site';
 
 export function HeroSection() {
   // Get initials from name
   const getInitials = (name: string) => {
     return name
-      .split(" ")
+      .split(' ')
       .map((n) => n[0])
-      .join("")
-      .toUpperCase()
-  }
+      .join('')
+      .toUpperCase();
+  };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden particle-bg">
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden particle-bg"
+    >
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-72 h-72 gradient-mesh rounded-full opacity-20 blur-3xl floating"></div>
@@ -28,7 +38,9 @@ export function HeroSection() {
           <div className="relative">
             <div className="w-32 h-32 rounded-full morphism-card p-1 glow">
               <div className="w-full h-full rounded-full bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 flex items-center justify-center">
-                <span className="text-4xl font-bold text-white">{getInitials(siteConfig.name)}</span>
+                <span className="text-4xl font-bold text-white">
+                  {getInitials(siteConfig.name)}
+                </span>
               </div>
             </div>
             <div className="absolute -top-2 -right-2">
@@ -43,7 +55,10 @@ export function HeroSection() {
             </div>
 
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-              Hi, I'm <span className="text-gradient block mt-2">{siteConfig.name}</span>
+              Hi, I'm{' '}
+              <span className="text-gradient block mt-2">
+                {siteConfig.name}
+              </span>
             </h1>
 
             <p className="mx-auto max-w-[700px] text-muted-foreground text-lg md:text-xl leading-relaxed">
@@ -76,19 +91,34 @@ export function HeroSection() {
           </div>
 
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="icon" className="morphism-card glow-hover" asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="morphism-card glow-hover"
+              asChild
+            >
               <Link href={siteConfig.social.github} target="_blank">
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </Link>
             </Button>
-            <Button variant="ghost" size="icon" className="morphism-card glow-hover" asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="morphism-card glow-hover"
+              asChild
+            >
               <Link href={siteConfig.social.linkedin} target="_blank">
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
             </Button>
-            <Button variant="ghost" size="icon" className="morphism-card glow-hover" asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="morphism-card glow-hover"
+              asChild
+            >
               <Link href={`mailto:${siteConfig.email}`}>
                 <Mail className="h-5 w-5" />
                 <span className="sr-only">Email</span>
@@ -104,5 +134,5 @@ export function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
