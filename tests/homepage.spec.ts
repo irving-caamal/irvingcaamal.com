@@ -28,10 +28,10 @@ test.describe('Homepage', () => {
   test('displays social media links', async ({ page }) => {
     const linkedinLink = page.getByRole('link', { name: /linkedin/i }).first();
     const githubLink = page.getByRole('link', { name: /github/i }).first();
-    
+
     await expect(linkedinLink).toBeVisible();
     await expect(githubLink).toBeVisible();
-    
+
     // Verify they link to correct URLs
     await expect(linkedinLink).toHaveAttribute('href', /linkedin\.com/);
     await expect(githubLink).toHaveAttribute('href', /github\.com/);
@@ -56,13 +56,13 @@ test.describe('Homepage', () => {
     // Try multiple variations of the role title
     const roleVariations = [
       page.getByText(/Senior.*Engineer/i),
-      page.getByText(/Software Engineer/i), 
+      page.getByText(/Software Engineer/i),
       page.getByText(/Full.*Stack/i),
       page.getByText(/Engineer/i),
       page.getByText(/Developer/i),
-      page.getByText(/Programmer/i)
+      page.getByText(/Programmer/i),
     ];
-    
+
     // At least one role variation should be visible
     let roleFound = false;
     for (const roleText of roleVariations) {
@@ -75,16 +75,16 @@ test.describe('Homepage', () => {
         continue;
       }
     }
-    
+
     // If no specific role text found, just check for professional content
     if (!roleFound) {
       const professionalElements = [
         page.getByText(/years/i),
         page.getByText(/experience/i),
         page.getByText(/project/i),
-        page.locator('h2, h3').filter({ hasText: /about|experience|work/i })
+        page.locator('h2, h3').filter({ hasText: /about|experience|work/i }),
       ];
-      
+
       for (const element of professionalElements) {
         try {
           await expect(element.first()).toBeVisible({ timeout: 1000 });
@@ -95,7 +95,7 @@ test.describe('Homepage', () => {
         }
       }
     }
-    
+
     expect(roleFound).toBe(true);
   });
 

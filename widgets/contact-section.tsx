@@ -1,38 +1,46 @@
-"use client"
+'use client';
 
-import type React from "react"
+import type React from 'react';
 
-import { useState } from "react"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react"
-import Link from "next/link"
-import { siteConfig } from "~/shared/config/site"
+import { useState } from 'react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Github, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react';
+import Link from 'next/link';
+import { siteConfig } from '~/shared/config/site';
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  })
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // Handle form submission here
-    console.log("Form submitted:", formData)
-  }
+    console.log('Form submitted:', formData);
+  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
-    }))
-  }
+    }));
+  };
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
@@ -46,7 +54,8 @@ export function ContactSection() {
             Let's Work <span className="text-gradient">Together</span>
           </h2>
           <p className="mx-auto max-w-[700px] text-muted-foreground text-lg leading-relaxed">
-            Have a project in mind or want to discuss opportunities? I'd love to hear from you.
+            Have a project in mind or want to discuss opportunities? I'd love to
+            hear from you.
           </p>
         </div>
 
@@ -56,7 +65,9 @@ export function ContactSection() {
             <Card className="elegant-card border-white/10">
               <CardHeader>
                 <CardTitle>Get in Touch</CardTitle>
-                <CardDescription>Feel free to reach out through any of these channels.</CardDescription>
+                <CardDescription>
+                  Feel free to reach out through any of these channels.
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center gap-3">
@@ -80,7 +91,7 @@ export function ContactSection() {
                   <div>
                     <p className="font-medium">Phone</p>
                     <Link
-                      href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+                      href={`tel:${siteConfig.phone.replace(/\s/g, '')}`}
                       className="text-sm text-muted-foreground hover:text-primary"
                     >
                       {siteConfig.phone}
@@ -93,7 +104,9 @@ export function ContactSection() {
                   </div>
                   <div>
                     <p className="font-medium">Location</p>
-                    <p className="text-sm text-muted-foreground">{siteConfig.location}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {siteConfig.location}
+                    </p>
                   </div>
                 </div>
               </CardContent>
@@ -102,7 +115,9 @@ export function ContactSection() {
             <Card>
               <CardHeader>
                 <CardTitle>Follow Me</CardTitle>
-                <CardDescription>Connect with me on social media and professional networks.</CardDescription>
+                <CardDescription>
+                  Connect with me on social media and professional networks.
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex gap-4">
@@ -133,7 +148,10 @@ export function ContactSection() {
           <Card className="elegant-card border-white/10">
             <CardHeader>
               <CardTitle className="text-gradient">Send a Message</CardTitle>
-              <CardDescription>Fill out the form below and I'll get back to you as soon as possible.</CardDescription>
+              <CardDescription>
+                Fill out the form below and I'll get back to you as soon as
+                possible.
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -196,5 +214,5 @@ export function ContactSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

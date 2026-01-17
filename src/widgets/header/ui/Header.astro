@@ -1,0 +1,141 @@
+---
+import { siteConfig } from '~/shared/config/site';
+import { ThemeToggle } from '~/features/theme/ui/theme-toggle';
+import { MobileMenu } from '~/features/navigation/ui/mobile-menu';
+import { useTranslations } from '~/shared/i18n/utils';
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
+
+// Get initials
+const getInitials = (name: string) => {
+  return name
+    .split(' ')
+    .map((n) => n[0])
+    .join('')
+    .toUpperCase();
+};
+
+const navItems = [
+  { name: t('nav.home'), href: '#home' },
+  { name: t('nav.about'), href: '#about' },
+  { name: t('nav.skills'), href: '#skills' },
+  { name: t('nav.projects'), href: '#projects' },
+  { name: t('nav.experience'), href: '#experience' },
+  { name: t('nav.contact'), href: '#contact' },
+];
+---
+
+<header
+  id="main-header"
+  class="sticky top-0 z-50 w-full elegant-card border-b border-white/10 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60"
+>
+  <div class="container flex h-16 items-center justify-between">
+    <a href="/" class="flex items-center space-x-2">
+      <div
+        class="w-8 h-8 rounded-full bg-foreground flex items-center justify-center p-1"
+      >
+        <span class="text-background font-bold text-sm">
+          {getInitials(siteConfig.name)}
+        </span>
+      </div>
+      <span class="text-2xl font-bold text-gradient">
+        {siteConfig.name}
+      </span>
+    </a>
+
+    {/* Desktop Navigation */}
+    <nav class="hidden md:flex items-center space-x-6">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class="nav-link text-sm font-medium transition-colors hover:text-primary relative text-muted-foreground"
+            data-href={item.href}
+          >
+            {item.name}
+            <span class="active-indicator absolute -bottom-[21px] left-0 right-0 h-[2px] bg-primary opacity-0 transition-opacity duration-200" />
+          </a>
+        ))
+      }
+    </nav>
+
+    {/* Actions */}
+    <div class="flex items-center space-x-2">
+      <div class="flex items-center gap-2 mr-2 text-sm font-medium">
+        <a href="/en" class="hover:text-primary transition-colors"> EN </a>
+        <span class="text-muted-foreground/30">|</span>
+        <a href="/es" class="hover:text-primary transition-colors"> ES </a>
+      </div>
+
+      {/* Client Islands */}
+      <ThemeToggle client:load />
+      <MobileMenu client:load items={navItems} />
+    </div>
+  </div>
+</header>
+
+<script>
+  // Vanilla JS Scroll Spy
+  // Vanilla JS Scroll Spy
+  const navLinks = document.querySelectorAll('.nav-link');
+  const indicators = document.querySelectorAll('.active-indicator');
+
+  // Safe helper to toggle classes
+  const updateActiveLink = (targetId) => {
+    navLinks.forEach((link, idx) => {
+      const href = link.getAttribute('data-href');
+      // Handle hash links by stripping #
+      const linkTarget = href?.replace('#', '') || '';
+
+      if (linkTarget === targetId) {
+        link.classList.add('text-primary', 'font-semibold');
+        link.classList.remove('text-muted-foreground');
+        indicators[idx].classList.remove('opacity-0');
+      } else {
+        link.classList.remove('text-primary', 'font-semibold');
+        link.classList.add('text-muted-foreground');
+        indicators[idx].classList.add('opacity-0');
+      }
+    });
+  };
+
+  const onScroll = () => {
+    const sections = Array.from(navLinks).map((link) =>
+      link.getAttribute('data-href')?.replace('#', '')
+    );
+
+    // Find current section
+    let current = '';
+
+    for (const section of sections) {
+      if (!section) continue;
+      const element = document.getElementById(section);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        // 100px offset for header
+        if (rect.top <= 100 && rect.bottom >= 100) {
+          current = section;
+          break;
+        }
+      }
+    }
+
+    // Fallback: Check if we are at bottom of page
+    if (
+      window.innerHeight + window.scrollY >=
+      document.body.offsetHeight - 50
+    ) {
+      // Assume last section is active
+      const lastLink = navLinks[navLinks.length - 1];
+      const lastHRef = lastLink?.getAttribute('data-href')?.replace('#', '');
+      if (lastHRef) current = lastHRef;
+    }
+
+    updateActiveLink(current);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  // Initial check
+  onScroll();
+</script>

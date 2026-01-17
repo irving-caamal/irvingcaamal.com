@@ -18,22 +18,24 @@ test.describe('Navigation', () => {
     // Check GitHub link
     const githubLinks = page.getByRole('link').filter({ hasText: /github/i });
     const githubCount = await githubLinks.count();
-    
+
     if (githubCount > 0) {
       const githubLink = githubLinks.first();
       const target = await githubLink.getAttribute('target');
       const href = await githubLink.getAttribute('href');
-      
+
       expect(href).toContain('github.com');
       if (target) {
         expect(target).toBe('_blank');
       }
     }
-    
+
     // Check LinkedIn link
-    const linkedinLinks = page.getByRole('link').filter({ hasText: /linkedin/i });
+    const linkedinLinks = page
+      .getByRole('link')
+      .filter({ hasText: /linkedin/i });
     const linkedinCount = await linkedinLinks.count();
-    
+
     if (linkedinCount > 0) {
       const linkedinLink = linkedinLinks.first();
       const href = await linkedinLink.getAttribute('href');
@@ -44,16 +46,17 @@ test.describe('Navigation', () => {
   test('mobile menu functionality', async ({ page }) => {
     // Set mobile viewport
     await page.setViewportSize({ width: 375, height: 667 });
-    
+
     // Look for mobile menu button (hamburger menu)
-    const mobileMenuButton = page.locator('[role="button"]', { hasText: /menu/i })
+    const mobileMenuButton = page
+      .locator('[role="button"]', { hasText: /menu/i })
       .or(page.locator('[data-testid="mobile-menu-button"]'))
       .or(page.locator('[aria-label*="menu"]'))
       .first();
-    
+
     if (await mobileMenuButton.isVisible()) {
       await mobileMenuButton.click();
-      
+
       // Check if mobile menu appears
       const mobileMenu = page.getByTestId('mobile-menu');
       await expect(mobileMenu).toBeVisible();
@@ -62,7 +65,7 @@ test.describe('Navigation', () => {
 
   test('logo/brand link returns to home', async ({ page }) => {
     const logoLink = page.locator('[data-testid="logo-link"]');
-    
+
     if (await logoLink.isVisible()) {
       await logoLink.click();
       await expect(page).toHaveURL('/');
@@ -72,11 +75,11 @@ test.describe('Navigation', () => {
   test('navigation is keyboard accessible', async ({ page }) => {
     // Test tab navigation
     await page.keyboard.press('Tab');
-    
+
     // First focusable element should be highlighted
     const focusedElement = page.locator(':focus').first();
     await expect(focusedElement).toBeVisible();
-    
+
     // Test Enter key on navigation links
     const navigationLinks = page.locator('nav a').first();
     if (await navigationLinks.isVisible()) {

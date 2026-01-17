@@ -18,7 +18,7 @@ describe('shared/config/site', () => {
     it('has social media links object', () => {
       expect(siteConfig.social).toBeDefined();
       expect(typeof siteConfig.social).toBe('object');
-      
+
       expect(siteConfig.social.github).toContain('github.com');
       expect(siteConfig.social.linkedin).toContain('linkedin.com');
       expect(siteConfig.social.website).toContain('irvingcaamal.com');

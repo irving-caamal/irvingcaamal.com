@@ -1,9 +1,9 @@
-"use client"
+'use client';
 
-import type { ReactNode } from "react"
+import type { ReactNode } from 'react';
 
 interface EffectorProviderProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 /**
@@ -12,11 +12,13 @@ interface EffectorProviderProps {
  */
 export function EffectorProvider({ children }: EffectorProviderProps) {
   // Initialize theme on mount
-  if (typeof window !== "undefined") {
-    import("~/features/theme/model/theme").then(({ loadThemeFx, themeInitialized }) => {
-      loadThemeFx().then(themeInitialized)
-    })
+  if (typeof window !== 'undefined') {
+    import('~/features/theme/model/theme').then(
+      ({ loadThemeFx, themeInitialized }) => {
+        loadThemeFx().then(themeInitialized);
+      }
+    );
   }
 
-  return <>{children}</>
+  return <>{children}</>;
 }

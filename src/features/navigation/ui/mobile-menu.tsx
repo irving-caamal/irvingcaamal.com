@@ -1,21 +1,33 @@
-"use client"
+'use client';
 
-import { useUnit } from "effector-react"
-import { Button } from "~/shared/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "~/shared/ui/sheet"
-import { Menu } from "lucide-react"
-import { navigationConfig } from "~/shared/config/site"
-import { $isMobileMenuOpen, mobileMenuToggled, mobileMenuClosed } from "../model/navigation"
+import { useUnit } from 'effector-react';
+import { Button } from '~/shared/ui/button';
+import { Sheet, SheetContent, SheetTrigger } from '~/shared/ui/sheet';
+import { Menu } from 'lucide-react';
+
+import {
+  $isMobileMenuOpen,
+  mobileMenuToggled,
+  mobileMenuClosed,
+} from '../model/navigation';
 
 /**
  * Mobile navigation menu component
  */
-export function MobileMenu() {
-  const [isOpen, toggleMenu, closeMenu] = useUnit([$isMobileMenuOpen, mobileMenuToggled, mobileMenuClosed])
+interface MobileMenuProps {
+  items: { name: string; href: string }[];
+}
+
+export function MobileMenu({ items }: MobileMenuProps) {
+  const [isOpen, toggleMenu, closeMenu] = useUnit([
+    $isMobileMenuOpen,
+    mobileMenuToggled,
+    mobileMenuClosed,
+  ]);
 
   const handleLinkClick = () => {
-    closeMenu()
-  }
+    closeMenu();
+  };
 
   return (
     <Sheet open={isOpen} onOpenChange={toggleMenu}>
@@ -27,7 +39,7 @@ export function MobileMenu() {
       </SheetTrigger>
       <SheetContent side="right">
         <nav className="flex flex-col space-y-4 mt-8">
-          {navigationConfig.map((item) => (
+          {items.map((item) => (
             <a
               key={item.name}
               href={item.href}
@@ -40,5 +52,5 @@ export function MobileMenu() {
         </nav>
       </SheetContent>
     </Sheet>
-  )
+  );
 }

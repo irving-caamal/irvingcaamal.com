@@ -1,16 +1,16 @@
-"use client"
+'use client';
 
-import { useUnit } from "effector-react"
-import { Button } from "~/shared/ui/button"
-import { Moon, Sun } from "lucide-react"
-import { themeToggled } from "../model/theme"
+import { useUnit } from 'effector-react';
+import { Button } from '~/shared/ui/button';
+import { Moon, Sun } from 'lucide-react';
+import { themeToggled } from '../model/theme';
 
 /**
  * Theme toggle component
  * Provides UI for switching between light and dark themes
  */
 export function ThemeToggle() {
-  const toggleTheme = useUnit(themeToggled)
+  const toggleTheme = useUnit(themeToggled);
 
   return (
     <Button variant="ghost" size="icon" onClick={toggleTheme}>
@@ -18,5 +18,5 @@ export function ThemeToggle() {
       <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
       <span className="sr-only">Toggle theme</span>
     </Button>
-  )
+  );
 }
