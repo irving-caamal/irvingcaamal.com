@@ -9,54 +9,7 @@ import {
 import { CalendarDays, MapPin, GraduationCap } from 'lucide-react';
 import { siteConfig } from '~/shared/config/site';
 
-const experiences = [
-  {
-    title: 'Full-Stack Engineer',
-    company: 'AlertD',
-    location: 'Remote',
-    period: 'May 2023 - July 2025',
-    type: 'FTE / Contractor',
-    description:
-      'Applied advanced prompt engineering techniques to improve AI-powered user experiences. Contributed to modular architecture for early-stage product development.',
-    achievements: [
-      'Developed reusable React components aligned with design system',
-      'Delivered full-stack features for real-time metrics dashboards',
-      'Built POCs for exploratory features, improving product alignment by 30%',
-      'Collaborated cross-functionally with backend, DevOps, and design teams',
-    ],
-    technologies: [
-      'React',
-      'Node.js',
-      'AI Integration',
-      'TypeScript',
-      'Real-time Data',
-    ],
-  },
-  {
-    title: 'Senior Software Engineer',
-    company: 'FullStack Labs',
-    location: 'Remote',
-    period: 'May 2023 - April 2025',
-    type: 'FTE / Contractor',
-    description:
-      'End Client: MGM Resorts International. Led migration from legacy design system to modern architecture using Micro-Frontend patterns.',
-    achievements: [
-      'Built 10+ accessible, high-performance components (A11y compliant)',
-      'Maintained Micro-Frontend architecture using Next.js and Webpack Module Federation',
-      'Integrated Headless CMS into component library for content team autonomy',
-      'Spearheaded DX enhancements through tooling spikes, reducing dev cycle times',
-      'Released features via feature flags, enabling phased and low-risk rollouts',
-    ],
-    technologies: [
-      'Next.js',
-      'TypeScript',
-      'Micro-Frontends',
-      'Webpack Module Federation',
-      'Headless CMS',
-      'A11y',
-    ],
-  },
-];
+import { experiences } from '~/shared/config/experiences';
 
 export function ExperienceSection() {
   return (

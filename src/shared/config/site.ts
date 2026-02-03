@@ -37,8 +37,8 @@ export const siteConfig = {
   experience: {
     years: process.env.NEXT_PUBLIC_YEARS_EXPERIENCE || '8+',
     projectsCompleted: process.env.NEXT_PUBLIC_PROJECTS_COMPLETED || '50+',
-    happyClients: process.env.NEXT_PUBLIC_HAPPY_CLIENTS || '15+',
-    successRate: process.env.NEXT_PUBLIC_SUCCESS_RATE || '99%',
+    // happyClients: process.env.NEXT_PUBLIC_HAPPY_CLIENTS || '15+', // Removed to avoid fake info
+    // successRate: process.env.NEXT_PUBLIC_SUCCESS_RATE || '99%', // Removed to avoid fake info
   },
 
   // Resume/CV

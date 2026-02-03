@@ -50,8 +50,6 @@ export function AboutSection() {
       label: 'Projects Completed',
     },
     { number: profile.experience.years, label: 'Years Experience' },
-    { number: profile.experience.happyClients, label: 'Happy Clients' },
-    { number: profile.experience.successRate, label: 'Success Rate' },
   ];
 
   return (

@@ -1,8 +1,3 @@
-const {
-    defineConfig,
-    globalIgnores,
-} = require("eslint/config");
-
 const tsParser = require("@typescript-eslint/parser");
 const typescriptEslint = require("@typescript-eslint/eslint-plugin");
 const astro = require("eslint-plugin-astro");
@@ -18,7 +13,7 @@ const compat = new FlatCompat({
     allConfig: js.configs.all
 });
 
-module.exports = defineConfig([
+module.exports = [
     ...compat.extends(
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
@@ -52,5 +47,8 @@ module.exports = defineConfig([
         },
 
         rules: {},
-    }, globalIgnores(["dist/**/*", "node_modules/**/*"])
-]);
+    },
+    {
+        ignores: ["dist/**/*", "node_modules/**/*"]
+    }
+];
