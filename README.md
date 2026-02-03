@@ -40,12 +40,12 @@ src/
 
 ### Prerequisites
 - Node.js 18+ 
-- npm or yarn
+- pnpm
 
 ### Setup
 \`\`\`bash
 # Install dependencies
-npm install
+pnpm install
 
 # Copy environment variables
 cp .env.example .env
