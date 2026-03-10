@@ -44,10 +44,15 @@ export function HeroSection({ lang = 'en' }: HeroSectionProps) {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
       {/* Aurora mesh background */}
       <div className="hero-mesh" aria-hidden="true" />
+
+      {/* Animated orbs */}
+      <div className="hero-orb hero-orb-1" aria-hidden="true" />
+      <div className="hero-orb hero-orb-2" aria-hidden="true" />
+      <div className="hero-orb hero-orb-3" aria-hidden="true" />
 
       <div className="container px-4 md:px-6 relative z-10 max-w-4xl">
         <div className="flex flex-col items-center space-y-12 text-center">
@@ -73,7 +78,10 @@ export function HeroSection({ lang = 'en' }: HeroSectionProps) {
             <div className="space-y-6 opacity-0 animate-fade-in-delayed-2">
               <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-tight">
                 <span className="block mb-2">{t('hero.greeting')}</span>
-                <span className="text-gradient block">{profile.name}</span>
+                <span className="text-gradient block">
+                  {profile.name}
+                  <span className="type-cursor" aria-hidden="true" />
+                </span>
               </h1>
 
               {/* Description */}
