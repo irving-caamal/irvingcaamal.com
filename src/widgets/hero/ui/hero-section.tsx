@@ -46,11 +46,14 @@ export function HeroSection({ lang = 'en' }: HeroSectionProps) {
       id="home"
       className="min-h-screen flex items-center justify-center relative"
     >
+      {/* Aurora mesh background */}
+      <div className="hero-mesh" aria-hidden="true" />
+
       <div className="container px-4 md:px-6 relative z-10 max-w-4xl">
         <div className="flex flex-col items-center space-y-12 text-center">
           {/* Profile Avatar */}
-          <div className="relative opacity-0 animate-fade-in">
-            <ProfileAvatar size="lg" className="elegant-card p-1" />
+          <div className="relative opacity-0 animate-fade-in animate-float">
+            <ProfileAvatar size="lg" className="elegant-card glow-cyan p-1" />
           </div>
 
           {/* Main Content */}
@@ -155,7 +158,7 @@ export function HeroSection({ lang = 'en' }: HeroSectionProps) {
                 key={index}
                 variant="ghost"
                 size="icon"
-                className="elegant-card w-12 h-12"
+                className="elegant-card glow-cyan w-12 h-12"
                 asChild
               >
                 <a href={social.href} target="_blank" rel="noreferrer">
