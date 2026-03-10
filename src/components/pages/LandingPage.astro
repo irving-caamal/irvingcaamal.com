@@ -3,11 +3,12 @@ import BaseLayout from '~/layouts/base-layout.astro';
 import Header from '~/widgets/header/ui/Header.astro';
 import { HeroSection } from '~/widgets/hero/ui/hero-section';
 import { AboutSection } from '~/widgets/about/ui/about-section';
-import { SkillsSection } from '~/widgets/skills/ui/skills-section';
+import { ProjectsSection } from '~/widgets/projects/ui/projects-section';
 import { ExperienceSection } from '~/widgets/experience/ui/experience-section';
 import { ContactSection } from '~/widgets/contact/ui/contact-section';
 import { Footer } from '~/widgets/footer/ui/footer';
 import { ScrollProgress } from '~/shared/ui/scroll-progress';
+import { SkillVisualization } from '~/shared/components/skill-visualization';
 
 const { lang = 'en' } = Astro.props;
 ---
@@ -18,7 +19,24 @@ const { lang = 'en' } = Astro.props;
   <main class="min-h-screen">
     <HeroSection client:load lang={lang} />
     <AboutSection client:load lang={lang} />
-    <SkillsSection client:load lang={lang} />
+    <ProjectsSection client:load lang={lang} />
+    <section id="skills" class="py-24 relative overflow-hidden">
+      <div class="container px-4 md:px-6 relative z-10">
+        <div class="flex flex-col items-center space-y-4 text-center mb-16">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium border border-white/20 bg-white/5 backdrop-blur-sm">
+            Skills &amp; Technologies
+          </div>
+          <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+            Technical <span class="text-gradient">Expertise</span>
+          </h2>
+          <p class="mx-auto max-w-[700px] text-muted-foreground text-lg leading-relaxed">
+            A comprehensive skill set covering the full spectrum of modern web development.
+            Click any skill to see which projects use it.
+          </p>
+        </div>
+        <SkillVisualization client:load />
+      </div>
+    </section>
     <ExperienceSection client:load lang={lang} />
     <ContactSection client:load lang={lang} />
   </main>
