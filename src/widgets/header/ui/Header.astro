@@ -1,7 +1,7 @@
 ---
 import { siteConfig } from '~/shared/config/site';
 import { ThemeToggle } from '~/features/theme/ui/theme-toggle';
-import { MobileMenu } from '~/features/navigation/ui/mobile-menu';
+import { MobileNavBar } from '~/features/navigation/ui/mobile-nav-bar';
 import { useTranslations } from '~/shared/i18n/utils';
 
 const { lang = 'en' } = Astro.props;
@@ -70,10 +70,12 @@ const navItems = [
 
       {/* Client Islands */}
       <ThemeToggle client:load />
-      <MobileMenu client:load items={navItems} />
     </div>
   </div>
 </header>
+
+{/* Bottom tab bar — mobile only, rendered outside the sticky header */}
+<MobileNavBar client:load items={navItems} />
 
 <script>
   // Vanilla JS Scroll Spy
