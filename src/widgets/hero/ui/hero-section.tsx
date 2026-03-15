@@ -1,6 +1,7 @@
 'use client';
 
 import { useUnit } from 'effector-react';
+import { useState, useEffect } from 'react';
 import { Button } from '~/shared/ui/button';
 import { Badge } from '~/shared/ui/badge';
 import {
@@ -13,12 +14,44 @@ import {
 } from 'lucide-react';
 import { ProfileAvatar } from '~/entities/profile/ui/profile-avatar';
 import { $profile } from '~/entities/profile/model/profile';
+const ROLES = [
+  'Software Engineer',
+  'Backend Engineer',
+  'Full Stack Developer',
+  'Tech Lead',
+];
 
-/**
- * Hero section widget
- * Main landing section with profile information and call-to-actions
- */
-import { useTranslations } from '~/shared/i18n/utils';
+function useTypewriter(words: string[], typeSpeed = 80, deleteSpeed = 45, pauseMs = 2200) {
+  const [text, setText] = useState('');
+  const [wordIdx, setWordIdx] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = words[wordIdx % words.length];
+
+    const delay = isDeleting ? deleteSpeed : typeSpeed;
+    const id = setTimeout(() => {
+      if (!isDeleting) {
+        const next = current.slice(0, text.length + 1);
+        setText(next);
+        if (next === current) {
+          setTimeout(() => setIsDeleting(true), pauseMs);
+        }
+      } else {
+        const next = text.slice(0, -1);
+        setText(next);
+        if (next === '') {
+          setIsDeleting(false);
+          setWordIdx((i) => (i + 1) % words.length);
+        }
+      }
+    }, delay);
+
+    return () => clearTimeout(id);
+  }, [text, isDeleting, wordIdx, words, typeSpeed, deleteSpeed, pauseMs]);
+
+  return text;
+}
 
 interface HeroSectionProps {
   lang?: 'en' | 'es';
@@ -26,7 +59,7 @@ interface HeroSectionProps {
 
 export function HeroSection({ lang = 'en' }: HeroSectionProps) {
   const profile = useUnit($profile);
-  const t = useTranslations(lang);
+  const typedRole = useTypewriter(ROLES);
 
   const socialLinks = [
     { icon: Github, href: profile.social.github, label: 'GitHub' },
@@ -52,7 +85,6 @@ export function HeroSection({ lang = 'en' }: HeroSectionProps) {
       {/* Animated orbs */}
       <div className="hero-orb hero-orb-1" aria-hidden="true" />
       <div className="hero-orb hero-orb-2" aria-hidden="true" />
-      <div className="hero-orb hero-orb-3" aria-hidden="true" />
 
       <div className="container px-4 md:px-6 relative z-10 max-w-4xl">
         <div className="flex flex-col items-center space-y-12 text-center">
@@ -75,51 +107,57 @@ export function HeroSection({ lang = 'en' }: HeroSectionProps) {
             </div>
 
             {/* Main Heading */}
-            <div className="space-y-6 opacity-0 animate-fade-in-delayed-2">
+            <div className="space-y-4 opacity-0 animate-fade-in-delayed-2">
               <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-tight">
-                <span className="block mb-2">{t('hero.greeting')}</span>
                 <span className="text-gradient block">
                   {profile.name}
                   <span className="type-cursor" aria-hidden="true" />
                 </span>
               </h1>
 
-              {/* Description */}
-              <div className="relative max-w-4xl mx-auto">
-                <p className="text-muted-foreground text-lg md:text-xl leading-relaxed space-y-3">
-                  <span className="block mb-4">
-                    <span className="font-semibold">
-                      8+ years of experience
-                    </span>{' '}
-                    developing sophisticated software solutions across B2B and
-                    B2C industries.
+              {/* Typewriter role line */}
+              <p className="text-xl md:text-2xl font-medium text-muted-foreground">
+                I&apos;m a{' '}
+                <span className="text-gradient font-semibold">{typedRole}</span>
+                <span className="type-cursor" aria-hidden="true" />
+              </p>
+            </div>
+
+            {/* Description */}
+            <div className="opacity-0 animate-fade-in-delayed-3 relative max-w-4xl mx-auto">
+              <p className="text-muted-foreground text-lg md:text-xl leading-relaxed space-y-3">
+                <span className="block mb-4">
+                  <span className="font-semibold">
+                    8+ years of experience
+                  </span>{' '}
+                  developing sophisticated software solutions across B2B and
+                  B2C industries.
+                </span>
+                <span className="block mb-4">
+                  Specialized in architecting{' '}
+                  <span className="font-semibold">
+                    high-quality, well-tested, and resilient applications
+                  </span>{' '}
+                  that deliver exceptional business value.
+                </span>
+                <span className="block mb-4">
+                  Expert in{' '}
+                  <span className="font-semibold">MERN and MEVN stacks</span>{' '}
+                  with advanced TypeScript proficiency across React.js,
+                  Vue.js, Next.js, and Nuxt.js ecosystems.
+                </span>
+                <span className="block">
+                  Committed to{' '}
+                  <span className="font-semibold">
+                    continuous learning and professional excellence
                   </span>
-                  <span className="block mb-4">
-                    Specialized in architecting{' '}
-                    <span className="font-semibold">
-                      high-quality, well-tested, and resilient applications
-                    </span>{' '}
-                    that deliver exceptional business value.
-                  </span>
-                  <span className="block mb-4">
-                    Expert in{' '}
-                    <span className="font-semibold">MERN and MEVN stacks</span>{' '}
-                    with advanced TypeScript proficiency across React.js,
-                    Vue.js, Next.js, and Nuxt.js ecosystems.
-                  </span>
-                  <span className="block">
-                    Committed to{' '}
-                    <span className="font-semibold">
-                      continuous learning and professional excellence
-                    </span>
-                    .
-                  </span>
-                </p>
-              </div>
+                  .
+                </span>
+              </p>
             </div>
 
             {/* Metrics */}
-            <div className="opacity-0 animate-fade-in-delayed-3">
+            <div className="opacity-0 animate-fade-in-delayed-4">
               <div className="flex flex-wrap justify-center gap-6 text-sm">
                 {metrics.map((metric, index) => (
                   <div
@@ -139,7 +177,7 @@ export function HeroSection({ lang = 'en' }: HeroSectionProps) {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in-delayed-4">
+          <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in-delayed-5">
             <Button size="lg" className="btn-elegant px-8 py-4" asChild>
               <a href="#contact">
                 <Mail className="mr-2 h-5 w-5" />

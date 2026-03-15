@@ -109,9 +109,7 @@
   background: linear-gradient(
     135deg,
     hsl(185, 90%, 62%) 0%,
-    hsl(38, 100%, 72%) 30%,
-    hsl(185, 90%, 82%) 50%,
-    hsl(38, 100%, 72%) 70%,
+    hsl(38, 100%, 62%) 50%,
     hsl(185, 90%, 62%) 100%
   );
   background-size: 200% auto;
@@ -152,15 +150,6 @@
   animation: orbDrift2 28s ease-in-out infinite alternate;
 }
 
-.hero-orb-3 {
-  width: 340px;
-  height: 340px;
-  background: radial-gradient(circle, hsl(270, 65%, 60%), transparent 70%);
-  top: 30%;
-  right: 12%;
-  animation: orbDrift3 33s ease-in-out infinite alternate;
-}
-
 @keyframes orbDrift1 {
   0%   { transform: translate(0, 0) scale(1); }
   50%  { transform: translate(45px, 30px) scale(1.08); }
@@ -173,19 +162,13 @@
   100% { transform: translate(30px, -55px) scale(0.91); }
 }
 
-@keyframes orbDrift3 {
-  0%   { transform: translate(0, 0) scale(1); }
-  60%  { transform: translate(30px, 45px) scale(1.06); }
-  100% { transform: translate(-45px, -25px) scale(1.12); }
-}
-
 /* --- Shimmer animation for name gradient text -------------- */
 @keyframes textShimmer {
   0%   { background-position: 200% center; }
   100% { background-position: -200% center; }
 }
 
-/* --- Typing cursor ----------------------------------------- */
+/* --- Typing cursor (blinks forever) ------------------------ */
 .type-cursor {
   display: inline-block;
   width: 3px;
@@ -194,18 +177,12 @@
   margin-left: 6px;
   vertical-align: middle;
   border-radius: 2px;
-  animation:
-    cursorBlink 0.75s step-end 12,
-    cursorFade  0.4s 9s forwards;
+  animation: cursorBlink 0.75s step-end infinite;
 }
 
 @keyframes cursorBlink {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0; }
-}
-
-@keyframes cursorFade {
-  to { opacity: 0; }
 }
 
 /* --- Hero aurora / mesh background ------------------------- */
