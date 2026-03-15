@@ -81,7 +81,7 @@ export function ContactSection() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-full bg-primary/10">
+                  <div className="p-2 bg-muted">
                     <Mail className="h-4 w-4 text-primary" />
                   </div>
                   <div>
@@ -95,7 +95,7 @@ export function ContactSection() {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-full bg-primary/10">
+                  <div className="p-2 bg-muted">
                     <Phone className="h-4 w-4 text-primary" />
                   </div>
                   <div>
@@ -109,7 +109,7 @@ export function ContactSection() {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-full bg-primary/10">
+                  <div className="p-2 bg-muted">
                     <MapPin className="h-4 w-4 text-primary" />
                   </div>
                   <div>
@@ -230,7 +230,7 @@ export function ContactSection() {
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 border-0"
+                  className="w-full btn-elegant"
                 >
                   <Send className="mr-2 h-4 w-4" />
                   Send Message

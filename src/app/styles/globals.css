@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '@fontsource-variable/jetbrains-mono';
 
 @theme {
   --color-border: hsl(var(--border));
@@ -42,75 +43,66 @@
   --animate-accordion-up: accordion-up 0.2s ease-out;
 
   @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
+    from { height: 0; }
+    to   { height: var(--radix-accordion-content-height); }
   }
   @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
+    from { height: var(--radix-accordion-content-height); }
+    to   { height: 0; }
   }
 }
 
 /* ============================================================
-   THEME: CANCÚN NOIR
-   Caribbean midnight ocean × Yucatán sunset gold
+   THEME: MONOCHROME
+   Black / white / pure grays — no chroma
    ============================================================ */
 
 /* --- Glassmorphism card ------------------------------------ */
 .elegant-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
 }
 
 .dark .elegant-card {
-  background: rgba(0, 210, 230, 0.03);
-  border: 1px solid rgba(0, 210, 230, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .elegant-card:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.18);
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
 }
 
 .dark .elegant-card:hover {
-  background: rgba(0, 210, 230, 0.07);
-  border: 1px solid rgba(0, 210, 230, 0.22);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow:
-    0 8px 32px rgba(0, 210, 230, 0.1),
-    0 2px 8px rgba(0, 0, 0, 0.45);
+    0 8px 32px rgba(255, 255, 255, 0.04),
+    0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 /* --- Gradient text ----------------------------------------- */
-/* Light: deep teal → ocean navy */
 .text-gradient {
   background: linear-gradient(
     135deg,
-    hsl(193, 70%, 28%) 0%,
-    hsl(217, 45%, 22%) 100%
+    hsl(0, 0%, 8%) 0%,
+    hsl(0, 0%, 35%) 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Dark: Caribbean cyan → Yucatán gold (animated shimmer) */
+/* Dark: white → mid-gray metallic shimmer */
 .dark .text-gradient {
   background: linear-gradient(
     135deg,
-    hsl(185, 90%, 62%) 0%,
-    hsl(38, 100%, 62%) 50%,
-    hsl(185, 90%, 62%) 100%
+    hsl(0, 0%, 100%) 0%,
+    hsl(0, 0%, 60%) 50%,
+    hsl(0, 0%, 100%) 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -119,23 +111,23 @@
   animation: textShimmer 5s linear infinite;
 }
 
-/* --- Hero animated orbs ------------------------------------ */
+/* --- Hero animated orbs (mono) ----------------------------- */
 .hero-orb {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
-  filter: blur(90px);
-  opacity: 0.1;
+  filter: blur(100px);
+  opacity: 0.06;
 }
 
 .dark .hero-orb {
-  opacity: 0.18;
+  opacity: 0.1;
 }
 
 .hero-orb-1 {
   width: 520px;
   height: 520px;
-  background: radial-gradient(circle, hsl(185, 90%, 52%), transparent 70%);
+  background: radial-gradient(circle, hsl(0, 0%, 100%), transparent 70%);
   top: -15%;
   left: -10%;
   animation: orbDrift1 22s ease-in-out infinite alternate;
@@ -144,7 +136,7 @@
 .hero-orb-2 {
   width: 420px;
   height: 420px;
-  background: radial-gradient(circle, hsl(38, 100%, 58%), transparent 70%);
+  background: radial-gradient(circle, hsl(0, 0%, 70%), transparent 70%);
   bottom: -15%;
   right: -8%;
   animation: orbDrift2 28s ease-in-out infinite alternate;
@@ -162,7 +154,7 @@
   100% { transform: translate(30px, -55px) scale(0.91); }
 }
 
-/* --- Shimmer animation for name gradient text -------------- */
+/* --- Shimmer animation for name text ----------------------- */
 @keyframes textShimmer {
   0%   { background-position: 200% center; }
   100% { background-position: -200% center; }
@@ -173,10 +165,9 @@
   display: inline-block;
   width: 3px;
   height: 0.78em;
-  background: hsl(185, 90%, 62%);
+  background: hsl(var(--foreground));
   margin-left: 6px;
   vertical-align: middle;
-  border-radius: 2px;
   animation: cursorBlink 0.75s step-end infinite;
 }
 
@@ -185,7 +176,7 @@
   50%       { opacity: 0; }
 }
 
-/* --- Hero aurora / mesh background ------------------------- */
+/* --- Hero mesh background ---------------------------------- */
 .hero-mesh {
   position: absolute;
   inset: 0;
@@ -200,77 +191,53 @@
   background:
     radial-gradient(
       ellipse 80% 50% at 20% 30%,
-      rgba(0, 210, 230, 0.07) 0%,
+      rgba(128, 128, 128, 0.04) 0%,
       transparent 60%
     ),
     radial-gradient(
       ellipse 60% 40% at 80% 70%,
-      rgba(251, 176, 52, 0.06) 0%,
+      rgba(128, 128, 128, 0.03) 0%,
       transparent 55%
-    ),
-    radial-gradient(
-      ellipse 50% 60% at 60% 20%,
-      rgba(120, 80, 220, 0.05) 0%,
-      transparent 50%
     );
-  animation: aurora 12s ease-in-out infinite alternate;
+  animation: aurora 14s ease-in-out infinite alternate;
 }
 
 .dark .hero-mesh::before {
   background:
     radial-gradient(
       ellipse 80% 50% at 20% 30%,
-      rgba(0, 210, 230, 0.12) 0%,
+      rgba(255, 255, 255, 0.05) 0%,
       transparent 60%
     ),
     radial-gradient(
       ellipse 60% 40% at 80% 70%,
-      rgba(251, 176, 52, 0.09) 0%,
+      rgba(255, 255, 255, 0.03) 0%,
       transparent 55%
-    ),
-    radial-gradient(
-      ellipse 50% 60% at 60% 20%,
-      rgba(120, 80, 220, 0.08) 0%,
-      transparent 50%
     );
 }
 
 @keyframes aurora {
-  0% {
-    transform: scale(1) translate(0, 0);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.05) translate(1%, -1%);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.02) translate(-1%, 1%);
-    opacity: 0.85;
-  }
+  0%   { transform: scale(1) translate(0, 0); opacity: 0.8; }
+  50%  { transform: scale(1.05) translate(1%, -1%); opacity: 1; }
+  100% { transform: scale(1.02) translate(-1%, 1%); opacity: 0.85; }
 }
 
-/* --- Cyan glow accent (interactive elements) --------------- */
+/* --- White glow accent (interactive elements) -------------- */
 .glow-cyan {
-  box-shadow: 0 0 0 0 rgba(0, 210, 230, 0);
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
   transition: box-shadow 0.3s ease;
 }
 
 .dark .glow-cyan:hover {
   box-shadow:
-    0 0 20px rgba(0, 210, 230, 0.25),
-    0 0 40px rgba(0, 210, 230, 0.1);
+    0 0 18px rgba(255, 255, 255, 0.12),
+    0 0 36px rgba(255, 255, 255, 0.05);
 }
 
 /* --- Float animation (profile avatar) ---------------------- */
 @keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
 }
 
 .animate-float {
@@ -279,141 +246,102 @@
 
 /* --- Staggered fade-in animations -------------------------- */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.animate-fade-in {
-  animation: fadeInUp 0.6s ease-out 0.1s forwards;
-  opacity: 0;
-}
-
-.animate-fade-in-delayed {
-  animation: fadeInUp 0.6s ease-out 0.2s forwards;
-  opacity: 0;
-}
-
-.animate-fade-in-delayed-2 {
-  animation: fadeInUp 0.6s ease-out 0.3s forwards;
-  opacity: 0;
-}
-
-.animate-fade-in-delayed-3 {
-  animation: fadeInUp 0.6s ease-out 0.4s forwards;
-  opacity: 0;
-}
-
-.animate-fade-in-delayed-4 {
-  animation: fadeInUp 0.6s ease-out 0.5s forwards;
-  opacity: 0;
-}
-
-.animate-fade-in-delayed-5 {
-  animation: fadeInUp 0.6s ease-out 0.6s forwards;
-  opacity: 0;
-}
+.animate-fade-in            { animation: fadeInUp 0.6s ease-out 0.1s forwards; opacity: 0; }
+.animate-fade-in-delayed    { animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0; }
+.animate-fade-in-delayed-2  { animation: fadeInUp 0.6s ease-out 0.3s forwards; opacity: 0; }
+.animate-fade-in-delayed-3  { animation: fadeInUp 0.6s ease-out 0.4s forwards; opacity: 0; }
+.animate-fade-in-delayed-4  { animation: fadeInUp 0.6s ease-out 0.5s forwards; opacity: 0; }
+.animate-fade-in-delayed-5  { animation: fadeInUp 0.6s ease-out 0.6s forwards; opacity: 0; }
 
 /* --- Elegant button ---------------------------------------- */
 .btn-elegant {
   background: hsl(var(--primary));
   color: hsl(var(--primary-foreground));
   border: 1px solid hsl(var(--primary));
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .btn-elegant:hover {
   background: transparent;
   color: hsl(var(--primary));
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(0, 210, 230, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.dark .btn-elegant:hover {
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.08);
 }
 
 /* --- Scrollbar --------------------------------------------- */
-::-webkit-scrollbar {
-  width: 4px;
-}
-
-::-webkit-scrollbar-track {
-  background: hsl(var(--muted));
-}
-
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--primary));
-  border-radius: 2px;
-  opacity: 0.5;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary));
-  opacity: 1;
-}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: hsl(var(--muted)); }
+::-webkit-scrollbar-thumb { background: hsl(var(--foreground)); border-radius: 2px; opacity: 0.3; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--foreground)); opacity: 0.8; }
 
 @utility text-balance {
   text-wrap: balance;
 }
 
 @layer base {
-  /* ---- Light: warm sand coast ---- */
+  /* ---- Light mode ---- */
   :root {
-    --background: 35 30% 98%;
-    --foreground: 217 35% 10%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 4%;
     --card: 0 0% 100%;
-    --card-foreground: 217 35% 10%;
+    --card-foreground: 0 0% 4%;
     --popover: 0 0% 100%;
-    --popover-foreground: 217 35% 10%;
-    --primary: 193 70% 32%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 35 25% 92%;
-    --secondary-foreground: 217 35% 12%;
-    --muted: 35 20% 94%;
-    --muted-foreground: 217 15% 48%;
-    --accent: 38 95% 52%;
-    --accent-foreground: 30 30% 10%;
+    --popover-foreground: 0 0% 4%;
+    --primary: 0 0% 4%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 0 0% 92%;
+    --accent-foreground: 0 0% 4%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 35 20% 88%;
-    --input: 35 20% 88%;
-    --ring: 193 70% 32%;
-    --chart-1: 193 70% 45%;
-    --chart-2: 38 95% 55%;
-    --chart-3: 270 65% 58%;
-    --chart-4: 145 60% 42%;
-    --chart-5: 14 85% 58%;
-    --radius: 0.75rem;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 0 0% 4%;
+    --chart-1: 0 0% 20%;
+    --chart-2: 0 0% 40%;
+    --chart-3: 0 0% 55%;
+    --chart-4: 0 0% 70%;
+    --chart-5: 0 0% 85%;
+    --radius: 2px;
   }
 
-  /* ---- Dark: midnight ocean ---- */
+  /* ---- Dark mode ---- */
   .dark {
-    --background: 217 35% 6%;
-    --foreground: 185 15% 95%;
-    --card: 217 30% 8%;
-    --card-foreground: 185 15% 95%;
-    --popover: 217 30% 8%;
-    --popover-foreground: 185 15% 95%;
-    --primary: 185 90% 52%;
-    --primary-foreground: 217 35% 8%;
-    --secondary: 210 30% 12%;
-    --secondary-foreground: 185 15% 88%;
-    --muted: 210 25% 14%;
-    --muted-foreground: 200 18% 58%;
-    --accent: 38 100% 58%;
-    --accent-foreground: 30 25% 8%;
+    --background: 0 0% 4%;
+    --foreground: 0 0% 96%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 96%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 11%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 55%;
+    --accent: 0 0% 16%;
+    --accent-foreground: 0 0% 96%;
     --destructive: 0 62.8% 40%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 25% 16%;
-    --input: 210 25% 16%;
-    --ring: 185 90% 52%;
-    --chart-1: 185 90% 55%;
-    --chart-2: 38 100% 58%;
-    --chart-3: 270 70% 65%;
-    --chart-4: 145 65% 50%;
-    --chart-5: 14 85% 60%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 0 0% 100%;
+    --chart-1: 0 0% 90%;
+    --chart-2: 0 0% 70%;
+    --chart-3: 0 0% 50%;
+    --chart-4: 0 0% 35%;
+    --chart-5: 0 0% 20%;
   }
 }
 
@@ -427,8 +355,11 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-feature-settings:
-      'rlig' 1,
-      'calt' 1;
+    font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+    letter-spacing: -0.02em;
   }
 }

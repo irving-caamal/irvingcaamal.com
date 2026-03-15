@@ -12,28 +12,24 @@ const highlights = [
     title: 'Clean Code',
     description:
       'Writing maintainable, scalable, and efficient code following best practices.',
-    gradient: 'bg-blue-500',
   },
   {
     icon: Lightbulb,
     title: 'Problem Solver',
     description:
       'Analytical thinking to solve complex problems with innovative solutions.',
-    gradient: 'bg-yellow-500',
   },
   {
     icon: Users,
     title: 'Team Player',
     description:
       'Collaborative approach with excellent communication and leadership skills.',
-    gradient: 'bg-green-500',
   },
   {
     icon: Zap,
     title: 'Fast Learner',
     description:
       'Quick to adapt to new technologies and frameworks in the ever-evolving tech landscape.',
-    gradient: 'bg-purple-500',
   },
 ];
 
@@ -74,7 +70,7 @@ export function AboutSection() {
         <div className="grid gap-6 md:grid-cols-4 mb-16">
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="elegant-card rounded-2xl p-6">
+              <div className="elegant-card p-6">
                 <div className="text-3xl font-bold text-gradient mb-2">
                   {stat.number}
                 </div>
@@ -92,10 +88,8 @@ export function AboutSection() {
             <Card key={index} className="elegant-card border-white/10 group">
               <CardContent className="pt-6 text-center">
                 <div className="flex justify-center mb-4">
-                  <div
-                    className={`p-4 rounded-2xl ${highlight.gradient} shadow-lg`}
-                  >
-                    <highlight.icon className="h-6 w-6 text-white" />
+                  <div className="p-4 bg-foreground">
+                    <highlight.icon className="h-6 w-6 text-background" />
                   </div>
                 </div>
                 <h3 className="font-semibold mb-2 text-gradient">
@@ -111,7 +105,7 @@ export function AboutSection() {
 
         {/* About content */}
         <div className="max-w-4xl mx-auto">
-          <div className="elegant-card rounded-3xl p-8 md:p-12">
+          <div className="elegant-card p-8 md:p-12">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="space-y-6">
                 <h3 className="text-2xl font-bold text-gradient">My Journey</h3>
@@ -123,8 +117,8 @@ export function AboutSection() {
                 </p>
               </div>
               <div className="relative">
-                <div className="aspect-square rounded-3xl bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 p-1">
-                  <div className="w-full h-full rounded-3xl bg-background/90 backdrop-blur-sm flex items-center justify-center">
+                <div className="aspect-square border border-border p-1">
+                  <div className="w-full h-full bg-muted flex items-center justify-center">
                     <div className="text-center">
                       <div className="text-4xl mb-4">🚀</div>
                       <div className="text-lg font-semibold text-gradient">
