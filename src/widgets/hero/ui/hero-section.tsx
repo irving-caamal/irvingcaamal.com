@@ -58,6 +58,7 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ lang = 'en' }: HeroSectionProps) {
+  void lang; // accepted by parent for i18n routing, not used in this component yet
   const profile = useUnit($profile);
   const typedRole = useTypewriter(ROLES);
 
