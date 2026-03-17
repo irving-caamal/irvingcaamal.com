@@ -108,20 +108,21 @@ export function HeroSection({ lang = 'en' }: HeroSectionProps) {
             </div>
 
             {/* Main Heading */}
-            <div className="space-y-4 opacity-0 animate-fade-in-delayed-2">
+            <div className="space-y-6 opacity-0 animate-fade-in-delayed-2">
               <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-tight">
-                <span className="text-gradient block">
-                  {profile.name}
-                  <span className="type-cursor" aria-hidden="true" />
-                </span>
+                {profile.name}
               </h1>
 
               {/* Typewriter role line */}
-              <p className="text-xl md:text-2xl font-medium text-muted-foreground">
-                I&apos;m a{' '}
-                <span className="text-gradient font-semibold">{typedRole}</span>
-                <span className="type-cursor" aria-hidden="true" />
-              </p>
+              <div>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
+                  I&apos;m a
+                </p>
+                <p className="text-3xl font-bold sm:text-4xl md:text-5xl leading-tight">
+                  <span className="text-gradient">{typedRole}</span>
+                  <span className="type-cursor" aria-hidden="true" />
+                </p>
+              </div>
             </div>
 
             {/* Description */}
