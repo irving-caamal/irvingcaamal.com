@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import { Button } from '~/shared/ui/button';
 import { Badge } from '~/shared/ui/badge';
 import {
-  ArrowDown,
   Download,
   Github,
   Linkedin,
@@ -22,7 +21,7 @@ const ROLES = [
 ];
 
 function useTypewriter(words: string[], typeSpeed = 80, deleteSpeed = 45, pauseMs = 2200) {
-  const [text, setText] = useState('');
+  const [text, setText] = useState(words[0]);
   const [wordIdx, setWordIdx] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -179,12 +178,6 @@ export function HeroSection({ lang = 'en' }: HeroSectionProps) {
             ))}
           </div>
 
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-8">
-            <div className="w-10 h-10 elegant-card flex items-center justify-center cursor-pointer">
-              <ArrowDown className="h-4 w-4 text-muted-foreground animate-bounce" />
-            </div>
-          </div>
         </div>
       </div>
     </section>
