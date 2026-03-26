@@ -2,14 +2,12 @@
 
 import { Badge } from '~/shared/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '~/shared/ui/card';
-import { Progress } from '~/shared/ui/progress';
 import { Code2, Database, Wrench } from 'lucide-react';
 
 const skillCategories = [
   {
     title: 'Frontend',
     icon: Code2,
-    gradient: 'from-blue-500 to-cyan-500',
     skills: [
       { name: 'React/Next.js', level: 95 },
       { name: 'TypeScript', level: 90 },
@@ -20,7 +18,6 @@ const skillCategories = [
   {
     title: 'Backend',
     icon: Database,
-    gradient: 'from-green-500 to-emerald-500',
     skills: [
       { name: 'Node.js', level: 92 },
       { name: 'Python', level: 85 },
@@ -31,7 +28,6 @@ const skillCategories = [
   {
     title: 'Tools & Others',
     icon: Wrench,
-    gradient: 'from-purple-500 to-pink-500',
     skills: [
       { name: 'Git/GitHub', level: 95 },
       { name: 'Docker', level: 82 },
@@ -42,24 +38,10 @@ const skillCategories = [
 ];
 
 const technologies = [
-  { name: 'React', color: 'from-blue-400 to-blue-600' },
-  { name: 'Next.js', color: 'from-gray-700 to-gray-900' },
-  { name: 'TypeScript', color: 'from-blue-600 to-blue-800' },
-  { name: 'Node.js', color: 'from-green-500 to-green-700' },
-  { name: 'Python', color: 'from-yellow-400 to-yellow-600' },
-  { name: 'PostgreSQL', color: 'from-blue-500 to-indigo-600' },
-  { name: 'MongoDB', color: 'from-green-400 to-green-600' },
-  { name: 'Tailwind CSS', color: 'from-cyan-400 to-cyan-600' },
-  { name: 'Docker', color: 'from-blue-400 to-blue-600' },
-  { name: 'AWS', color: 'from-orange-400 to-orange-600' },
-  { name: 'GraphQL', color: 'from-pink-500 to-pink-700' },
-  { name: 'REST APIs', color: 'from-purple-500 to-purple-700' },
-  { name: 'Git', color: 'from-red-500 to-red-700' },
-  { name: 'Jest', color: 'from-red-400 to-red-600' },
-  { name: 'Cypress', color: 'from-gray-600 to-gray-800' },
-  { name: 'Figma', color: 'from-purple-400 to-purple-600' },
-  { name: 'Vercel', color: 'from-black to-gray-800' },
-  { name: 'Supabase', color: 'from-green-400 to-green-600' },
+  'React', 'Next.js', 'TypeScript', 'Node.js', 'Python',
+  'PostgreSQL', 'MongoDB', 'Tailwind CSS', 'Docker', 'AWS',
+  'GraphQL', 'REST APIs', 'Git', 'Jest', 'Cypress',
+  'Figma', 'Vercel', 'Supabase',
 ];
 
 /**
@@ -101,17 +83,13 @@ export function SkillsSection() {
                   <div key={skillIndex} className="space-y-2">
                     <div className="flex justify-between text-sm">
                       <span className="font-medium">{skill.name}</span>
-                      <span className="text-gradient font-semibold">
+                      <span className="font-semibold text-muted-foreground">
                         {skill.level}%
                       </span>
                     </div>
-                    <div className="relative">
-                      <Progress
-                        value={skill.level}
-                        className="h-2 bg-gray-200"
-                      />
+                    <div className="relative h-1 bg-muted">
                       <div
-                        className={`absolute top-0 left-0 h-2 rounded-full bg-gradient-to-r ${category.gradient}`}
+                        className="absolute top-0 left-0 h-full bg-foreground"
                         style={{ width: `${skill.level}%` }}
                       />
                     </div>
@@ -126,14 +104,14 @@ export function SkillsSection() {
           <h3 className="text-2xl font-bold mb-8 text-gradient">
             Technologies I Work With
           </h3>
-          <div className="elegant-card rounded-3xl p-8">
-            <div className="flex flex-wrap justify-center gap-3">
+          <div className="elegant-card p-8">
+            <div className="flex flex-wrap justify-center gap-2">
               {technologies.map((tech, index) => (
                 <div
                   key={index}
-                  className={`px-4 py-2 rounded-full bg-gradient-to-r ${tech.color} text-white text-sm font-medium shadow-lg cursor-pointer`}
+                  className="px-4 py-2 border border-border text-sm font-medium cursor-pointer hover:bg-foreground hover:text-background transition-colors duration-200"
                 >
-                  {tech.name}
+                  {tech}
                 </div>
               ))}
             </div>
