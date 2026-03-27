@@ -1,3 +1,4 @@
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { cn, getInitials, slugify, debounce } from '../utils';
 
 describe('shared/lib/utils', () => {
@@ -67,44 +68,44 @@ describe('shared/lib/utils', () => {
 
   describe('debounce', () => {
     beforeEach(() => {
-      jest.useFakeTimers();
+      vi.useFakeTimers();
     });
 
     afterEach(() => {
-      jest.useRealTimers();
-      jest.clearAllTimers();
+      vi.useRealTimers();
+      vi.clearAllTimers();
     });
 
     it('delays function execution', () => {
-      const mockFn = jest.fn();
+      const mockFn = vi.fn();
       const debouncedFn = debounce(mockFn, 100);
 
       debouncedFn();
       expect(mockFn).not.toHaveBeenCalled();
 
-      jest.advanceTimersByTime(100);
+      vi.advanceTimersByTime(100);
       expect(mockFn).toHaveBeenCalledTimes(1);
     });
 
     it('cancels previous calls when called multiple times', () => {
-      const mockFn = jest.fn();
+      const mockFn = vi.fn();
       const debouncedFn = debounce(mockFn, 100);
 
       debouncedFn();
       debouncedFn();
       debouncedFn();
 
-      jest.advanceTimersByTime(100);
+      vi.advanceTimersByTime(100);
       expect(mockFn).toHaveBeenCalledTimes(1);
     });
 
     it('passes arguments to debounced function', () => {
-      const mockFn = jest.fn();
+      const mockFn = vi.fn();
       const debouncedFn = debounce(mockFn, 100);
 
       debouncedFn('arg1', 42, { key: 'value' });
 
-      jest.advanceTimersByTime(100);
+      vi.advanceTimersByTime(100);
       expect(mockFn).toHaveBeenCalledWith('arg1', 42, { key: 'value' });
     });
   });
