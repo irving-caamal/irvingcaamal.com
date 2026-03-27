@@ -10,9 +10,17 @@ test.describe('Homepage', () => {
   });
 
   test('displays hero section', async ({ page }) => {
-    const heroHeading = page.locator('h1').first();
+    const heroSection = page.locator('#home');
+    const heroHeading = heroSection.locator('h1');
+
+    await expect(heroSection).toBeVisible();
     await expect(heroHeading).toBeVisible();
-    await expect(heroHeading).toContainText('Irving');
+    await expect(
+      heroSection.getByText(/Irving de Jesús Caamal Alcocer/i)
+    ).toBeVisible();
+    await expect(
+      heroSection.getByRole('link', { name: /get in touch/i })
+    ).toBeVisible();
   });
 
   test('displays navigation menu', async ({ page }) => {
