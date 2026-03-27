@@ -1,8 +1,5 @@
 'use client';
 
-import { useUnit } from 'effector-react';
-import { $profile } from '../model/profile';
-
 interface ProfileAvatarProps {
   size?: 'sm' | 'md' | 'lg';
   className?: string;
@@ -15,7 +12,6 @@ export function ProfileAvatar({
   size = 'md',
   className = '',
 }: ProfileAvatarProps) {
-  const profile = useUnit($profile);
 
   const sizeClasses = {
     sm: 'w-8 h-8 text-sm',
@@ -25,9 +21,9 @@ export function ProfileAvatar({
 
   return (
     <div
-      className={`rounded-full bg-gradient-to-br from-foreground to-muted-foreground flex items-center justify-center ${sizeClasses[size]} ${className}`}
+      className={`rounded-2xl bg-gradient-to-br from-foreground to-muted-foreground flex items-center justify-center overflow-hidden ${sizeClasses[size]} ${className}`}
     >
-      <span className="font-bold text-background">{profile.initials}</span>
+      <img src="/logo.png" alt="IC Logo" className="w-full h-full object-cover" />
     </div>
   );
 }

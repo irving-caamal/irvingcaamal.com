@@ -27,7 +27,9 @@ describe('shared/config/site', () => {
     it('has experience information', () => {
       expect(siteConfig.experience).toBeDefined();
       expect(siteConfig.experience.years).toBeDefined();
-      expect(siteConfig.experience.projectsCompleted).toBeDefined();
+      expect(siteConfig.experience.domains).toBeDefined();
+      expect(siteConfig.experience.stack).toBeDefined();
+      expect(siteConfig.experience.delivery).toBeDefined();
     });
 
     it('has professional information', () => {

@@ -27,7 +27,10 @@ export function Footer({ lang = 'en' }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand & Copyright */}
           <div className="md:col-span-2 space-y-4">
-            <h3 className="text-2xl font-bold text-gradient">{profile.name}</h3>
+            <div className="flex items-center space-x-3">
+              <img src="/logo.png" alt="IC Logo" className="w-10 h-10 rounded-xl object-contain" />
+              <h3 className="text-2xl font-bold text-gradient">{profile.name}</h3>
+            </div>
             <p className="text-muted-foreground max-w-sm">{profile.tagline}</p>
             <p className="text-sm text-muted-foreground pt-4">
               © {new Date().getFullYear()} {profile.name}. {t('footer.rights')}

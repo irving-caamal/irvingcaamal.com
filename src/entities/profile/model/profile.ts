@@ -1,6 +1,5 @@
 import { createStore } from 'effector';
 import { siteConfig } from '~/shared/config/site';
-import { experiences } from '~/shared/config/experiences';
 import { getInitials } from '~/shared/lib/utils';
 
 /**
@@ -37,10 +36,7 @@ export const $profile = createStore<ProfileData>({
   location: siteConfig.location,
   initials: getInitials(siteConfig.name),
   social: siteConfig.social,
-  experience: {
-    ...siteConfig.experience,
-    projectsCompleted: `${experiences.length}+`,
-  },
+  experience: siteConfig.experience,
   resumeUrl: siteConfig.resumeUrl,
   currentCompany: siteConfig.currentCompany,
   currentRole: siteConfig.currentRole,

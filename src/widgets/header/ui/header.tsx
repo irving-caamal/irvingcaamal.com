@@ -25,33 +25,49 @@ export function Header({ lang = 'en' }: HeaderProps) {
     { name: t('nav.experience'), href: '#experience' },
     { name: t('nav.contact'), href: '#contact' },
   ];
+  const mobileFeaturedItems = [
+    { name: t('nav.projects'), href: '#projects' },
+    { name: t('nav.skills'), href: '#skills' },
+    { name: t('nav.about'), href: '#about' },
+  ];
   return (
     <header className="sticky top-0 z-50 w-full elegant-card border-b border-white/10 backdrop-blur-xl">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container py-3 md:py-0">
         {/* Brand */}
-        <a href="/" className="flex items-center space-x-2">
-          <ProfileAvatar size="sm" className="elegant-card p-1" />
-          <span className="text-2xl font-bold text-gradient">
-            {siteConfig.name}
-          </span>
-        </a>
+        <div className="flex min-h-16 items-center justify-between gap-3 md:gap-4">
+          <a href="/" data-testid="logo-link" className="flex items-center space-x-2">
+            <ProfileAvatar size="sm" className="elegant-card p-1" />
+            <span className="text-xl font-bold text-gradient sm:text-2xl">
+              {siteConfig.shortName}
+            </span>
+          </a>
 
-        {/* Desktop Navigation */}
-        <DesktopNav items={navItems} />
+          {/* Desktop Navigation */}
+          <DesktopNav items={navItems} />
 
-        {/* Actions */}
-        <div className="flex items-center space-x-2">
-          <div className="flex items-center gap-2 mr-2 text-sm font-medium">
-            <a href="/en" className="hover:text-primary transition-colors">
-              EN
-            </a>
-            <span className="text-muted-foreground/30">|</span>
-            <a href="/es" className="hover:text-primary transition-colors">
-              ES
-            </a>
+          {/* Actions */}
+          <div className="flex items-center space-x-1.5 md:space-x-2">
+            <div className="mr-1 flex items-center gap-1.5 text-xs font-medium sm:mr-2 sm:gap-2 sm:text-sm">
+              <a href="/en" className="hover:text-primary transition-colors">
+                EN
+              </a>
+              <span className="text-muted-foreground/30">|</span>
+              <a href="/es" className="hover:text-primary transition-colors">
+                ES
+              </a>
+            </div>
+            <ThemeToggle />
           </div>
-          <ThemeToggle />
-          <MobileMenu items={navItems} />
+        </div>
+
+        <div className="md:hidden">
+          <MobileMenu
+            items={navItems}
+            featuredItems={mobileFeaturedItems}
+            openLabel={t('nav.open')}
+            menuTitle={t('nav.moreTitle')}
+            menuDescription={t('nav.moreDescription')}
+          />
         </div>
       </div>
     </header>
