@@ -7,15 +7,6 @@ import { useTranslations } from '~/shared/i18n/utils';
 const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang);
 
-// Get initials
-const getInitials = (name: string) => {
-  return name
-    .split(' ')
-    .map((n) => n[0])
-    .join('')
-    .toUpperCase();
-};
-
 const navItems = [
   { name: t('nav.home'), href: '#home' },
   { name: t('nav.about'), href: '#about' },

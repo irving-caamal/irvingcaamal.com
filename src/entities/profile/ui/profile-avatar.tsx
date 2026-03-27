@@ -1,8 +1,5 @@
 'use client';
 
-import { useUnit } from 'effector-react';
-import { $profile } from '../model/profile';
-
 interface ProfileAvatarProps {
   size?: 'sm' | 'md' | 'lg';
   className?: string;
@@ -15,7 +12,6 @@ export function ProfileAvatar({
   size = 'md',
   className = '',
 }: ProfileAvatarProps) {
-  const profile = useUnit($profile);
 
   const sizeClasses = {
     sm: 'w-8 h-8 text-sm',
