@@ -3,19 +3,38 @@ import { languages } from '~/shared/i18n/ui';
 import { getLangFromUrl } from '~/shared/i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
+const orderedLanguages = [
+  ['en', languages.en],
+  ['es', languages.es],
+] as const;
 ---
 
-<ul class="flex gap-2">
+<nav
+  aria-label="Language selector"
+  class="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] p-1 shadow-[0_10px_25px_-20px_rgba(0,0,0,0.55)] backdrop-blur-xl"
+>
   {
-    Object.entries(languages).map(([key, label]) => (
-      <li>
+    orderedLanguages.map(([key, label]) => {
+      const isActive = lang === key;
+
+      return (
         <a
-          href={`/${key === 'en' ? '' : key}`}
-          class={`text-sm font-medium transition-colors hover:text-primary ${lang === key ? 'text-primary' : 'text-muted-foreground'}`}
+          href={key === 'en' ? '/en' : '/es'}
+          lang={key}
+          aria-current={isActive ? 'page' : undefined}
+          title={label}
+          class={`group relative inline-flex min-w-12 items-center justify-center rounded-full px-3 py-2 text-[0.68rem] font-semibold uppercase leading-none tracking-[0.22em] transition-all duration-200 ${
+            isActive
+              ? 'bg-foreground text-background shadow-[0_10px_18px_-14px_rgba(0,0,0,0.75)]'
+              : 'text-muted-foreground hover:bg-white/[0.08] hover:text-foreground'
+          }`}
         >
-          {label}
+          <span class={`absolute inset-x-3 top-1 h-px rounded-full bg-gradient-to-r from-transparent via-white/80 to-transparent transition-opacity ${
+            isActive ? 'opacity-100' : 'opacity-0'
+          }`} />
+          <span>{key}</span>
         </a>
-      </li>
-    ))
+      );
+    })
   }
-</ul>
+</nav>

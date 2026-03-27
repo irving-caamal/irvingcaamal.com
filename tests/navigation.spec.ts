@@ -47,20 +47,15 @@ test.describe('Navigation', () => {
     // Set mobile viewport
     await page.setViewportSize({ width: 375, height: 667 });
 
-    // Look for mobile menu button (hamburger menu)
-    const mobileMenuButton = page
-      .locator('[role="button"]', { hasText: /menu/i })
-      .or(page.locator('[data-testid="mobile-menu-button"]'))
-      .or(page.locator('[aria-label*="menu"]'))
-      .first();
+    const quickNav = page.getByTestId('mobile-quick-nav');
+    await expect(quickNav).toBeVisible();
 
-    if (await mobileMenuButton.isVisible()) {
-      await mobileMenuButton.click();
+    const mobileMenuButton = page.getByTestId('mobile-menu-button');
+    await expect(mobileMenuButton).toBeVisible();
+    await mobileMenuButton.click();
 
-      // Check if mobile menu appears
-      const mobileMenu = page.getByTestId('mobile-menu');
-      await expect(mobileMenu).toBeVisible();
-    }
+    const mobileMenu = page.getByTestId('mobile-menu');
+    await expect(mobileMenu).toBeVisible();
   });
 
   test('logo/brand link returns to home', async ({ page }) => {

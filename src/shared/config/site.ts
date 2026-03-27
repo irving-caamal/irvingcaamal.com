@@ -5,6 +5,7 @@
 export const siteConfig = {
   // Personal Information
   name: process.env.NEXT_PUBLIC_NAME || 'Irving de Jesús Caamal Alcocer',
+  shortName: process.env.NEXT_PUBLIC_SHORT_NAME || 'Irving Caamal',
   title: process.env.NEXT_PUBLIC_TITLE || 'Senior Software Engineer',
   description:
     process.env.NEXT_PUBLIC_DESCRIPTION ||

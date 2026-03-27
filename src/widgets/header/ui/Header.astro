@@ -1,7 +1,7 @@
 ---
 import { siteConfig } from '~/shared/config/site';
 import { ThemeToggle } from '~/features/theme/ui/theme-toggle';
-import { MobileMenu } from '~/features/navigation/ui/mobile-menu';
+import LanguagePicker from '~/components/i18n/LanguagePicker.astro';
 import { useTranslations } from '~/shared/i18n/utils';
 
 const { lang = 'en' } = Astro.props;
@@ -24,53 +24,51 @@ const navItems = [
   { name: t('nav.experience'), href: '#experience' },
   { name: t('nav.contact'), href: '#contact' },
 ];
+
 ---
 
 <header
   id="main-header"
   class="sticky top-0 z-50 w-full elegant-card border-b border-white/10 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60"
 >
-  <div class="container flex h-16 items-center justify-between">
-    <a href="/" class="flex items-center space-x-2">
-      <div
-        class="w-8 h-8 rounded-full bg-foreground flex items-center justify-center p-1"
-      >
-        <span class="text-background font-bold text-sm">
-          {getInitials(siteConfig.name)}
+  <div class="container py-3 md:py-0">
+    <div class="flex min-h-16 items-center justify-between gap-3 md:gap-4">
+      <a href="/" data-testid="logo-link" class="flex items-center space-x-2">
+        <img
+          src="/logo.png"
+          alt="IC Logo"
+          class="w-8 h-8 rounded-md object-contain"
+        />
+        <span class="text-xl font-bold text-gradient sm:text-2xl">
+          {siteConfig.shortName}
         </span>
+      </a>
+
+      {/* Desktop Navigation */}
+      <nav class="hidden md:flex items-center space-x-6">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="nav-link text-sm font-medium transition-colors hover:text-primary relative text-muted-foreground"
+              data-href={item.href}
+            >
+              {item.name}
+              <span class="active-indicator absolute -bottom-[21px] left-0 right-0 h-[2px] bg-primary opacity-0 transition-opacity duration-200" />
+            </a>
+          ))
+        }
+      </nav>
+
+      {/* Actions */}
+      <div class="flex items-center space-x-1.5 md:space-x-2">
+        <div class="mr-1 scale-[0.94] origin-right sm:mr-2 sm:scale-100">
+          <LanguagePicker />
+        </div>
+
+        {/* Client Islands */}
+        <ThemeToggle client:load />
       </div>
-      <span class="text-2xl font-bold text-gradient">
-        {siteConfig.name}
-      </span>
-    </a>
-
-    {/* Desktop Navigation */}
-    <nav class="hidden md:flex items-center space-x-6">
-      {
-        navItems.map((item) => (
-          <a
-            href={item.href}
-            class="nav-link text-sm font-medium transition-colors hover:text-primary relative text-muted-foreground"
-            data-href={item.href}
-          >
-            {item.name}
-            <span class="active-indicator absolute -bottom-[21px] left-0 right-0 h-[2px] bg-primary opacity-0 transition-opacity duration-200" />
-          </a>
-        ))
-      }
-    </nav>
-
-    {/* Actions */}
-    <div class="flex items-center space-x-2">
-      <div class="flex items-center gap-2 mr-2 text-sm font-medium">
-        <a href="/en" class="hover:text-primary transition-colors"> EN </a>
-        <span class="text-muted-foreground/30">|</span>
-        <a href="/es" class="hover:text-primary transition-colors"> ES </a>
-      </div>
-
-      {/* Client Islands */}
-      <ThemeToggle client:load />
-      <MobileMenu client:load items={navItems} />
     </div>
   </div>
 </header>

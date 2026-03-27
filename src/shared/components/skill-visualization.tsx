@@ -179,35 +179,37 @@ export function SkillVisualization() {
               <div
                 key={skill.id}
                 id={`skill-${skill.id}`}
-                className={`group elegant-card rounded-xl p-6 transition-all duration-300 hover:bg-white/5 cursor-pointer border ${
+                className={`group elegant-card min-w-0 rounded-xl border p-5 transition-all duration-300 hover:bg-white/5 sm:p-6 ${
                   isHighlighted
                     ? 'border-primary/60 ring-2 ring-primary/40 bg-primary/5 scale-[1.01]'
                     : 'border-white/5'
-                } ${isHovered ? 'ring-1 ring-white/20 bg-white/5' : ''}`}
+                } ${isHovered ? 'ring-1 ring-white/20 bg-white/5' : ''} cursor-pointer`}
                 onMouseEnter={() => setHoveredSkill(skill.id)}
                 onMouseLeave={() => setHoveredSkill(null)}
                 style={{ animationDelay: `${index * 50}ms` }}
               >
                 {/* Skill Header */}
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl elegant-card flex items-center justify-center group-hover:bg-white/10 transition-colors duration-200">
+                <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                  <div className="flex min-w-0 items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl elegant-card transition-colors duration-200 group-hover:bg-white/10">
                       <category.icon className="w-6 h-6" />
                     </div>
-                    <div>
-                      <h3 className="font-semibold text-lg mb-1">{skill.name}</h3>
-                      <div className="flex items-center gap-3">
+                    <div className="min-w-0">
+                      <h3 className="mb-1 break-words text-lg font-semibold">
+                        {skill.name}
+                      </h3>
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
                         <Badge
                           variant="outline"
                           className="elegant-card border-white/20 text-xs font-medium"
                         >
                           {expertiseLevel}
                         </Badge>
-                        <span className="text-xs text-muted-foreground">
+                        <span className="shrink-0 text-xs text-muted-foreground">
                           {skill.yearsOfExperience}+ years
                         </span>
                         {relatedProjects.length > 0 && (
-                          <span className="text-xs text-muted-foreground flex items-center gap-1">
+                          <span className="flex items-center gap-1 text-xs text-muted-foreground">
                             <FolderOpen className="w-3 h-3" />
                             {relatedProjects.length} project
                             {relatedProjects.length !== 1 ? 's' : ''}
@@ -219,15 +221,15 @@ export function SkillVisualization() {
                   <ChevronRight
                     className={`w-5 h-5 text-muted-foreground transition-transform duration-200 ${
                       isHovered ? 'rotate-90' : ''
-                    }`}
+                    } hidden sm:block`}
                   />
                 </div>
 
                 {/* Proficiency Level */}
                 <div className="mb-4">
-                  <div className="flex justify-between items-center mb-2">
+                  <div className="mb-2 flex items-center justify-between gap-3">
                     <span className="text-sm text-muted-foreground">Proficiency</span>
-                    <span className="text-sm font-medium">{skill.level}%</span>
+                    <span className="shrink-0 text-sm font-medium">{skill.level}%</span>
                   </div>
                   <div className="relative">
                     <Progress value={skill.level} className="h-2 bg-white/10" />
@@ -239,7 +241,7 @@ export function SkillVisualization() {
                 </div>
 
                 {/* Description */}
-                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                <p className="mb-4 break-words text-sm leading-relaxed text-muted-foreground">
                   {skill.description}
                 </p>
 

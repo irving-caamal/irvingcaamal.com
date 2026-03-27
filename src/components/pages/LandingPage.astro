@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '~/layouts/base-layout.astro';
 import Header from '~/widgets/header/ui/Header.astro';
+import { MobileMenu } from '~/features/navigation/ui/mobile-menu';
 import { HeroSection } from '~/widgets/hero/ui/hero-section';
 import { AboutSection } from '~/widgets/about/ui/about-section';
 import { ProjectsSection } from '~/widgets/projects/ui/projects-section';
@@ -9,14 +10,31 @@ import { ContactSection } from '~/widgets/contact/ui/contact-section';
 import { Footer } from '~/widgets/footer/ui/footer';
 import { ScrollProgress } from '~/shared/ui/scroll-progress';
 import { SkillVisualization } from '~/shared/components/skill-visualization';
+import { useTranslations } from '~/shared/i18n/utils';
 
 const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
+
+const navItems = [
+  { name: t('nav.home'), href: '#home' },
+  { name: t('nav.about'), href: '#about' },
+  { name: t('nav.skills'), href: '#skills' },
+  { name: t('nav.projects'), href: '#projects' },
+  { name: t('nav.experience'), href: '#experience' },
+  { name: t('nav.contact'), href: '#contact' },
+];
+
+const mobileFeaturedItems = [
+  { name: t('nav.projects'), href: '#projects' },
+  { name: t('nav.skills'), href: '#skills' },
+  { name: t('nav.about'), href: '#about' },
+];
 ---
 
 <BaseLayout>
   <ScrollProgress client:load />
   <Header lang={lang} />
-  <main class="min-h-screen">
+  <main class="min-h-screen pb-28 md:pb-0">
     <HeroSection client:load lang={lang} />
     <AboutSection client:load lang={lang} />
     <ProjectsSection client:load lang={lang} />
@@ -41,4 +59,12 @@ const { lang = 'en' } = Astro.props;
     <ContactSection client:load lang={lang} />
   </main>
   <Footer client:load lang={lang} />
+  <MobileMenu
+    client:load
+    items={navItems}
+    featuredItems={mobileFeaturedItems}
+    openLabel={t('nav.open')}
+    menuTitle={t('nav.moreTitle')}
+    menuDescription={t('nav.moreDescription')}
+  />
 </BaseLayout>

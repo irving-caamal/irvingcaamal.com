@@ -6,13 +6,13 @@ import { createEvent, createStore } from 'effector';
  */
 
 // Events
-export const mobileMenuToggled = createEvent();
+export const mobileMenuOpenChanged = createEvent<boolean>();
 export const mobileMenuClosed = createEvent();
 export const activeSectionChanged = createEvent<string>();
 
 // Stores
 export const $isMobileMenuOpen = createStore(false)
-  .on(mobileMenuToggled, (isOpen) => !isOpen)
+  .on(mobileMenuOpenChanged, (_, isOpen) => isOpen)
   .on(mobileMenuClosed, () => false);
 
 export const $activeSection = createStore<string>('home').on(
