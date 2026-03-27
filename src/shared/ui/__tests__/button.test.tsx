@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { describe, expect, it, vi } from 'vitest';
 import { Button, buttonVariants } from '../button';
 
 describe('shared/ui/Button', () => {
@@ -28,7 +29,7 @@ describe('shared/ui/Button', () => {
 
     it('handles click events', async () => {
       const user = userEvent.setup();
-      const handleClick = jest.fn();
+      const handleClick = vi.fn();
 
       render(<Button onClick={handleClick}>Click me</Button>);
 
