@@ -21,11 +21,13 @@ export function ExperienceSection() {
             Professional Journey
           </Badge>
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-            <span className="text-gradient">8+ Years</span> of Experience
+            <span className="text-gradient">{siteConfig.experience.years}</span>{' '}
+            of Experience
           </h2>
           <p className="mx-auto max-w-[700px] text-muted-foreground text-lg">
-            My career progression from junior developer to senior engineer,
-            building scalable solutions across various industries.
+            From Laravel and Vue foundations to React, Next.js, Node.js, and
+            cloud-enabled platforms, the focus has stayed the same: ship
+            scalable products with strong engineering standards.
           </p>
         </div>
 

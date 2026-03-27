@@ -2,47 +2,40 @@
 
 import { Badge } from '~/shared/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '~/shared/ui/card';
-import { Code2, Database, Wrench } from 'lucide-react';
+import { Code2, Database, Wrench, Layers } from 'lucide-react';
+import {
+  skills,
+  skillCategories as skillCategoryMeta,
+} from '~/entities/skills/data/skills';
 
-const skillCategories = [
-  {
-    title: 'Frontend',
-    icon: Code2,
-    skills: [
-      { name: 'React/Next.js', level: 95 },
-      { name: 'TypeScript', level: 90 },
-      { name: 'Tailwind CSS', level: 88 },
-      { name: 'Vue.js', level: 75 },
-    ],
-  },
-  {
-    title: 'Backend',
-    icon: Database,
-    skills: [
-      { name: 'Node.js', level: 92 },
-      { name: 'Python', level: 85 },
-      { name: 'PostgreSQL', level: 88 },
-      { name: 'MongoDB', level: 80 },
-    ],
-  },
-  {
-    title: 'Tools & Others',
-    icon: Wrench,
-    skills: [
-      { name: 'Git/GitHub', level: 95 },
-      { name: 'Docker', level: 82 },
-      { name: 'AWS', level: 78 },
-      { name: 'GraphQL', level: 75 },
-    ],
-  },
-];
+const categoryIcons = {
+  frontend: Code2,
+  backend: Database,
+  testing: Wrench,
+  devops: Wrench,
+  architecture: Layers,
+} as const;
 
-const technologies = [
-  'React', 'Next.js', 'TypeScript', 'Node.js', 'Python',
-  'PostgreSQL', 'MongoDB', 'Tailwind CSS', 'Docker', 'AWS',
-  'GraphQL', 'REST APIs', 'Git', 'Jest', 'Cypress',
-  'Figma', 'Vercel', 'Supabase',
-];
+const orderedCategories = [
+  'frontend',
+  'backend',
+  'testing',
+  'devops',
+  'architecture',
+] as const;
+
+const skillCategories = orderedCategories.map((categoryId) => ({
+  title: skillCategoryMeta[categoryId].label,
+  icon: categoryIcons[categoryId],
+  skills: skills
+    .filter((skill) => skill.category === categoryId)
+    .sort((a, b) => b.level - a.level)
+    .slice(0, 4),
+}));
+
+const technologies = [...skills]
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .map((skill) => skill.name);
 
 /**
  * Skills section widget
@@ -60,30 +53,31 @@ export function SkillsSection() {
             Technical <span className="text-gradient">Expertise</span>
           </h2>
           <p className="mx-auto max-w-[700px] text-muted-foreground text-lg leading-relaxed">
-            A comprehensive skill set covering the full spectrum of modern web
-            development.
+            Current stack coverage shaped by production work across frontend,
+            backend, testing, and delivery systems.
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-3 mb-16">
-          {skillCategories.map((category, index) => (
-            <Card key={index} className="elegant-card border-white/10 group">
+        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3 mb-16">
+          {skillCategories.map((category) => (
+            <Card
+              key={category.title}
+              className="elegant-card border-white/10 group"
+            >
               <CardHeader className="text-center pb-4">
                 <div className="flex justify-center mb-4">
                   <div className="p-4 rounded-2xl bg-white shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <category.icon className="h-6 w-6 text-black" />
                   </div>
                 </div>
-                <CardTitle className="text-gradient">
-                  {category.title}
-                </CardTitle>
+                <CardTitle className="text-gradient">{category.title}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="space-y-2">
-                    <div className="flex justify-between text-sm">
+                {category.skills.map((skill) => (
+                  <div key={skill.id} className="space-y-2">
+                    <div className="flex justify-between text-sm gap-4">
                       <span className="font-medium">{skill.name}</span>
-                      <span className="font-semibold text-muted-foreground">
+                      <span className="font-semibold text-muted-foreground shrink-0">
                         {skill.level}%
                       </span>
                     </div>
@@ -106,9 +100,9 @@ export function SkillsSection() {
           </h3>
           <div className="elegant-card p-8">
             <div className="flex flex-wrap justify-center gap-2">
-              {technologies.map((tech, index) => (
+              {technologies.map((tech) => (
                 <div
-                  key={index}
+                  key={tech}
                   className="px-4 py-2 border border-border text-sm font-medium cursor-pointer hover:bg-foreground hover:text-background transition-colors duration-200"
                 >
                   {tech}

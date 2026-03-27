@@ -14,10 +14,10 @@ import {
 import { ProfileAvatar } from '~/entities/profile/ui/profile-avatar';
 import { $profile } from '~/entities/profile/model/profile';
 const ROLES = [
-  'Software Engineer',
-  'Backend Engineer',
-  'Full Stack Developer',
-  'Tech Lead',
+  'Senior Software Engineer',
+  'Full Stack Engineer',
+  'Frontend Architect',
+  'Technical Lead',
 ];
 
 function useTypewriter(words: string[], typeSpeed = 80, deleteSpeed = 45, pauseMs = 2200) {
@@ -69,9 +69,9 @@ export function HeroSection({ lang = 'en' }: HeroSectionProps) {
   ];
 
   const metrics = [
-    { value: '99.9%', label: 'Uptime' },
-    { value: '<100ms', label: 'Response' },
-    { value: 'A+', label: 'Performance' },
+    { value: profile.experience.years, label: 'Experience' },
+    { value: profile.experience.domains, label: 'Product Work' },
+    { value: profile.experience.delivery, label: 'Delivery Focus' },
   ];
 
   return (
@@ -122,8 +122,7 @@ export function HeroSection({ lang = 'en' }: HeroSectionProps) {
 
             {/* Description — one tight line */}
             <p className="opacity-0 animate-fade-in-delayed-3 text-muted-foreground text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-              8+ years building high-quality, well-tested applications
-              across MERN &amp; MEVN stacks.
+              {profile.description}
             </p>
 
             {/* Metrics */}

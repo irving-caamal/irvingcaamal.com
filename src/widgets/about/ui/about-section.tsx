@@ -9,27 +9,27 @@ import { $profile } from '~/entities/profile/model/profile';
 const highlights = [
   {
     icon: Code,
-    title: 'Clean Code',
+    title: 'Scalable Frontends',
     description:
-      'Writing maintainable, scalable, and efficient code following best practices.',
+      'Building resilient interfaces, component systems, and maintainable product surfaces.',
   },
   {
     icon: Lightbulb,
-    title: 'Problem Solver',
+    title: 'Architecture Mindset',
     description:
-      'Analytical thinking to solve complex problems with innovative solutions.',
+      'Balancing delivery speed with long-term system clarity, testing, and extensibility.',
   },
   {
     icon: Users,
-    title: 'Team Player',
+    title: 'Team Autonomy',
     description:
-      'Collaborative approach with excellent communication and leadership skills.',
+      'Creating shared patterns that help distributed teams ship safely and independently.',
   },
   {
     icon: Zap,
-    title: 'Fast Learner',
+    title: 'Release Confidence',
     description:
-      'Quick to adapt to new technologies and frameworks in the ever-evolving tech landscape.',
+      'Using CI/CD, observability, feature flags, and QA to reduce delivery risk.',
   },
 ];
 
@@ -42,10 +42,12 @@ export function AboutSection() {
 
   const stats = [
     {
-      number: profile.experience.projectsCompleted,
-      label: 'Projects Completed',
+      number: profile.experience.years,
+      label: 'Years Experience',
     },
-    { number: profile.experience.years, label: 'Years Experience' },
+    { number: profile.experience.domains, label: 'Product Domains' },
+    { number: profile.experience.stack, label: 'Core Stack' },
+    { number: profile.experience.delivery, label: 'Delivery Focus' },
   ];
 
   return (
@@ -57,17 +59,18 @@ export function AboutSection() {
             About Me
           </Badge>
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-            Passionate <span className="text-gradient">Developer</span>
+            Product-Minded <span className="text-gradient">Engineer</span>
           </h2>
           <p className="mx-auto max-w-[700px] text-muted-foreground text-lg leading-relaxed">
             With over {profile.experience.years.replace('+', '')} years of
-            experience in full-stack development, I specialize in creating
-            robust web applications using modern technologies and frameworks.
+            experience, I focus on building reliable full-stack products with
+            strong frontend architecture, backend pragmatism, and disciplined
+            delivery practices.
           </p>
         </div>
 
         {/* Stats */}
-        <div className="grid gap-6 md:grid-cols-4 mb-16">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4 mb-16">
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
               <div className="elegant-card p-6">
@@ -122,10 +125,10 @@ export function AboutSection() {
                     <div className="text-center">
                       <div className="text-4xl mb-4">🚀</div>
                       <div className="text-lg font-semibold text-gradient">
-                        Always Learning
+                        Built for Scale
                       </div>
                       <div className="text-sm text-muted-foreground">
-                        Staying ahead of the curve
+                        Systems, teams, and delivery workflows
                       </div>
                     </div>
                   </div>

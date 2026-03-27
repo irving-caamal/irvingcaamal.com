@@ -13,6 +13,7 @@ import {
 } from '~/shared/ui/card';
 import { ExternalLink, Github, Star, Zap } from 'lucide-react';
 import { projects } from '~/entities/projects/data/projects';
+import { siteConfig } from '~/shared/config/site';
 import {
   PROJECT_HIGHLIGHT_EVENT,
   type ProjectHighlightDetail,
@@ -91,8 +92,8 @@ export function ProjectsSection() {
             Featured <span className="text-gradient">Projects</span>
           </h2>
           <p className="mx-auto max-w-[700px] text-muted-foreground text-lg leading-relaxed">
-            Real-world projects from my 8+ years of experience building scalable
-            B2B and B2C solutions.{' '}
+            Real-world product work from my {siteConfig.experience.years} of
+            experience building scalable B2B and B2C solutions.{' '}
             <span className="text-foreground/60 text-sm">
               Click any tech badge to explore that skill.
             </span>
